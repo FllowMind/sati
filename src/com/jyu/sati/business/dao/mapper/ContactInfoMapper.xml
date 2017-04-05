@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.ContactInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.ContactInfo">
+		<id column="CONTACT_ID" jdbcType="INTEGER" property="contactId" />
+		<result column="CONTACT_NAME" jdbcType="VARCHAR" property="contactName" />
+		<result column="CONTACT_BUSINESS" jdbcType="VARCHAR" property="contactBusiness" />
+		<result column="CONTACT_NUMBER" jdbcType="VARCHAR" property="contactNumber" />
+		<result column="CONTACT_ADDRESS" jdbcType="VARCHAR" property="contactAddress" />
+		<result column="POSTCODE" jdbcType="VARCHAR" property="postcode" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="CONTACT_URL" jdbcType="VARCHAR" property="contactUrl" />
+		<result column="FAX_NUMBER" jdbcType="VARCHAR" property="faxNumber" />
+		<result column="QQORMSN_NUMER" jdbcType="VARCHAR" property="qqormsnNumer" />
+		<result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CONTACT_ID, CONTACT_NAME, CONTACT_BUSINESS, CONTACT_NUMBER,
+		CONTACT_ADDRESS,
+		POSTCODE,
+		EMAIL, CONTACT_URL, FAX_NUMBER,
+		QQORMSN_NUMER, PHONE_NUMBER
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from contact_infos
+		where CONTACT_ID = #{contactId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		contact_infos
+		where CONTACT_ID = #{contactId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="contactId"
+		parameterType="com.jyu.sati.entity.ContactInfo">
+		insert into contact_infos (CONTACT_ID, CONTACT_NAME,
+		CONTACT_BUSINESS,
+		CONTACT_NUMBER, CONTACT_ADDRESS, POSTCODE,
+		EMAIL,
+		CONTACT_URL, FAX_NUMBER,
+		QQORMSN_NUMER, PHONE_NUMBER)
+		values
+		(#{contactId,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR},
+		#{contactBusiness,jdbcType=VARCHAR},
+		#{contactNumber,jdbcType=VARCHAR}, #{contactAddress,jdbcType=VARCHAR},
+		#{postcode,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{contactUrl,jdbcType=VARCHAR}, #{faxNumber,jdbcType=VARCHAR},
+		#{qqormsnNumer,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="contactId" parameterType="com.jyu.sati.entity.ContactInfo">
+		insert into contact_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="contactId != null">
+				CONTACT_ID,
+			</if>
+			<if test="contactName != null">
+				CONTACT_NAME,
+			</if>
+			<if test="contactBusiness != null">
+				CONTACT_BUSINESS,
+			</if>
+			<if test="contactNumber != null">
+				CONTACT_NUMBER,
+			</if>
+			<if test="contactAddress != null">
+				CONTACT_ADDRESS,
+			</if>
+			<if test="postcode != null">
+				POSTCODE,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+			<if test="contactUrl != null">
+				CONTACT_URL,
+			</if>
+			<if test="faxNumber != null">
+				FAX_NUMBER,
+			</if>
+			<if test="qqormsnNumer != null">
+				QQORMSN_NUMER,
+			</if>
+			<if test="phoneNumber != null">
+				PHONE_NUMBER,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="contactId != null">
+				#{contactId,jdbcType=INTEGER},
+			</if>
+			<if test="contactName != null">
+				#{contactName,jdbcType=VARCHAR},
+			</if>
+			<if test="contactBusiness != null">
+				#{contactBusiness,jdbcType=VARCHAR},
+			</if>
+			<if test="contactNumber != null">
+				#{contactNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="contactAddress != null">
+				#{contactAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="postcode != null">
+				#{postcode,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="contactUrl != null">
+				#{contactUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="faxNumber != null">
+				#{faxNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="qqormsnNumer != null">
+				#{qqormsnNumer,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber != null">
+				#{phoneNumber,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.ContactInfo">
+		update contact_infos
+		<set>
+			<if test="contactName != null">
+				CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+			</if>
+			<if test="contactBusiness != null">
+				CONTACT_BUSINESS = #{contactBusiness,jdbcType=VARCHAR},
+			</if>
+			<if test="contactNumber != null">
+				CONTACT_NUMBER = #{contactNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="contactAddress != null">
+				CONTACT_ADDRESS = #{contactAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="postcode != null">
+				POSTCODE = #{postcode,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="contactUrl != null">
+				CONTACT_URL = #{contactUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="faxNumber != null">
+				FAX_NUMBER = #{faxNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="qqormsnNumer != null">
+				QQORMSN_NUMER = #{qqormsnNumer,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneNumber != null">
+				PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where CONTACT_ID = #{contactId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.ContactInfo">
+		update
+		contact_infos
+		set CONTACT_NAME = #{contactName,jdbcType=VARCHAR},
+		CONTACT_BUSINESS = #{contactBusiness,jdbcType=VARCHAR},
+		CONTACT_NUMBER
+		= #{contactNumber,jdbcType=VARCHAR},
+		CONTACT_ADDRESS =
+		#{contactAddress,jdbcType=VARCHAR},
+		POSTCODE =
+		#{postcode,jdbcType=VARCHAR},
+		EMAIL = #{email,jdbcType=VARCHAR},
+		CONTACT_URL = #{contactUrl,jdbcType=VARCHAR},
+		FAX_NUMBER =
+		#{faxNumber,jdbcType=VARCHAR},
+		QQORMSN_NUMER =
+		#{qqormsnNumer,jdbcType=VARCHAR},
+		PHONE_NUMBER =
+		#{phoneNumber,jdbcType=VARCHAR}
+		where CONTACT_ID =
+		#{contactId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getContactInfoByUserId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		c.* 
+		FROM 
+		contact_infos c 
+		INNER JOIN 
+		users u 
+		ON 
+		c.CONTACT_ID = u.CONTACT_INFO_ID 
+		WHERE u.USER_ID = 
+		#{userId,jdbcType=VARCHAR} 
+	</select>
+
+</mapper>

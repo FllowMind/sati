@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                字段选项管理<span class="nav-attach"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">字段选项管理</div>
+    </div>
+    <div class="block-content collapse in" style="min-height: 250px;">
+        <span>请选择相应字段：</span>
+        <select data-placeholder="选择字段" class="dept_select span3" id="typeOption">
+
+        </select>
+        <a href="#addField" data-toggle="modal" class="btn btn-info" style="float: right;">添加字段内容</a>
+        <div class="field-list">
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+            <div class="alert alert-info">
+                <strong>技术转让</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addField" class="modal hide">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close" type="button">&times;</button>
+        <h3>添加字段</h3>
+    </div>
+    <div class="modal-body">
+        <table>
+            <tr>
+                <td class="span2">字段类型：</td>
+                <td class="span4">学位</td>
+            </tr>
+            <tr>
+                <td class="span2">选项名：</td>
+                <td class="span4">
+                    <input type="text" placeholder="该字段的选项名"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary" href="#" onclick="addFieldOption();">加选项</a>
+        <a data-dismiss="modal" class="btn btn-success" href="#">添加</a>
+        <a data-dismiss="modal" class="btn" href="#">取消</a>
+    </div>
+</div>

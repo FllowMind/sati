@@ -1,0 +1,90 @@
+<!-- 公告管理 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div>
+	<button name="管理系统公告" class="btn btn-success" onclick="getNoticeManagment(this);">管理系统公告</button>
+	<!-- <button class="btn btn-info" onclick="createProduce();">创建产品成果</button> -->
+</div>
+<div class="alert alert-info" style="margin-top: 10px;">
+    <strong>提示信息：</strong><span style="color : red;" id="auditMsg"></span>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>发布管理公告</span></div>
+    </div>
+   	<div class="block-content collapse in" >
+   		<form id="noticeForm" name="noticeForm">
+   			<table class="table table-bordered">
+    			<tbody>
+    				<tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>公告标题：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+	                        	<input type="text" id="infoTitle"  name="infoTitle" class="form-input span6 form-text"/>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>关键词：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+	                        	<input type="text" id="infoKey" name="infoKey" class="form-input span6 form-text"/>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>公告内容：</span>
+	                    </td>
+	                    <td class="span6">
+	                    	<b class="fx">*</b>
+	                    	<span>请通过添加附件的形式添加公告内容</span>
+	                    </td>
+	                </tr>
+	                <tr>
+	                	<td colspan="2">
+	                		<div id="infoContent"   name="infoContent" class="form-content">
+	                    	</div>
+	                	</td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>公告附件：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+		                        <button type="button" class="btn btn-default" onclick="showInfoModal();">添加附件</button>
+	                        </div>
+	                        <div id="fileContent">
+	                        </div>
+	                    </td>
+	                </tr>
+    			</tbody>
+    		</table>
+    	</form>
+    	<!-- 完成信息后的操作 -->
+		<div style="text-align: center;">
+			<button type="button" class="btn btn-success" onclick="saveInfo(2);">保存为草稿</button>
+		    <button type="button" class="btn btn-info" onclick="publishInfo(2);">发布公告</button>
+		</div>
+   	</div>
+</div>

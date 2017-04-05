@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.PersonDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.Person">
+		<id column="PERSON_ID" jdbcType="INTEGER" property="personId" />
+		<result column="POLITICAL_LANDSCAPE" jdbcType="INTEGER"
+			property="politicalLandscape" />
+		<result column="LEARN_MAJOR_ID" jdbcType="INTEGER" property="learnMajorId" />
+		<result column="DEGREE_ID" jdbcType="INTEGER" property="degreeId" />
+		<result column="UNIVERSITY" jdbcType="VARCHAR" property="university" />
+		<result column="WORK_MAJOR_ID" jdbcType="INTEGER" property="workMajorId" />
+		<result column="INDUSTRY_ID" jdbcType="INTEGER" property="industryId" />
+		<result column="RESEARCH_DIRECTION" jdbcType="VARCHAR"
+			property="researchDirection" />
+		<result column="INFO_KEY" jdbcType="VARCHAR" property="key" />
+		<result column="ACHIEVEMENT" jdbcType="VARCHAR" property="achievement" />
+		<result column="ENCLOSURE_ID" jdbcType="INTEGER" property="enclosureId" />
+		<result column="BASE_INFO_ID" jdbcType="INTEGER" property="baseInfoId" />
+		<result column="ACADEMIC_TITLE_ID" jdbcType="INTEGER" property="academicTitleId" />
+		<result column="HIGH_TECH_FIELD_ID" jdbcType="INTEGER"
+			property="highTechFieldId" />
+		<result column="LOCATION_ID" jdbcType="INTEGER" property="locationId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PERSON_ID, POLITICAL_LANDSCAPE, LEARN_MAJOR_ID, DEGREE_ID,
+		UNIVERSITY,
+		WORK_MAJOR_ID,
+		INDUSTRY_ID, RESEARCH_DIRECTION, INFO_KEY,
+		ACHIEVEMENT, ENCLOSURE_ID,
+		BASE_INFO_ID,ACADEMIC_TITLE_ID,HIGH_TECH_FIELD_ID,LOCATION_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from persons
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		persons
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="personId"
+		parameterType="com.jyu.sati.entity.Person">
+		insert into persons (PERSON_ID, POLITICAL_LANDSCAPE,
+		LEARN_MAJOR_ID,
+		DEGREE_ID, UNIVERSITY, WORK_MAJOR_ID,
+		INDUSTRY_ID,
+		RESEARCH_DIRECTION, INFO_KEY,
+		ACHIEVEMENT, ENCLOSURE_ID,
+		BASE_INFO_ID,ACADEMIC_TITLE_ID,HIGH_TECH_FIELD_ID,LOCATION_ID
+		)
+		values
+		(#{personId,jdbcType=INTEGER},
+		#{politicalLandscape,jdbcType=INTEGER},
+		#{learnMajorId,jdbcType=INTEGER},
+		#{degreeId,jdbcType=INTEGER},
+		#{university,jdbcType=VARCHAR}, #{workMajorId,jdbcType=INTEGER},
+		#{industryId,jdbcType=INTEGER}, #{researchDirection,jdbcType=VARCHAR},
+		#{key,jdbcType=VARCHAR},
+		#{achievement,jdbcType=VARCHAR},
+		#{enclosureId,jdbcType=INTEGER}, #{baseInfoId,jdbcType=INTEGER},
+		#{academicTitleId,jdbcType=INTEGER},
+		#{highTechFieldId,jdbcType=INTEGER},
+		#{locationId,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="personId" parameterType="com.jyu.sati.entity.Person">
+		insert into persons
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				PERSON_ID,
+			</if>
+			<if test="politicalLandscape != null">
+				POLITICAL_LANDSCAPE,
+			</if>
+			<if test="learnMajorId != null">
+				LEARN_MAJOR_ID,
+			</if>
+			<if test="degreeId != null">
+				DEGREE_ID,
+			</if>
+			<if test="university != null">
+				UNIVERSITY,
+			</if>
+			<if test="workMajorId != null">
+				WORK_MAJOR_ID,
+			</if>
+			<if test="industryId != null">
+				INDUSTRY_ID,
+			</if>
+			<if test="researchDirection != null">
+				RESEARCH_DIRECTION,
+			</if>
+			<if test="key != null">
+				INFO_KEY,
+			</if>
+			<if test="achievement != null">
+				ACHIEVEMENT,
+			</if>
+			<if test="enclosureId != null">
+				ENCLOSURE_ID,
+			</if>
+			<if test="academicTitleId != null">
+				ACADEMIC_TITLE_ID,
+			</if>
+			<if test="highTechFieldId != null">
+				HIGH_TECH_FIELD_ID,
+			</if>
+			<if test="locationId != null">
+				LOCATION_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="personId != null">
+				#{personId,jdbcType=INTEGER},
+			</if>
+			<if test="politicalLandscape != null">
+				#{politicalLandscape,jdbcType=INTEGER},
+			</if>
+			<if test="learnMajorId != null">
+				#{learnMajorId,jdbcType=INTEGER},
+			</if>
+			<if test="degreeId != null">
+				#{degreeId,jdbcType=INTEGER},
+			</if>
+			<if test="university != null">
+				#{university,jdbcType=VARCHAR},
+			</if>
+			<if test="workMajorId != null">
+				#{workMajorId,jdbcType=INTEGER},
+			</if>
+			<if test="industryId != null">
+				#{industryId,jdbcType=INTEGER},
+			</if>
+			<if test="researchDirection != null">
+				#{researchDirection,jdbcType=VARCHAR},
+			</if>
+			<if test="key != null">
+				#{key,jdbcType=VARCHAR},
+			</if>
+			<if test="achievement != null">
+				#{achievement,jdbcType=VARCHAR},
+			</if>
+			<if test="enclosureId != null">
+				#{enclosureId,jdbcType=INTEGER},
+			</if>
+			<if test="baseInfoId != null">
+				#{baseInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="academicTitleId != null">
+				#{academicTitleId,jdbcType=INTEGER},
+			</if>
+			<if test="highTechFieldId != null">
+				#{highTechFieldId,jdbcType=INTEGER},
+			</if>
+			<if test="locationId != null">
+				#{locationId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.Person">
+		update persons
+		<set>
+			<if test="politicalLandscape != null">
+				POLITICAL_LANDSCAPE =
+				#{politicalLandscape,jdbcType=INTEGER},
+			</if>
+			<if test="learnMajorId != null">
+				LEARN_MAJOR_ID = #{learnMajorId,jdbcType=INTEGER},
+			</if>
+			<if test="degreeId != null">
+				DEGREE_ID = #{degreeId,jdbcType=INTEGER},
+			</if>
+			<if test="university != null">
+				UNIVERSITY = #{university,jdbcType=VARCHAR},
+			</if>
+			<if test="workMajorId != null">
+				WORK_MAJOR_ID = #{workMajorId,jdbcType=INTEGER},
+			</if>
+			<if test="industryId != null">
+				INDUSTRY_ID = #{industryId,jdbcType=INTEGER},
+			</if>
+			<if test="researchDirection != null">
+				RESEARCH_DIRECTION =
+				#{researchDirection,jdbcType=VARCHAR},
+			</if>
+			<if test="key != null">
+				INFO_KEY = #{key,jdbcType=VARCHAR},
+			</if>
+			<if test="achievement != null">
+				ACHIEVEMENT = #{achievement,jdbcType=VARCHAR},
+			</if>
+			<if test="enclosureId != null">
+				ENCLOSURE_ID = #{enclosureId,jdbcType=INTEGER},
+			</if>
+			<if test="baseInfoId != null">
+				BASE_INFO_ID = #{baseInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="academicTitleId != null">
+				ACADEMIC_TITLE_ID = #{academicTitleId,jdbcType=INTEGER},
+			</if>
+			<if test="highTechFieldId != null">
+				HIGH_TECH_FIELD_ID = #{highTechFieldId,jdbcType=INTEGER},
+			</if>
+			<if test="locationId != null">
+				LOCATION_ID = #{locationId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where PERSON_ID = #{personId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.Person">
+		update persons
+		set
+		POLITICAL_LANDSCAPE = #{politicalLandscape,jdbcType=INTEGER},
+		LEARN_MAJOR_ID = #{learnMajorId,jdbcType=INTEGER},
+		DEGREE_ID =
+		#{degreeId,jdbcType=INTEGER},
+		UNIVERSITY =
+		#{university,jdbcType=VARCHAR},
+		WORK_MAJOR_ID =
+		#{workMajorId,jdbcType=INTEGER},
+		INDUSTRY_ID =
+		#{industryId,jdbcType=INTEGER},
+		RESEARCH_DIRECTION =
+		#{researchDirection,jdbcType=VARCHAR},
+		INFO_KEY =
+		#{key,jdbcType=VARCHAR},
+		ACHIEVEMENT = #{achievement,jdbcType=VARCHAR},
+		ENCLOSURE_ID = #{enclosureId,jdbcType=INTEGER},
+		BASE_INFO_ID =
+		#{baseInfoId,jdbcType=INTEGER},
+		ACADEMIC_TITLE_ID = #{academicTitleId,jdbcType=INTEGER},
+		HIGH_TECH_FIELD_ID = #{highTechFieldId,jdbcType=INTEGER},
+		LOCATION_ID = #{locationId,jdbcType=INTEGER}
+		where PERSON_ID =
+		#{personId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getPersonByUserId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		persons p
+		INNER JOIN
+		users u
+		ON
+		u.PERSON_ID
+		=p.PERSON_ID
+		WHERE
+		u.USER_ID =#{userId,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 绑定附件到person表 -->
+	<update id="bindEnclosureForPerson" parameterType="java.lang.String">
+		UPDATE persons
+		p
+		SET ENCLOSURE_ID = #{enclosureId,jdbcType=INTEGER}
+		WHERE
+		p.PERSON_ID =
+		(
+		SELECT
+		u.PERSON_ID
+		FROM
+		(
+		SELECT
+		PERSON_ID
+		FROM
+		users
+		WHERE
+		USER_ID =
+		#{userId,jdbcType=VARCHAR}
+		) u
+		)
+	</update>
+
+
+</mapper>

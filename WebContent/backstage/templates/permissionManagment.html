@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">
+        	<span class="navTitle"></span>
+        </div>
+    </div>
+    <div class="block-content collapse in" style="min-height: 240px;">
+	    <div style="font-size:16px;padding: 10px 24px;">
+		  	<!-- <span>选择角色获取对应权限：</span>
+	   		<select data-placeholder="选择角色" class="dept_select span3" id="roleOption">
+			
+	       </select> -->
+		    <button class="btn btn-info" style="margin-left: 10px;" onclick="showPermissionModule(this);">添加权限模块</button>
+		</div>
+        <div id="permissionTree" class="treeview">
+        	
+        </div>
+        <div style="display: none;font-size:16px;padding: 10px 24px;" id="treeMsg">
+        	<span>暂未绑定任何权限</span>
+        </div>
+    </div>
+</div>

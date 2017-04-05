@@ -1,0 +1,78 @@
+<!-- 用户审核通用模块 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row-fluid">
+
+	<div class="span4">
+		<div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">正在审核和等待审核名单</div>
+                <div class="pull-right">
+               		<a href="#" onclick = "showFindContent();"><i class="icon icon-chevron-down" style="margin-right: 8px" ></i></a>
+                	<span class="badge badge-info shenherenshu"></span>
+                </div>
+                <br/>
+                <div id="findContent" style="display: none;">
+                	<form>
+                		<div class="form-group">
+                			<label>审核状态</label>
+                			<select data-placeholder="请选择" class="dept_select chzn-form-select hm-chosen"  id="auditStatus" name="auditStatus">
+								
+	       					</select>
+                		</div>
+                		<div class="form-group">
+                			<label>最早提交时间</label>
+                			<input type="text" id="startDate" name="startDate" class="datepicker" placeholder="选择最早发布时间">
+                		</div>
+                		<div class="form-group">
+                			<label>最迟提交时间</label>
+                			<input type="text" id="editDate" name="editDate" class="datepicker" placeholder="选择最早发布时间">
+                		</div>
+                	</form>
+                	<button type="button" class="btn" style="float: right; margin-top: -18px;margin-bottom: 10px;" onclick="findAuditByCondition(1,5);">查询</button>
+                </div>
+            </div>
+            <div class="block-content collapse in">
+            	<table class="table table-bordered">
+                     <thead>
+                         <tr>
+                             <th>用户姓名</th>
+                             <th>申请时间</th>
+                             <th>操作</th>
+                         </tr>
+                     </thead>
+                     <tbody class="aa">
+                     	<!--  
+                     	<tr>
+                     		<td>张三</td>
+                     		<td>2017/3/28</td>
+                     		<td><button class="btn btn-info" onclick="getAuditInfoDetails();">审核</button></td>
+                     	</tr>
+                     	--> 
+                   	</tbody>
+                 </table>
+          	</div>
+   		</div>
+	</div>
+	<div class="span8">
+		<div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">详细信息</div>
+            </div>
+            <div class="block-content collapse in" id="detailsModule">
+            	
+            </div>
+   		</div>
+	</div>
+</div>

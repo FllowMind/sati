@@ -1,0 +1,448 @@
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="alert alert-info">
+    <strong>提示信息：</strong><span style="color : red;" id="auditMsg"></span>
+    
+</div>
+<form name="personManagment" id="personManagment" class="Managment">
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;">
+        <span>基本信息</span>
+        </div>
+    </div>
+    <div class="block-content collapse in">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>姓名：</span>
+                    </td>
+                    <td class="span6">
+                     	<div class="form-group">
+                        	<input type="text" id="personName" name="personName" class="form-input span4 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>身份证号码：</span>
+                    </td>
+                    <td class="span6">
+                    	 <div class="form-group">
+                        	<input type="text" id="idcardNumber" name="idcardNumber"  class="form-input span4 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>身份证正面图片：</span>
+                    </td>
+                    <td class="span6">
+                    	<img data-src="" id="imageUrl" src="" class="thumbnail" alt="暂无上传身份证正面图片" style="width: 224px; height: 180px;float: left;"/>
+                    	<div class="form-group uploadImgButton" >
+							<span class="btn btn-info fileinput-button">
+						        <span>上传图片</span>
+						        <!-- The file input field used as target for the file upload widget -->
+						        <input id="idcardImage" type="file" name="file">
+						    </span>
+					    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>性别：</span>
+                    </td>
+                    <td class="span6 from-radio" >
+                    	<div class="form-group">
+	                        <input type="radio" name="sex" value="1"><span>男</span>
+	                        <input type="radio" name="sex" value="-1"><span>女</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>民族：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+                        	<input type="text" id="nation" name="nation" class="form-input span4 form-text"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>政治面貌：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+	                         <select data-placeholder="请选择" class="dept_select chzn-form-select "  id="politicalLandscape" name="politicalLandscape">
+				
+	       					</select>
+       					</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>出生日期：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+                       	 	<input type="text" id="birth" name="birth" class="datepicker span4" placeholder="选择出生日期">
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>所学专业：</span>
+                    </td>
+                    <td class="span6">
+                    	 <div class="form-group"> 
+	                        <input type="text" id="resultForm" name="resultForm" class="form-input span4 form-select"/>
+	                        <button type="button" id="resultFormId" name="所学专业" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                   		 </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>学历：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+	                        <select data-placeholder="请选择" class="dept_select chzn-form-select "  id="educationId" name="educationId">
+				
+	       					</select>
+       					</div>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>学位：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+	                        <select data-placeholder="请选择" class="dept_select chzn-form-select "  id="degree">
+				
+	       					</select>
+       					</div>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="span2 from-title">
+                        <span>毕业院校：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+                        	<input type="text" id="university" name="university"  class="form-input span4 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>工作单位名称：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+                        	<input type="text" id="workplace" name="workplace"   class="form-input span4 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>从事专业：</span>
+                    </td>
+                    <td class="span6">
+                     	<div class="form-group">
+	                        <input type="text" id="workMajorId"  class="form-input span4 form-select"/>
+	                        <button type="button" id="workMajor" name="从事专业" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>职称：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+	                        <input type="text" id="academicTitleId" class="form-input span4 form-select"/>
+	                        <button type="button" id="academicTitle" name="职称" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                   		</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>职务：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+                        	<input type="text" id="business" name="business"  class="form-input span4 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>高新技术领域：</span>
+                    </td>
+                    <td class="span6">
+                    	 <div class="form-group">
+	                        <input type="text" id="highTechFieldId"  class="form-input span4 form-select"/>
+	                         <button type="button" id="highTechField" name="高新技术领域" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>研究行业：</span>
+                    </td>
+                    <td class="span6">
+                     <div class="form-group">
+                        <input type="text" id="industryId"  class="form-input span4 form-select"/>
+                        <button type="button" id="industry" name="研究行业" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                  	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>研究方向：</span>
+                    </td>
+                    <td class="span6">
+                     	<div class="form-group">
+                        	<input type="text" id="researchDirection" name="researchDirection"  class="form-input span4 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>关键字：</span>
+                    </td>
+                    <td class="span6">
+                     	<div class="form-group">
+                        	<input type="text" id="key" name="key" class="form-input span4 form-text"/>
+                    	</div>
+                   	</td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>所在地：</span>
+                    </td>
+                    <td class="span6">
+                    	 <div class="form-group">
+	                        <input type="text" id="locationId" class="form-input span4 form-select"/>
+	                         <button type="button" id="location" name="所在地" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>个人照片：</span>
+                    </td>
+                    <td class="span6">
+                    	<img data-src="" id="personImageUrl" src="" class="thumbnail" alt="暂无上传个人照片" style="width: 224px; height: 180px;float: left;"/>
+                    	<div class="form-group uploadImgButton">
+	                    	<span class="btn btn-info fileinput-button">
+						        <span>上传图片</span>
+						        <!-- The file input field used as target for the file upload widget -->
+						        <input id="personImage" type="file" name="file">
+						    </span>
+					    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>个人简介：</span>
+                    </td>
+                    <td class="span6">
+	                     <div class="form-group">
+	                        <textarea rows="4" id="personalProfile" name="personalProfile" class="span12">
+	
+	                        </textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>取得成绩成果简介：</span>
+                    </td>
+                    <td class="span6">
+	                     <div class="form-group">
+	                        <textarea rows="4" id="achievement" name="achievement" class="span12">
+	
+	                        </textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>相关附件：</span>
+                    </td>
+                    <td class="span6">
+	                    <div class="form-group">
+	                    	<div id="enclosureUrl" style="margin-bottom: 10px;">
+	                    		
+	                    	</div>
+	                    	<div class="form-group">
+		                    	<span class="btn btn-info fileinput-button">
+							        <span>提交附件</span>
+							        <!-- The file input field used as target for the file upload widget -->
+							        <input id="enclosure" type="file" name="file">
+							    </span>
+					    	</div>
+	                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>备注：</span>
+                    </td>
+                    <td class="span6">
+                    	<div class="form-group">
+	                        <textarea rows="4" id="remark"  name="remark" class="span12">
+	
+	                        </textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="alert alert-info">
+    <strong>注：以下信息为省科技厅技术市场管理办公室管理需要，不对公众公开</strong>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted pull-left"><span>基本信息</span></div>
+    </div>
+    <div class="block-content collapse in">
+	        <table class="table table-bordered">
+	            <tbody>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <b class="fx">*</b>
+	                    <span>联系人：</span>
+	                </td>
+	                <td class="span4">
+	                 	<div class="form-group">
+	                    	<input type="text" id="contactName" name="contactName"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>联系人职务：</span>
+	                </td>
+	                <td class="span4">
+	                	<div class="form-group">
+	                    	<input type="text" id="contactBusiness" name="contactBusiness"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>联系电话：</span>
+	                </td>
+	                <td class="span4">
+	                	<div class="form-group">
+	                    	<input type="text" id="contactNumber" name="contactNumber"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <b class="fx">*</b>
+	                    <span>手机号码：</span>
+	                </td>
+	                <td class="span4">
+	                     <div class="form-group">
+	                    	<input type="text" id="phoneNumber"  name="phoneNumber" class="form-input form-text"/>
+	                	</div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                 	<b class="fx">*</b>
+	                    <span>通讯地址：</span>
+	                </td>
+	                <td class="span4">
+	                 	<div class="form-group">
+	                    	<input type="text" id="contactAddress"  name="contactAddress" class="form-input form-text"/>
+	               		</div>
+	                </td>
+	                <td class="span2 from-title">
+	                	 <b class="fx">*</b>
+	                    <span>邮编：</span>
+	                </td>
+	                <td class="span4">
+	                 	<div class="form-group">
+	                    	<input type="text" id="postcode" name="postcode" class="form-input form-text"/>
+	                	</div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                 	<b class="fx">*</b>
+	                    <span>Email：</span>
+	                </td>
+	                <td class="span4">
+	                 	<div class="form-group">
+	                    	<input type="email" id="email" name="email"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>网址：</span>
+	                </td>
+	                <td class="span4">
+	                	<div class="form-group">
+	                    	<input type="text" id="contactUrl" name="contactUrl"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>传真：</span>
+	                </td>
+	                <td class="span4">
+	                	<div class="form-group">
+	                    	<input type="text" id="faxNumber" name="faxNumber"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>QQ/MSN：</span>
+	                </td>
+	                <td class="span4">
+	                	<div class="form-group">
+	                    	<input type="text" id="qqormsnNumer" name="qqormsnNumer"  class="form-input form-text"/>
+	                	</div>
+	                </td>
+	            </tr>
+	            </tbody>
+	        </table>
+    </div>
+</div>
+</form>
+<!-- 完成信息后的操作 -->
+<div class="form-actions">
+    <button type="button" class="btn btn-success" onclick="saveCheck();">提交审核</button>
+    <button type="button" class="btn">取消</button>
+</div>

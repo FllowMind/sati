@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<classPathEntry
+		location="H:/WorkplaceForEclipse/MyWorkplace/sati/WebContent/WEB-INF/lib/mysql-connector-java-5.1.38-bin.jar" />
+
+	<context id="mybatis">
+
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!--数据库链接URL，用户名、密码 -->
+		<jdbcConnection connectionURL="jdbc:mysql:///sati"
+			driverClass="com.mysql.jdbc.Driver" password="1234" userId="root" />
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="com.jyu.sati.entity"
+			targetProject="sati\src" />
+		<!-- 生成映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="com.jyu.sati.business.dao.mapper"
+			targetProject="sati\src" />
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator targetPackage="com.jyu.sati.business.dao"
+			targetProject="sati\src" type="XMLMAPPER" />
+		<!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
+		<!-- 规则-权限表 -->
+		<table schema="Info" tableName="infos"
+			domainObjectName="Info" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+			<!-- 驼峰命名 -->
+			<property name="useActualColumnNames" value="false" />
+		</table>
+	</context>
+
+</generatorConfiguration>

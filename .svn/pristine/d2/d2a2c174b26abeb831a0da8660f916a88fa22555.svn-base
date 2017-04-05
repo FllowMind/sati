@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.TechRequireInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.TechRequireInfo">
+		<id column="TRI_ID" jdbcType="INTEGER" property="triId" />
+		<result column="INVESTMENT_FUNDS" jdbcType="REAL" property="investmentFunds" />
+		<result column="TIME_LIMIT" jdbcType="INTEGER" property="timeLimit" />
+		<result column="PROBLEM_DESCRIPTION" jdbcType="LONGVARCHAR"
+			property="problemDescription" />
+		<result column="TBI_ID" jdbcType="INTEGER" property="tbiId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		TRI_ID, INVESTMENT_FUNDS, TIME_LIMIT, PROBLEM_DESCRIPTION,
+		TBI_ID
+	</sql>
+	<!-- 分页列表结果 -->
+	<resultMap id="PageResultMap" type="com.jyu.sati.vo.TechOutlineVo">
+		<result column="TRI_ID" jdbcType="INTEGER" property="triId" />
+		<result column="INFO_TITLE" jdbcType="INTEGER" property="infoTitle" />
+		<result column="LOCATION_ID" jdbcType="INTEGER" property="locationId" />
+		<result column="HTF_ID" jdbcType="INTEGER" property="htfId" />
+		<result column="INDUSTRY_ID" jdbcType="INTEGER" property="industryId" />
+		<result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+		<result column="STATUS" jdbcType="INTEGER" property="status" />
+		<result column="CONTACT_NAME" jdbcType="INTEGER" property="contactName" />
+		<result column="PHONE_NUMBER" jdbcType="INTEGER" property="phoneNumber" />
+	</resultMap>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from technology_requirement_infos
+		where TRI_ID =
+		#{triId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		technology_requirement_infos
+		where TRI_ID = #{triId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="triId"
+		parameterType="com.jyu.sati.entity.TechRequireInfo">
+		insert into technology_requirement_infos (TRI_ID,
+		INVESTMENT_FUNDS,
+		TIME_LIMIT,
+		PROBLEM_DESCRIPTION, TBI_ID)
+		values
+		(#{triId,jdbcType=INTEGER}, #{investmentFunds,jdbcType=REAL},
+		#{timeLimit,jdbcType=INTEGER},
+		#{problemDescription,jdbcType=LONGVARCHAR}, #{tbiId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="triId" parameterType="com.jyu.sati.entity.TechRequireInfo">
+		insert into technology_requirement_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="triId != null">
+				TRI_ID,
+			</if>
+			<if test="investmentFunds != null">
+				INVESTMENT_FUNDS,
+			</if>
+			<if test="timeLimit != null">
+				TIME_LIMIT,
+			</if>
+			<if test="problemDescription != null">
+				PROBLEM_DESCRIPTION,
+			</if>
+			<if test="tbiId != null">
+				TBI_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="triId != null">
+				#{triId,jdbcType=INTEGER},
+			</if>
+			<if test="investmentFunds != null">
+				#{investmentFunds,jdbcType=REAL},
+			</if>
+			<if test="timeLimit != null">
+				#{timeLimit,jdbcType=INTEGER},
+			</if>
+			<if test="problemDescription != null">
+				#{problemDescription,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="tbiId != null">
+				#{tbiId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.TechRequireInfo">
+		update technology_requirement_infos
+		<set>
+			<if test="investmentFunds != null">
+				INVESTMENT_FUNDS = #{investmentFunds,jdbcType=REAL},
+			</if>
+			<if test="timeLimit != null">
+				TIME_LIMIT = #{timeLimit,jdbcType=INTEGER},
+			</if>
+			<if test="problemDescription != null">
+				PROBLEM_DESCRIPTION =
+				#{problemDescription,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="tbiId != null">
+				TBI_ID = #{tbiId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where TRI_ID = #{triId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.TechRequireInfo">
+		update
+		technology_requirement_infos
+		set INVESTMENT_FUNDS =
+		#{investmentFunds,jdbcType=REAL},
+		TIME_LIMIT =
+		#{timeLimit,jdbcType=INTEGER},
+		PROBLEM_DESCRIPTION =
+		#{problemDescription,jdbcType=LONGVARCHAR},
+		TBI_ID =
+		#{tbiId,jdbcType=INTEGER}
+		where TRI_ID = #{triId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getPublisherIdByTriId" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT
+		b.PUBLISHER_ID
+		FROM
+		technology_base_infos b
+		INNER JOIN
+		technology_requirement_infos r
+		ON
+		b.TBI_ID
+		=
+		r.TBI_ID
+		WHERE
+		r.TRI_ID=
+		#{triId,jdbcType=INTEGER}
+	</select>
+
+	<!-- 更新指定的技术需求状态 -->
+	<update id="updateTechReqStatus">
+		UPDATE technology_base_infos
+		SET `STATUS` = - `STATUS`
+		WHERE
+		TBI_ID = (
+		SELECT
+		TBI_ID
+		FROM
+		technology_requirement_infos
+		WHERE
+		TRI_ID = #{triId,jdbcType=INTEGER}
+		)
+
+	</update>
+	<!-- 更新指定的技术需求是否被禁用状态 -->
+	<update id="updateTechReqLimitStatus">
+		UPDATE technology_base_infos
+		SET LIMIT_STATUS =
+		-LIMIT_STATUS
+		WHERE
+		TBI_ID = (
+		SELECT
+		TBI_ID
+		FROM
+		technology_requirement_infos
+		WHERE
+		TRI_ID = #{triId,jdbcType=INTEGER}
+		)
+
+	</update>
+	<!-- 更新指定的技术需求审核状态和审核人 -->
+	<update id="updateAuditStatusAndAuditorId">
+		UPDATE audit_infos
+		SET AUDIT_STATUS =
+		#{auditStatus,jdbcType=INTEGER},
+		AUDITOR_ID =
+		#{auditorId,jdbcType=VARCHAR}
+		WHERE
+		AUDIT_INFO_ID = (
+		SELECT
+		AUDIT_INFO_ID
+		FROM
+		technology_base_infos b
+		INNER JOIN
+		technology_requirement_infos r ON b.TBI_ID = r.TBI_ID
+		WHERE
+		r.TRI_ID =
+		#{triId,jdbcType=INTEGER}
+		)
+	</update>
+
+	<!-- 根据条件获取一页技术需求数据 -->
+	<select id="getTechPageByCondition" parameterType="TechnologyPageVo"
+		resultMap="PageResultMap">
+		SELECT
+		r.TRI_ID,b.INFO_TITLE,b.INDUSTRY_ID,
+		b.LOCATION_ID,b.`STATUS`,b.CREATE_TIME,
+		b.HTF_ID,c.CONTACT_NAME,c.PHONE_NUMBER
+		FROM
+		technology_requirement_infos r
+		INNER JOIN
+		technology_base_infos b
+		ON
+		r.TBI_ID =
+		b.TBI_ID
+		INNER JOIN
+		contact_infos c
+		ON
+		c.CONTACT_ID
+		=
+		b.CONTACT_INFO_ID
+		INNER JOIN
+		audit_infos a
+		ON
+		a.AUDIT_INFO_ID
+		=
+		b.AUDIT_INFO_ID
+		WHERE
+		1=1
+		<if test="key !=null and key !=''">
+			AND
+			(
+			b.INFO_KEY
+			LIKE
+			CONCAT('%',#{key,jdbcType=VARCHAR},'%'
+			)
+			OR
+			b.INFO_TITLE
+			LIKE
+			CONCAT('%',#{key,jdbcType=VARCHAR},'%' )
+			OR
+			r.PROBLEM_DESCRIPTION
+			LIKE
+			CONCAT('%',#{key,jdbcType=VARCHAR},'%' )
+			)
+		</if>
+		<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(b.CREATE_TIME, '%Y-%m-%d') ]]>
+		</if>
+		<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(b.CREATE_TIME, '%Y-%m-%d') ]]>
+		</if>
+		<if test=" techStatus !=null ">
+			AND b.`STATUS` = #{techStatus,jdbcType=INTEGER}
+		</if>
+		<if test=" limitStatus !=null ">
+			AND b.LIMIT_STATUS = #{limitStatus,jdbcType=INTEGER}
+		</if>
+		<if test=" auditStatus !=null ">
+			AND a.AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+		</if>
+		<if test=" publisherId !=null and publisherId !='' ">
+			AND b.PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+		</if>
+		<if test=" htfId !=null and htfId !='' ">
+			AND b.HTF_ID = #{htfId,jdbcType=INTEGER}
+		</if>
+		<if test=" industryId !=null and industryId !='' ">
+			AND b.INDUSTRY_ID = #{industryId,jdbcType=INTEGER}
+		</if>
+		<if test="publishTimeDescOrAsc !=null">
+			ORDER BY
+			<if test="publishTimeDescOrAsc = 1 ">
+				b.CREATE_TIME ASC
+			</if>
+			<if test="publishTimeDescOrAsc = 2 ">
+				b.CREATE_TIME DESC
+			</if>
+		</if>
+
+	</select>
+
+	<!-- 根据条件获取技术需求总数 -->
+	<select id="getTotalNoByCondition" parameterType="TechnologyPageVo"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		technology_requirement_infos r
+		INNER JOIN
+		technology_base_infos b
+		ON
+		r.TBI_ID =
+		b.TBI_ID
+		INNER JOIN
+		contact_infos c
+		ON
+		c.CONTACT_ID
+		=
+		b.CONTACT_INFO_ID
+		INNER JOIN
+		audit_infos a
+		ON
+		a.AUDIT_INFO_ID
+		=
+		b.AUDIT_INFO_ID
+		WHERE
+		1=1
+		<if test="key !=null and key !=''">
+			AND
+			(
+			b.INFO_KEY
+			LIKE
+			CONCAT('%',#{key,jdbcType=VARCHAR},'%'
+			)
+			OR
+			b.INFO_TITLE
+			LIKE
+			CONCAT('%',#{key,jdbcType=VARCHAR},'%' )
+			OR
+			r.PROBLEM_DESCRIPTION
+			LIKE
+			CONCAT('%',#{key,jdbcType=VARCHAR},'%' )
+			)
+		</if>
+		<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(b.CREATE_TIME, '%Y-%m-%d') ]]>
+		</if>
+		<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(b.CREATE_TIME, '%Y-%m-%d') ]]>
+		</if>
+		<if test=" techStatus !=null ">
+			AND b.`STATUS` = #{techStatus,jdbcType=INTEGER}
+		</if>
+		<if test=" limitStatus !=null ">
+			AND b.LIMIT_STATUS = #{limitStatus,jdbcType=INTEGER}
+		</if>
+		<if test=" auditStatus !=null ">
+			AND a.AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+		</if>
+		<if test=" publisherId !=null and publisherId !='' ">
+			AND b.PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+		</if>
+		<if test=" htfId !=null and htfId !='' ">
+			AND b.HTF_ID = #{htfId,jdbcType=INTEGER}
+		</if>
+		<if test=" industryId !=null and industryId !='' ">
+			AND b.INDUSTRY_ID = #{industryId,jdbcType=INTEGER}
+		</if>
+		<if test="publishTimeDescOrAsc !=null">
+			ORDER BY
+			<if test="publishTimeDescOrAsc = 1 ">
+				b.CREATE_TIME ASC
+			</if>
+			<if test="publishTimeDescOrAsc = 2 ">
+				b.CREATE_TIME DESC
+			</if>
+		</if>
+	</select>
+
+</mapper>

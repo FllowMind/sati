@@ -1,0 +1,412 @@
+<!-- 发布技术供给 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span><span class="nav-attach">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;友情提示：您可以填写技术供给信息，提交技术供给，经审核后予以发布&nbsp;！</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div>
+	<button name="管理我的技术供给" class="btn btn-success" onclick="getTechSupplyManagment(this);">管理我的技术供给</button>
+	<!-- <button class="btn btn-info" onclick="createSupply();">创建新的技术供给</button> -->
+</div>
+<div class="alert alert-info" style="margin-top: 10px;">
+    <strong>提示信息：</strong><span style="color : red;" id="auditMsg"></span>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>发布我的技术供给</span></div>
+    </div>
+   <div class="block-content collapse in" >
+   <form id="techSupplyForm">
+    	 <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>供给名称：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="infoTitle" name="infoTitle" class="form-input span6 form-text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>关键字：</span>
+                    </td>
+                    <td class="span6">
+                       <input type="text" id="infoKey" name="infoKey"  class="form-input span6 form-text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>应用行业：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="industryId"  class="form-input span6 form-select"/>
+                         <button type="button" id="industry" name="应用行业" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>高新技术领域：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="htfId" class="form-input span6 form-select"/>
+                         <button type="button" id="htf" name="高新技术领域" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>所在地：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="locationId"   class="form-input span6 form-select"/>
+                         <button type="button" id="location" name="所在地" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>知识产权类型：</span>
+                    </td>
+                    <td class="span6">
+                   		<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="intellectualTypeId" name="intellectualTypeId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>知识产品编号：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="intellectualCode" name="intellectualCode"  class="form-input span6 form-text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>成果体现形式：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="resultFormId"   class="form-input span6 form-select"/>
+                        <button type="button" id="resultForm" name="成果体现形式" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>成果属性：</span>
+                    </td>
+                    <td class="span6">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="resultPropertyId" name="resultPropertyId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>成果所属阶段：</span>
+                    </td>
+                    <td class="span6">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="resultStageId" name="resultStageId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>成果水平：</span>
+                    </td>
+                    <td class="span6">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="resultLevelId" name="resultLevelId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>研究形式：</span>
+                    </td>
+                    <td class="span6">
+                        <select data-placeholder="请选择" class="dept_select chzn-form-select "  id="reserachFormId" name="reserachFormId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>学科分类：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="sciId" class="form-input span6 form-select"/>
+                        <button type="button" id="sci" name="学科分类" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>战略新兴产业：</span>
+                    </td>
+                    <td class="span6">
+                        <select data-placeholder="请选择" class="dept_select chzn-form-select "  id="seIndustryId" name="seIndustryId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>课题来源：</span>
+                    </td>
+                    <td class="span6">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="topicSourceId" name="topicSourceId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>第一完成单位名称：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="firstUnit" name="firstUnit"  class="form-input span6 form-text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>技术成熟度：</span>
+                    </td>
+                    <td class="span6">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="technologyMaturityId" name="technologyMaturityId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>来源类型：</span>
+                    </td>
+                    <td class="span6">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="sourceTypeId" name="sourceTypeId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>合作方式：</span>
+                    </td>
+                    <td class="span6 from-radio">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="cooperationModeId" name="cooperationModeId">
+				
+       					</select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>交易价格（万）：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text" id="price" name="price"  class="form-input span6 form-text"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>成果简介：</span>
+                    </td>
+                    <td class="span6">
+                        <textarea rows="4" id="resultIntroduction" name="resultIntroduction" class="span12 form-text">
+
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>应用范围：</span>
+                    </td>
+                    <td class="span6">
+                        <textarea rows="4" id="applicationRange" name="applicationRange" class="span12 form-text">
+
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>前景分析：</span>
+                    </td>
+                    <td class="span6">
+                        <textarea rows="4" id="prospectAnalysis" name="prospectAnalysis" class="span12 form-text">
+
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>上传图片附件：</span>
+                        <p>jpg,jpeg,png格式，不超过1Mb</p>
+                    </td>
+                    <td class="span6">
+						<div class="form-group">
+	                        <button type="button" class="btn btn-default" onclick="showSupplyModal('上传图片', 1);">添加图片</button>
+                       	</div>
+                       	<div class="product-list" id="product-list">
+                        	<ul class="marquee-list" id="supplyImgContent">
+                        	</ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>上传视频：</span>
+                        <p>仅支持flv格式，不超过20Mb</p>
+                    </td>
+                    <td class="span6">
+                    	<div id="videoContent" style="margin-bottom: 10px;">
+	                    		
+                    	</div>
+						<div class="form-group">
+	                        <button type="button" class="btn btn-default" onclick="showSupplyModal('上传视频', 2);">添加视频</button>
+                       	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>上传文本附件：</span>
+                        <p>仅支持doc,xls,pdf,txt,docx格式，不超过10Mb</p>
+                    </td>
+                    <td class="span6">
+                    	<div id="textContent" style="margin-bottom: 10px;">
+	                    		
+                    	</div>
+						<div class="form-group">
+	                        <button type="button" class="btn btn-default" onclick="showSupplyModal('上传文本附件', 3);">添加文本附件</button>
+                       	</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="block">
+		    <div class="navbar navbar-inner block-header" >
+		        <div class="muted pull-left"><span>基本信息</span></div>
+		    </div>
+		    <div class="block-content collapse in">
+		        <table class="table table-bordered">
+		            <tbody>
+		            <tr>
+		                <td class="span2 from-title">
+		                    <b class="fx">*</b>
+		                    <span>联系人：</span>
+		                </td>
+		                <td class="span4">
+		                 	<div class="form-group">
+		                    	<input type="text" id="contactName" name="contactName"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		                <td class="span2 from-title">
+		                    <span>联系人职务：</span>
+		                </td>
+		                <td class="span4">
+		                	<div class="form-group">
+		                    	<input type="text" id="contactBusiness" name="contactBusiness"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td class="span2 from-title">
+		                    <span>联系电话：</span>
+		                </td>
+		                <td class="span4">
+		                	<div class="form-group">
+		                    	<input type="text" id="contactNumber" name="contactNumber"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		                <td class="span2 from-title">
+		                    <b class="fx">*</b>
+		                    <span>手机号码：</span>
+		                </td>
+		                <td class="span4">
+		                     <div class="form-group">
+		                    	<input type="text" id="phoneNumber"  name="phoneNumber" class="form-input form-text"/>
+		                	</div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td class="span2 from-title">
+		                 	<b class="fx">*</b>
+		                    <span>通讯地址：</span>
+		                </td>
+		                <td class="span4">
+		                 	<div class="form-group">
+		                    	<input type="text" id="contactAddress"  name="contactAddress" class="form-input form-text"/>
+		               		</div>
+		                </td>
+		                <td class="span2 from-title">
+		                	 <b class="fx">*</b>
+		                    <span>邮编：</span>
+		                </td>
+		                <td class="span4">
+		                 	<div class="form-group">
+		                    	<input type="text" id="postcode" name="postcode" class="form-input form-text"/>
+		                	</div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td class="span2 from-title">
+		                 	<b class="fx">*</b>
+		                    <span>Email：</span>
+		                </td>
+		                <td class="span4">
+		                 	<div class="form-group">
+		                    	<input type="email" id="email" name="email"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		                <td class="span2 from-title">
+		                    <span>网址：</span>
+		                </td>
+		                <td class="span4">
+		                	<div class="form-group">
+		                    	<input type="text" id="contactUrl" name="contactUrl"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td class="span2 from-title">
+		                    <span>传真：</span>
+		                </td>
+		                <td class="span4">
+		                	<div class="form-group">
+		                    	<input type="text" id="faxNumber" name="faxNumber"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		                <td class="span2 from-title">
+		                    <span>QQ/MSN：</span>
+		                </td>
+		                <td class="span4">
+		                	<div class="form-group">
+		                    	<input type="text" id="qqormsnNumer" name="qqormsnNumer"  class="form-input form-text"/>
+		                	</div>
+		                </td>
+		            </tr>
+		            </tbody>
+		        </table>
+		    </div>
+		</div>
+   	</form>
+    	<!-- 完成信息后的操作 -->
+		<div style="text-align: center;">
+			<button type="button" class="btn btn-success" onclick="saveTechSupplyInfo();">保存为草稿</button>
+		    <button type="button" class="btn btn-info" onclick="submitTechSupplyInfo();">提交审核</button>
+		</div>
+    </div>
+</div>

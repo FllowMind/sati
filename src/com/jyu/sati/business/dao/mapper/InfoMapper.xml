@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.InfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.Info">
+		<id column="INFO_ID" jdbcType="INTEGER" property="infoId" />
+		<result column="INFO_TITLE" jdbcType="VARCHAR" property="infoTitle" />
+		<result column="INFO_KEY" jdbcType="VARCHAR" property="infoKey" />
+		<result column="INFO_TYPE" jdbcType="INTEGER" property="infoType" />
+		<result column="INFO_STATUS" jdbcType="INTEGER" property="infoStatus" />
+		<result column="PUBLISHER_ID" jdbcType="VARCHAR" property="publisherId" />
+		<result column="PUBLISH_TIME" jdbcType="TIMESTAMP" property="publishTime" />
+		<result column="FILE_URL" jdbcType="VARCHAR" property="fileUrl" />
+		<result column="FILE_DESC" jdbcType="VARCHAR" property="fileDesc" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.jyu.sati.entity.Info">
+		<result column="INFO_CONTENT" jdbcType="LONGVARCHAR" property="infoContent" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		INFO_ID, INFO_TITLE, INFO_KEY, INFO_TYPE, INFO_STATUS,
+		PUBLISHER_ID,
+		PUBLISH_TIME,
+		FILE_URL, FILE_DESC
+	</sql>
+	<sql id="Blob_Column_List">
+		INFO_CONTENT
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from infos
+		where INFO_ID = #{infoId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from infos
+		where INFO_ID = #{infoId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="infoId"
+		parameterType="com.jyu.sati.entity.Info">
+		insert into infos (INFO_ID,
+		INFO_TITLE, INFO_KEY,
+		INFO_TYPE, INFO_STATUS, PUBLISHER_ID,
+		PUBLISH_TIME, FILE_URL,
+		FILE_DESC,
+		INFO_CONTENT)
+		values
+		(#{infoId,jdbcType=INTEGER},
+		#{infoTitle,jdbcType=VARCHAR},
+		#{infoKey,jdbcType=VARCHAR},
+		#{infoType,jdbcType=INTEGER},
+		#{infoStatus,jdbcType=INTEGER},
+		#{publisherId,jdbcType=VARCHAR},
+		#{publishTime,jdbcType=TIMESTAMP},
+		#{fileUrl,jdbcType=VARCHAR},
+		#{fileDesc,jdbcType=VARCHAR},
+		#{infoContent,jdbcType=LONGVARCHAR})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="infoId" parameterType="com.jyu.sati.entity.Info">
+		insert into infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="infoId != null">
+				INFO_ID,
+			</if>
+			<if test="infoTitle != null">
+				INFO_TITLE,
+			</if>
+			<if test="infoKey != null">
+				INFO_KEY,
+			</if>
+			<if test="infoType != null">
+				INFO_TYPE,
+			</if>
+			<if test="infoStatus != null">
+				INFO_STATUS,
+			</if>
+			<if test="publisherId != null">
+				PUBLISHER_ID,
+			</if>
+			<if test="publishTime != null">
+				PUBLISH_TIME,
+			</if>
+			<if test="fileUrl != null">
+				FILE_URL,
+			</if>
+			<if test="fileDesc != null">
+				FILE_DESC,
+			</if>
+			<if test="infoContent != null">
+				INFO_CONTENT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="infoId != null">
+				#{infoId,jdbcType=INTEGER},
+			</if>
+			<if test="infoTitle != null">
+				#{infoTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="infoKey != null">
+				#{infoKey,jdbcType=VARCHAR},
+			</if>
+			<if test="infoType != null">
+				#{infoType,jdbcType=INTEGER},
+			</if>
+			<if test="infoStatus != null">
+				#{infoStatus,jdbcType=INTEGER},
+			</if>
+			<if test="publisherId != null">
+				#{publisherId,jdbcType=VARCHAR},
+			</if>
+			<if test="publishTime != null">
+				#{publishTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="fileUrl != null">
+				#{fileUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="fileDesc != null">
+				#{fileDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="infoContent != null">
+				#{infoContent,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.Info">
+		update infos
+		<set>
+			<if test="infoTitle != null">
+				INFO_TITLE = #{infoTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="infoKey != null">
+				INFO_KEY = #{infoKey,jdbcType=VARCHAR},
+			</if>
+			<if test="infoType != null">
+				INFO_TYPE = #{infoType,jdbcType=INTEGER},
+			</if>
+			<if test="infoStatus != null">
+				INFO_STATUS = #{infoStatus,jdbcType=INTEGER},
+			</if>
+			<if test="publisherId != null">
+				PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR},
+			</if>
+			<if test="publishTime != null">
+				PUBLISH_TIME = #{publishTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="fileUrl != null">
+				FILE_URL = #{fileUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="fileDesc != null">
+				FILE_DESC = #{fileDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="infoContent != null">
+				INFO_CONTENT = #{infoContent,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where INFO_ID = #{infoId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jyu.sati.entity.Info">
+		update
+		infos
+		set INFO_TITLE = #{infoTitle,jdbcType=VARCHAR},
+		INFO_KEY =
+		#{infoKey,jdbcType=VARCHAR},
+		INFO_TYPE = #{infoType,jdbcType=INTEGER},
+		INFO_STATUS = #{infoStatus,jdbcType=INTEGER},
+		PUBLISHER_ID =
+		#{publisherId,jdbcType=VARCHAR},
+		PUBLISH_TIME =
+		#{publishTime,jdbcType=TIMESTAMP},
+		FILE_URL =
+		#{fileUrl,jdbcType=VARCHAR},
+		FILE_DESC = #{fileDesc,jdbcType=VARCHAR},
+		INFO_CONTENT = #{infoContent,jdbcType=LONGVARCHAR}
+		where INFO_ID =
+		#{infoId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.Info">
+		update infos
+		set
+		INFO_TITLE = #{infoTitle,jdbcType=VARCHAR},
+		INFO_KEY =
+		#{infoKey,jdbcType=VARCHAR},
+		INFO_TYPE = #{infoType,jdbcType=INTEGER},
+		INFO_STATUS = #{infoStatus,jdbcType=INTEGER},
+		PUBLISHER_ID =
+		#{publisherId,jdbcType=VARCHAR},
+		PUBLISH_TIME =
+		#{publishTime,jdbcType=TIMESTAMP},
+		FILE_URL =
+		#{fileUrl,jdbcType=VARCHAR},
+		FILE_DESC = #{fileDesc,jdbcType=VARCHAR}
+		where INFO_ID = #{infoId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 更新信息的状态 -->
+	<update id="updateInfoStatus" parameterType="java.lang.Integer">
+		UPDATE infos
+		SET
+		INFO_STATUS = - INFO_STATUS
+		WHERE
+		INFO_ID = #{infoId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 获取一页信息数据 -->
+	<select id="getInfoPageByCondition" parameterType="InfoPageVo"
+		resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		infos
+		<where>
+			<if test="key !=null and key !=''">
+				AND
+				(
+				INFO_KEY LIKE
+				CONCAT('%',#{key,jdbcType=VARCHAR},'%'
+				)
+				OR
+				INFO_TITLE
+				LIKE
+				CONCAT('%',#{key,jdbcType=VARCHAR},'%' )
+				)
+			</if>
+			<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test=" publisherId !=null ">
+				AND PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+			</if>
+			<if test="infoType !=null and infoType!=''">
+				AND INFO_TYPE = #{infoType,jdbcType=INTEGER}
+			</if>
+			<if test="infoStatus !=null and infoStatus !=''">
+				AND INFO_STATUS = #{infoStatus,jdbcType=INTEGER}
+			</if>
+			<if test="publishTimeDescOrAsc !=null">
+				ORDER BY
+				<if test="publishTimeDescOrAsc = 1 ">
+					PUBLISH_TIME ASC
+				</if>
+				<if test="publishTimeDescOrAsc = 2 ">
+					PUBLISH_TIME DESC
+				</if>
+			</if>
+		</where>
+		LIMIT #{pageIndex,jdbcType=INTEGER},
+		#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<!-- 根据查询条件获取信息总数 -->
+	<select id="getTotalNoByCondition" parameterType="InfoPageVo"
+		resultType="java.lang.Integer">
+		SELECT
+		count(*)
+		FROM
+		infos
+		<where>
+			<if test="key !=null and key !=''">
+				AND
+				(
+				INFO_KEY LIKE
+				CONCAT('%',#{key,jdbcType=VARCHAR},'%')
+				OR
+				INFO_TITLE
+				LIKE
+				CONCAT('%',#{key,jdbcType=VARCHAR},'%')
+				)
+			</if>
+			<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test=" publisherId !=null ">
+				AND PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+			</if>
+			<if test="infoType !=null and infoType!=''">
+				AND INFO_TYPE = #{infoType,jdbcType=INTEGER}
+			</if>
+			<if test="infoStatus !=null and infoStatus !=''">
+				AND INFO_STATUS = #{infoStatus,jdbcType=INTEGER}
+			</if>
+		</where>
+
+	</select>
+
+	<!-- 获取信息类型 -->
+	<select id="getInfoTypeByInfoId" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		SELECT
+		INFO_TYPE
+		FROM
+		infos
+		WHERE
+		INFO_ID =
+		#{infoId,jdbcType=INTEGER}
+	</select>
+
+</mapper>

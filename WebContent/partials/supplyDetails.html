@@ -1,0 +1,140 @@
+<meta charset="UTF-8">
+<div class="public-container" style="margin-top: -10px">
+    <div class="details-title" style="background: #0a67b5;color: #ffffff;font-size: 13px;">
+        <strong><span> 当前位置 >> 技术供给详细信息</span></strong>
+    </div>
+    <form name="supplyDetailsForm" id="supplyDetailsForm">
+    <div class="details-content">
+        <div class="padding-title">
+            <span class="title-tip">技术供给名称：</span>
+            <strong><span class="details-text" id="infoTitle" name="infoTitle"></span></strong>
+        </div>
+        <div class="public-container">
+            <table class="table table-bordered table-style table-striped">
+                <tbody>
+                    <tr>
+                        <td class="title">供给名称：</td>
+                        <td class="content"><span class="details-text" id="infoTitle" name="infoTitle"></span></td>
+                        <td class="title">关键字：</td>
+                        <td class="content"><span class="details-text"  id="infoKey" name="infoKey" ></span></td>
+                    </tr>
+                     <tr>
+                        <td class="title">应用行业：</td>
+                        <td class="content"><span class="details-json" id="industryId" name="industryId"></span></td>
+                        <td class="title">高新技术领域：</td>
+                        <td class="content"><span class="details-json" id="htfId" name="htfId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">所在地：</td>
+                        <td class="content"><span class="details-json" id="locationId" name="locationId"></span></td>
+                        <td class="title">知识产权类型：</td>
+                        <td class="content"><span class="details-select" id="intellectualTypeId" name="intellectualTypeId"></span></td>
+                    </tr>
+                   
+                    <tr>
+                        <td class="title">知识产权编号：</td>
+                        <td class="content"><span class="details-text" id="intellectualCode" name="intellectualCode"></span></td>
+                        <td class="title">成果体现形式：</td>
+                        <td class="content"><span class="details-json" id="resultFormId" name="resultFormId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">成果属性：</td>
+                        <td class="content"><span class="details-select" id="resultPropertyId" name="resultPropertyId"></span></td>
+                        <td class="title">成果所处阶段：</td>
+                        <td class="content"><span class="details-select" id="resultStageId" name="resultStageId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">成果水平：</td>
+                        <td class="content"><span class="details-select" id="resultLevelId" name="resultLevelId"></span></td>
+                        <td class="title">研究形式：</td>
+                        <td class="content"><span class="details-select" id="reserachFormId" name="reserachFormId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">学科分类：</td>
+                        <td class="content"><span class="details-json"  id="sciId" name="sciId"></span></td>
+                        <td class="title">战略新兴产业：</td>
+                        <td class="content"><span class="details-select" id="seIndustryId" name="seIndustryId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">课题来源：</td>
+                        <td class="content"><span class="details-select" id="topicSourceId" name="topicSourceId"></span></td>
+                        <td class="title">第一完成单位名称：</td>
+                        <td class="content"><span class="details-text"  id="firstUnit" name="firstUnit"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">合作方式：</td>
+                        <td class="content"><span class="details-select" id="cooperationModeId" name="cooperationModeId"></span></td>
+                        <td class="title">交易价格(万)：</td>
+                        <td class="content"><span class="details-text" id="price" name="price"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">来源类型：</td>
+                        <td class="content"><span class="details-select" id="sourceTypeId" name="sourceTypeId"></span></td>
+                         <td class="title">技术成熟度：</td>
+                        <td class="content"><span class="details-select"  id="technologyMaturityId" name="technologyMaturityId"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="public-container">
+            <div class="padding-content-title">
+                <span>成果简介</span>
+            </div>
+            <div class="padding-content">
+                <span class="details-text" id="resultIntroduction" name="resultIntroduction"></span>
+            </div>
+        </div>
+        <div class="public-container">
+            <div class="padding-content-title">
+                <span>应用范围</span>
+            </div>
+            <div class="padding-content">
+                <span class="details-text" id="applicationRange" name="applicationRange"></span>
+            </div>
+        </div>
+        <div class="public-container">
+            <div class="padding-content-title">
+                <span>前景分析</span>
+            </div>
+            <div class="padding-content">
+             	 <span class="details-text" id="prospectAnalysis" name="prospectAnalysis"></span>
+            </div>
+        </div>
+        <div class="public-container" style="margin-bottom: 20px;">
+            <div class="padding-content-title">
+                <span>联系方式</span>
+            </div>
+            <div class="padding-content" style="padding: 0; border: none;" >
+                <table class="table table-bordered" style="margin-bottom: 0 !important; border-color: #c7dfe8!important;">
+                    <tbody>
+                        <tr>
+                            <td class="title" style="color: #000;">联系人：</td>
+                            <td class="content"><span  class="details-text" id="contactName" name="contactName"></span></td>
+                            <td class="title" style="color: #000;">联系人职务：</td>
+                            <td class="content"><span class="details-text" id="contactBusiness" name="contactBusiness"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="title" style="color: #000;">联系电话：</td>
+                            <td class="content"><span class="details-text" id="contactNumber" name="contactNumber"></span></td>
+                            <td class="title" style="color: #000;">QQ/MSN：</td>
+                            <td class="content"><span class="details-text" id="qqormsnNumer" name="qqormsnNumer"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="title" style="color: #000;">Email：</td>
+                            <td class="content"><span class="details-text" id="email" name="email"></span></td>
+                            <td class="title" style="color: #000;">网址：</td>
+                            <td class="content"><span class="details-text" id="contactUrl" name="contactUrl"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="title" style="color: #000;">邮编：</td>
+                            <td class="content"><span class="details-text" id="postcode" name="postcode"></span></td>
+                            <td class="title" style="color: #000;">通讯地址：</td>
+                            <td class="content"><span class="details-text" id="contactAddress" name="contactAddress"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.DataDictionaryDao">
+  <resultMap id="BaseResultMap" type="com.jyu.sati.entity.DataDictionary">
+    <id column="DATA_ID" jdbcType="INTEGER" property="dataId" />
+    <result column="DATA_KEY" jdbcType="VARCHAR" property="dataKey" />
+    <result column="DATA_VALUE" jdbcType="VARCHAR" property="dataValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DATA_ID, DATA_KEY, DATA_VALUE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from data_dictionary
+    where DATA_ID = #{dataId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from data_dictionary
+    where DATA_ID = #{dataId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="dataId" parameterType="com.jyu.sati.entity.DataDictionary">
+    insert into data_dictionary (DATA_ID, DATA_KEY, DATA_VALUE
+      )
+    values (#{dataId,jdbcType=INTEGER}, #{dataKey,jdbcType=VARCHAR}, #{dataValue,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="dataId" parameterType="com.jyu.sati.entity.DataDictionary">
+    insert into data_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        DATA_ID,
+      </if>
+      <if test="dataKey != null">
+        DATA_KEY,
+      </if>
+      <if test="dataValue != null">
+        DATA_VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dataId != null">
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="dataKey != null">
+        #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="dataValue != null">
+        #{dataValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.DataDictionary">
+    update data_dictionary
+    <set>
+      <if test="dataKey != null">
+        DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="dataValue != null">
+        DATA_VALUE = #{dataValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DATA_ID = #{dataId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.DataDictionary">
+    update data_dictionary
+    set DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      DATA_VALUE = #{dataValue,jdbcType=VARCHAR}
+    where DATA_ID = #{dataId,jdbcType=INTEGER}
+  </update>
+</mapper>

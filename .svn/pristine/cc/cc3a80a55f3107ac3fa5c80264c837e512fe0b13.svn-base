@@ -1,0 +1,118 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>梅州市城东镇机电科技服务平台</display-name>
+	<welcome-file-list>
+		<welcome-file>/index.html</welcome-file>
+	</welcome-file-list>
+
+	<!-- needed for ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:apache-shiro.xml,classpath:spring-mybatis.xml</param-value>
+	</context-param>
+
+	<!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->
+	<!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->
+	<!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->
+	<!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 编码过滤器 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- spring 的监听器Bootstraps the root web application context before servlet 
+		initialization -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- 配置可以把 POST 请求转为 PUT、DELETE 请求的 Filter -->
+	<filter>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- 防止Spring内存溢出监听器 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!-- Spring MVC servlet -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 使用Kaptcha 实现验证码 -->
+	<servlet>
+		<servlet-name>Kaptcha</servlet-name>
+		<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+		<init-param>
+			<param-name>kaptcha.image.width</param-name>
+			<param-value>200</param-value>
+			<description>Width in pixels of the kaptcha image.</description>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.image.height</param-name>
+			<param-value>50</param-value>
+			<description>Height in pixels of the kaptcha image.</description>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.textproducer.char.length</param-name>
+			<param-value>4</param-value>
+			<description>The number of characters to display.</description>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.noise.impl</param-name>
+			<param-value>com.google.code.kaptcha.impl.NoNoise</param-value>
+			<description>The noise producer.</description>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Kaptcha</servlet-name>
+		<url-pattern>/kaptcha.jpg</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.PersonInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.PersonInfo">
+		<id column="PBI_ID" jdbcType="INTEGER" property="pbiId" />
+		<result column="PERSON_NAME" jdbcType="VARCHAR" property="personName" />
+		<result column="IDCARD_NUMBER" jdbcType="VARCHAR" property="idcardNumber" />
+		<result column="IDCARD_IMAGE_ID" jdbcType="INTEGER" property="idcardImageId" />
+		<result column="SEX" jdbcType="INTEGER" property="sex" />
+		<result column="NATION" jdbcType="VARCHAR" property="nation" />
+		<result column="BIRTH" jdbcType="TIMESTAMP" property="birth" />
+		<result column="EDUCATION_ID" jdbcType="INTEGER" property="educationId" />
+		<result column="WORKPLACE" jdbcType="VARCHAR" property="workplace" />
+		<result column="BUSINESS" jdbcType="VARCHAR" property="business" />
+		<result column="PERSON_IMAGE_ID" jdbcType="INTEGER" property="personImageId" />
+		<result column="PERSONAL_PROFILE" jdbcType="VARCHAR" property="personalProfile" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CONTACT_ID" jdbcType="INTEGER" property="contactId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PBI_ID, PERSON_NAME, IDCARD_NUMBER, IDCARD_IMAGE_ID, SEX,
+		NATION, BIRTH,
+		EDUCATION_ID,
+		WORKPLACE, BUSINESS, PERSON_IMAGE_ID,
+		PERSONAL_PROFILE, REMARK, CONTACT_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from person_infos
+		where PBI_ID = #{pbiId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		person_infos
+		where PBI_ID = #{pbiId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="pbiId"
+		parameterType="com.jyu.sati.entity.PersonInfo">
+		insert into person_infos (PBI_ID, PERSON_NAME,
+		IDCARD_NUMBER,
+		IDCARD_IMAGE_ID, SEX, NATION,
+		BIRTH, EDUCATION_ID,
+		WORKPLACE,
+		BUSINESS, PERSON_IMAGE_ID, PERSONAL_PROFILE,
+		REMARK,
+		CONTACT_ID)
+		values (#{pbiId,jdbcType=INTEGER},
+		#{personName,jdbcType=VARCHAR},
+		#{idcardNumber,jdbcType=VARCHAR},
+		#{idcardImageId,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER},
+		#{nation,jdbcType=VARCHAR},
+		#{birth,jdbcType=TIMESTAMP},
+		#{educationId,jdbcType=INTEGER},
+		#{workplace,jdbcType=VARCHAR},
+		#{business,jdbcType=VARCHAR}, #{personImageId,jdbcType=INTEGER},
+		#{personalProfile,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR},
+		#{contactId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="pbiId" parameterType="com.jyu.sati.entity.PersonInfo">
+		insert into person_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pbiId != null">
+				PBI_ID,
+			</if>
+			<if test="personName != null">
+				PERSON_NAME,
+			</if>
+			<if test="idcardNumber != null">
+				IDCARD_NUMBER,
+			</if>
+			<if test="idcardImageId != null">
+				IDCARD_IMAGE_ID,
+			</if>
+			<if test="sex != null">
+				SEX,
+			</if>
+			<if test="nation != null">
+				NATION,
+			</if>
+			<if test="birth != null">
+				BIRTH,
+			</if>
+			<if test="educationId != null">
+				EDUCATION_ID,
+			</if>
+			<if test="workplace != null">
+				WORKPLACE,
+			</if>
+			<if test="business != null">
+				BUSINESS,
+			</if>
+			<if test="personImageId != null">
+				PERSON_IMAGE_ID,
+			</if>
+			<if test="personalProfile != null">
+				PERSONAL_PROFILE,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="contactId != null">
+				CONTACT_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pbiId != null">
+				#{pbiId,jdbcType=INTEGER},
+			</if>
+			<if test="personName != null">
+				#{personName,jdbcType=VARCHAR},
+			</if>
+			<if test="idcardNumber != null">
+				#{idcardNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="idcardImageId != null">
+				#{idcardImageId,jdbcType=INTEGER},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=INTEGER},
+			</if>
+			<if test="nation != null">
+				#{nation,jdbcType=VARCHAR},
+			</if>
+			<if test="birth != null">
+				#{birth,jdbcType=TIMESTAMP},
+			</if>
+			<if test="educationId != null">
+				#{educationId,jdbcType=INTEGER},
+			</if>
+			<if test="workplace != null">
+				#{workplace,jdbcType=VARCHAR},
+			</if>
+			<if test="business != null">
+				#{business,jdbcType=VARCHAR},
+			</if>
+			<if test="personImageId != null">
+				#{personImageId,jdbcType=INTEGER},
+			</if>
+			<if test="personalProfile != null">
+				#{personalProfile,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="contactId != null">
+				#{contactId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.PersonInfo">
+		update person_infos
+		<set>
+			<if test="personName != null and personName !=''">
+				PERSON_NAME = #{personName,jdbcType=VARCHAR},
+			</if>
+			<if test="idcardNumber != null and idcardNumber !=''">
+				IDCARD_NUMBER = #{idcardNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="idcardImageId != null and idcardImageId !=''">
+				IDCARD_IMAGE_ID = #{idcardImageId,jdbcType=INTEGER},
+			</if>
+			<if test="sex != null and sex!=''">
+				SEX = #{sex,jdbcType=INTEGER},
+			</if>
+			<if test="nation != null and nation!=''">
+				NATION = #{nation,jdbcType=VARCHAR},
+			</if>
+			<if test="birth != null and birth !=''">
+				BIRTH = #{birth,jdbcType=TIMESTAMP},
+			</if>
+			<if test="educationId != null and educationId !='' ">
+				EDUCATION_ID = #{educationId,jdbcType=INTEGER},
+			</if>
+			<if test="workplace != null and workplace !='' ">
+				WORKPLACE = #{workplace,jdbcType=VARCHAR},
+			</if>
+			<if test="business != null and business !=''">
+				BUSINESS = #{business,jdbcType=VARCHAR},
+			</if>
+			<if test="personImageId != null and personImageId !='' ">
+				PERSON_IMAGE_ID = #{personImageId,jdbcType=INTEGER},
+			</if>
+			<if test="personalProfile != null and personalProfile !='' ">
+				PERSONAL_PROFILE = #{personalProfile,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null and remark !=''">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="contactId != null and contactId !='' ">
+				CONTACT_ID = #{contactId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where PBI_ID = #{pbiId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.PersonInfo">
+		update
+		person_infos
+		set PERSON_NAME = #{personName,jdbcType=VARCHAR},
+		IDCARD_NUMBER = #{idcardNumber,jdbcType=VARCHAR},
+		IDCARD_IMAGE_ID =
+		#{idcardImageId,jdbcType=INTEGER},
+		SEX = #{sex,jdbcType=INTEGER},
+		NATION = #{nation,jdbcType=VARCHAR},
+		BIRTH =
+		#{birth,jdbcType=TIMESTAMP},
+		EDUCATION_ID =
+		#{educationId,jdbcType=INTEGER},
+		WORKPLACE =
+		#{workplace,jdbcType=VARCHAR},
+		BUSINESS = #{business,jdbcType=VARCHAR},
+		PERSON_IMAGE_ID = #{personImageId,jdbcType=INTEGER},
+		PERSONAL_PROFILE =
+		#{personalProfile,jdbcType=VARCHAR},
+		REMARK =
+		#{remark,jdbcType=VARCHAR},
+		CONTACT_ID = #{contactId,jdbcType=INTEGER}
+		where PBI_ID = #{pbiId,jdbcType=INTEGER}
+	</update>
+
+	<update id="bindImage" parameterType="java.lang.String">
+		UPDATE person_infos
+		<set>
+			<if test="idcardImageId != null">
+				IDCARD_IMAGE_ID = #{idcardImageId, jdbcType=INTEGER},
+			</if>
+			<if test="personImageId != null">
+				PERSON_IMAGE_ID = #{personImageId, jdbcType=INTEGER},
+			</if>
+		</set>
+		WHERE
+		PBI_ID = (
+		SELECT
+		a.BASE_INFO_ID
+		FROM(
+		SELECT
+		p.BASE_INFO_ID
+		FROM
+		persons p
+		INNER JOIN
+		person_infos b ON b.PBI_ID = p.BASE_INFO_ID
+		INNER
+		JOIN
+		users u ON
+		p.PERSON_ID = u.PERSON_ID
+		WHERE
+		u.USER_ID = #{userId,
+		jdbcType=VARCHAR}
+		) a)
+	</update>
+
+</mapper>

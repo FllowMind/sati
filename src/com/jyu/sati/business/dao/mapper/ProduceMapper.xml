@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.ProduceDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.Produce">
+		<id column="PRODUCE_ID" jdbcType="INTEGER" property="produceId" />
+		<result column="PRODUCE_NAME" jdbcType="VARCHAR" property="produceName" />
+		<result column="PRODUCE_TYPE_ID" jdbcType="INTEGER" property="produceTypeId" />
+		<result column="PRODUCE_STATUS" jdbcType="INTEGER" property="produceStatus" />
+		<result column="PUBLISHER_ID" jdbcType="VARCHAR" property="publisherId" />
+		<result column="PRODUCE_KEY" jdbcType="VARCHAR" property="produceKey" />
+		<result column="IS_RECOMMEND" jdbcType="INTEGER" property="isRecommend" />
+		<result column="AUDIT_INFO_ID" jdbcType="INTEGER" property="auditInfoId" />
+		<result column="CONTACT_INFO_ID" jdbcType="INTEGER" property="contactInfoId" />
+		<result column="PAGE_VIEW" jdbcType="INTEGER" property="pageView" />
+		<result column="PUBLISH_TIME" jdbcType="DATE" property="publishTime" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.jyu.sati.entity.Produce">
+		<result column="PRODUCE_DESC" jdbcType="LONGVARCHAR" property="produceDesc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PRODUCE_ID, PRODUCE_NAME, PRODUCE_TYPE_ID, PRODUCE_STATUS,
+		PUBLISHER_ID,
+		IS_RECOMMEND,
+		AUDIT_INFO_ID, CONTACT_INFO_ID,
+		PAGE_VIEW,PRODUCE_KEY,PUBLISH_TIME
+	</sql>
+	<sql id="Blob_Column_List">
+		PRODUCE_DESC
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from produces
+		where PRODUCE_ID = #{produceId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		produces
+		where PRODUCE_ID = #{produceId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="produceId"
+		parameterType="com.jyu.sati.entity.Produce">
+		insert into produces (PRODUCE_NAME, PRODUCE_TYPE_ID,
+		PRODUCE_STATUS, PUBLISHER_ID, IS_RECOMMEND,
+		AUDIT_INFO_ID,
+		CONTACT_INFO_ID, PAGE_VIEW,
+		PRODUCE_DESC,PRODUCE_KEY,PUBLISH_TIME)
+		values (
+		#{produceName,jdbcType=VARCHAR},
+		#{produceTypeId,jdbcType=INTEGER},
+		#{produceStatus,jdbcType=INTEGER},
+		#{publisherId,jdbcType=VARCHAR},
+		#{isRecommend,jdbcType=INTEGER},
+		#{auditInfoId,jdbcType=INTEGER},
+		#{contactInfoId,jdbcType=INTEGER},
+		#{pageView,jdbcType=INTEGER},
+		#{produceDesc,jdbcType=LONGVARCHAR},
+		#{produceKey,jdbcType=VARCHAR},
+		#{publishTime,jdbcType=DATE})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="produceId" parameterType="com.jyu.sati.entity.Produce">
+		insert into produces
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="produceName != null">
+				PRODUCE_NAME,
+			</if>
+			<if test="produceTypeId != null">
+				PRODUCE_TYPE_ID,
+			</if>
+			<if test="produceStatus != null">
+				PRODUCE_STATUS,
+			</if>
+			<if test="publisherId != null">
+				PUBLISHER_ID,
+			</if>
+			<if test="isRecommend != null">
+				IS_RECOMMEND,
+			</if>
+			<if test="auditInfoId != null">
+				AUDIT_INFO_ID,
+			</if>
+			<if test="contactInfoId != null">
+				CONTACT_INFO_ID,
+			</if>
+			<if test="pageView != null">
+				PAGE_VIEW,
+			</if>
+			<if test="produceDesc != null">
+				PRODUCE_DESC,
+			</if>
+			<if test="produceKey != null">
+				PRODUCE_KEY,
+			</if>
+			<if test="publishTime != null">
+				PUBLISH_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="produceName != null">
+				#{produceName,jdbcType=VARCHAR},
+			</if>
+			<if test="produceTypeId != null">
+				#{produceTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="produceStatus != null">
+				#{produceStatus,jdbcType=INTEGER},
+			</if>
+			<if test="publisherId != null">
+				#{publisherId,jdbcType=VARCHAR},
+			</if>
+			<if test="isRecommend != null">
+				#{isRecommend,jdbcType=INTEGER},
+			</if>
+			<if test="auditInfoId != null">
+				#{auditInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="contactInfoId != null">
+				#{contactInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="pageView != null">
+				#{pageView,jdbcType=INTEGER},
+			</if>
+			<if test="produceDesc != null">
+				#{produceDesc,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="produceKey != null">
+				#{produceKey,jdbcType=VARCHAR},
+			</if>
+			<if test="publishTime != null">
+				#{publishTime,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.Produce">
+		update produces
+		<set>
+			<if test="produceName != null">
+				PRODUCE_NAME = #{produceName,jdbcType=VARCHAR},
+			</if>
+			<if test="produceTypeId != null">
+				PRODUCE_TYPE_ID = #{produceTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="produceStatus != null">
+				PRODUCE_STATUS = #{produceStatus,jdbcType=INTEGER},
+			</if>
+			<if test="publisherId != null">
+				PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR},
+			</if>
+			<if test="isRecommend != null">
+				IS_RECOMMEND = #{isRecommend,jdbcType=INTEGER},
+			</if>
+			<if test="auditInfoId != null">
+				AUDIT_INFO_ID = #{auditInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="contactInfoId != null">
+				CONTACT_INFO_ID = #{contactInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="pageView != null">
+				PAGE_VIEW = #{pageView,jdbcType=INTEGER},
+			</if>
+			<if test="produceDesc != null">
+				PRODUCE_DESC = #{produceDesc,jdbcType=LONGVARCHAR},
+			</if>
+			<if test="produceKey != null">
+				PRODUCE_KEY = #{produceKey,jdbcType=VARCHAR},
+			</if>
+			<if test="publishTime != null">
+				PUBLISH_TIME = #{publishTime,jdbcType=DATE},
+			</if>
+		</set>
+		where PRODUCE_ID = #{produceId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jyu.sati.entity.Produce">
+		update
+		produces
+		set PRODUCE_NAME = #{produceName,jdbcType=VARCHAR},
+		PRODUCE_TYPE_ID = #{produceTypeId,jdbcType=INTEGER},
+		PRODUCE_STATUS =
+		#{produceStatus,jdbcType=INTEGER},
+		PUBLISHER_ID =
+		#{publisherId,jdbcType=VARCHAR},
+		IS_RECOMMEND =
+		#{isRecommend,jdbcType=INTEGER},
+		AUDIT_INFO_ID =
+		#{auditInfoId,jdbcType=INTEGER},
+		CONTACT_INFO_ID =
+		#{contactInfoId,jdbcType=INTEGER},
+		PAGE_VIEW =
+		#{pageView,jdbcType=INTEGER},
+		PRODUCE_DESC =
+		#{produceDesc,jdbcType=LONGVARCHAR},
+		PRODUCE_KEY =
+		#{produceKey,jdbcType=VARCHAR},
+		PUBLISH_TIME =
+		#{publishTime,jdbcType=DATE}
+		where
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.Produce">
+		update produces
+		set PRODUCE_NAME = #{produceName,jdbcType=VARCHAR},
+		PRODUCE_TYPE_ID =
+		#{produceTypeId,jdbcType=INTEGER},
+		PRODUCE_STATUS =
+		#{produceStatus,jdbcType=INTEGER},
+		PUBLISHER_ID =
+		#{publisherId,jdbcType=VARCHAR},
+		IS_RECOMMEND =
+		#{isRecommend,jdbcType=INTEGER},
+		AUDIT_INFO_ID =
+		#{auditInfoId,jdbcType=INTEGER},
+		CONTACT_INFO_ID =
+		#{contactInfoId,jdbcType=INTEGER},
+		PAGE_VIEW =
+		#{pageView,jdbcType=INTEGER},
+		PRODUCE_KEY =
+		#{produceKey,jdbcType=VARCHAR},
+		PUBLISH_TIME =
+		#{publishTime,jdbcType=DATE}
+		where PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</update>
+	<!-- 更改是否推荐状态 -->
+	<update id="updateIsRecommendStatus" parameterType="java.lang.Integer">
+		UPDATE
+		produces
+		SET IS_RECOMMEND = - IS_RECOMMEND
+		WHERE
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 更改产品成果状态 -->
+	<update id="updateProduceStatus" parameterType="com.jyu.sati.entity.Produce">
+		UPDATE
+		produces
+		SET PRODUCE_STATUS = #{produceStatus,jdbcType=INTEGER}
+		WHERE
+		PRODUCE_ID
+		=
+		#{produceId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getProducePageByCondition" parameterType="ProducePageVo"
+		resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		produces p
+		INNER JOIN audit_infos a ON
+		p.AUDIT_INFO_ID =
+		a.AUDIT_INFO_ID
+		<where>
+			<if test="produceKey !=null and produceKey!=''">
+				AND
+				(
+				p.PRODUCE_KEY
+				LIKE
+				CONCAT('%',#{produceKey,jdbcType=VARCHAR},'%' )
+				OR
+				p.PRODUCE_NAME
+				LIKE
+				CONCAT('%',#{produceKey,jdbcType=VARCHAR},'%' )
+				OR
+				p.PRODUCE_DESC
+				LIKE
+				CONCAT('%',#{produceKey,jdbcType=VARCHAR},'%' )
+				)
+			</if>
+			<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(p.PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(p.PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test=" publisherId !=null ">
+				AND p.PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+			</if>
+			<if test=" produceTypeId !=null ">
+				AND p.PRODUCE_TYPE_ID = #{produceTypeId,jdbcType=INTEGER}
+			</if>
+			<if test=" produceStatus !=null ">
+				AND p.PRODUCE_STATUS = #{produceStatus,jdbcType=INTEGER}
+			</if>
+			<if test=" isRecommend !=null ">
+				AND p.IS_RECOMMEND = #{isRecommend,jdbcType=INTEGER}
+			</if>
+			<if test="auditStatus !=null">
+				AND a.AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+			</if>
+		</where>
+		LIMIT #{pageIndex,jdbcType=INTEGER},
+		#{pageSize,jdbcType=INTEGER}
+	</select>
+
+	<select id="getTotalNoByCondition" parameterType="ProducePageVo"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		produces p
+		INNER JOIN audit_infos a ON
+		p.AUDIT_INFO_ID = a.AUDIT_INFO_ID
+		<where>
+			<if test="produceKey !=null and produceKey!=''">
+				AND
+				(
+				p.PRODUCE_KEY
+				LIKE
+				CONCAT('%',#{produceKey,jdbcType=VARCHAR},'%' )
+				OR
+				p.PRODUCE_NAME
+				LIKE
+				CONCAT('%',#{produceKey,jdbcType=VARCHAR},'%' )
+				OR
+				p.PRODUCE_DESC
+				LIKE
+				CONCAT('%',#{produceKey,jdbcType=VARCHAR},'%' )
+				)
+			</if>
+			<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(p.PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(p.PUBLISH_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test=" publisherId !=null ">
+				AND p.PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR}
+			</if>
+			<if test=" produceTypeId !=null ">
+				AND p.PRODUCE_TYPE_ID = #{produceTypeId,jdbcType=INTEGER}
+			</if>
+			<if test=" produceStatus !=null ">
+				AND p.PRODUCE_STATUS = #{produceStatus,jdbcType=INTEGER}
+			</if>
+			<if test=" isRecommend !=null ">
+				AND p.IS_RECOMMEND = #{isRecommend,jdbcType=INTEGER}
+			</if>
+			<if test="auditStatus !=null">
+				AND a.AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+
+	<!-- 更新产品的审核状态 -->
+	<update id="updateProduceAuditStatus">
+		UPDATE audit_infos a
+		SET a.AUDIT_STATUS =
+		#{auditStatus,jdbcType=INTEGER}
+		WHERE
+		a.AUDITOR_ID = (
+		SELECT
+		AUDIT_INFO_ID
+		FROM
+		produces
+		WHERE
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+		)
+	</update>
+
+	<select id="getProduceCountByAuditStatusAndPublisher"
+		parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		produces p
+		INNER JOIN audit_infos a ON
+		p.AUDIT_INFO_ID =
+		a.AUDITOR_ID
+		WHERE
+		<if test="auditStatus != null ">
+			a.AUDIT_STATUS =
+			#{auditStatus,jdbcType=INTEGER}
+		</if>
+		<if test="publisherId != null and auditStatus != null  ">
+			AND
+			p.PUBLISHER_ID =
+			#{publisherId,jdbcType=INTEGER}
+		</if>
+		<if test="publisherId != null and auditStatus == null  ">
+			p.PUBLISHER_ID =
+			#{publisherId,jdbcType=INTEGER}
+		</if>
+	</select>
+
+	<select id="getPublisherIdByProduceId" parameterType="java.lang.Integer"
+		resultType="java.lang.String">
+		SELECT
+		PUBLISHER_ID
+		from
+		produces
+		WHERE
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</select>
+
+</mapper>

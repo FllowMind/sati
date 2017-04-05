@@ -1,0 +1,28 @@
+<!-- 菜单权限 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">
+        	<span class="navTitle"></span>
+        	 &nbsp;&nbsp;|&nbsp;&nbsp;双击菜单项设置更多内容
+        </div>
+    </div>
+    <div class="block-content collapse in">
+    	<div style="margin-left: 24px;margin-bottom: 10px;">
+    		<button id="addMenuModule" class="btn btn-info" value="" onclick="showMenuModule(this);">添加菜单模块</button>
+    	</div>
+    	<div id="menuTree" class="treeview"></div>
+    </div>
+</div>

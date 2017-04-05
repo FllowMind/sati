@@ -1,0 +1,303 @@
+<meta charset="UTF-8">
+<div class="public-container">
+    <div class="index-supply-nav">
+        <span class="lable">您所在位置：</span>
+        <a href="#">首页</a>
+        <span class="lable">&nbsp;>&nbsp;</span>
+        <a href="#">技术供给（科技成果）</a>
+    </div>
+    <!-- 搜索框 -->
+    <div class="index-supply-search">
+        <div class="input-group col-lg-6" style="margin-left: 40px;">
+            <span class="input-group-addon" style="background: #ffffff; color: #000000;">关键字</span>
+            <input type="text" class="form-control" placeholder="输入技术关键字，如：科技"/>
+             <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">搜索</button>
+              </span>
+        </div>
+    </div>
+</div>
+<div class="public-container">
+    <div class="content-main">
+        <!-- 提示信息 -->
+        <div class="supply-content-left">
+            <div class="supply-result">
+                <span class="count">共为您找到<strong>5065</strong>项技术供给</span>
+            </div>
+            <div class="supply-result-list">
+                <ul class="result-list">
+                    <li>
+                    <div class="result-list-item">
+                        <div class="job-info">
+                            <a href="#"><span><strong>肌醇生产中有害微生物防控技术</strong></span></a>
+                            <p class="condition clearfloat">
+                                <span class="text-warning">面议</span>
+                                <span class="area">济南市</span>
+                                <span class="edu">医学制造业</span>
+                            </p>
+                            <p class="time-info clearfloat">
+                                <time>发布于：2017年03月04日</time>
+                                <span class="feelback">技术服务</span>
+                            </p>
+                        </div>
+                        <div class="company-info">
+                            <a style="cursor: default">齐鲁工业大学</a>
+                            <p class="field-financing">
+                                <span class="span_tel">0531-89631078</span>
+                            </p>
+                            <p class="temptation clearfloat">
+                                <span class="span_tel">未成交</span>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>一种造纸污泥脱水复合生物酶处理剂及处理方法</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">造纸和纸制品业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">其他</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">已成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>肌醇生产中有害微生物防控技术</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">医学制造业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">技术服务</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">未成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>一种造纸污泥脱水复合生物酶处理剂及处理方法</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">造纸和纸制品业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">其他</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">已成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>肌醇生产中有害微生物防控技术</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">医学制造业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">技术服务</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">未成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>一种造纸污泥脱水复合生物酶处理剂及处理方法</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">造纸和纸制品业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">其他</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">已成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>肌醇生产中有害微生物防控技术</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">医学制造业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">技术服务</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">未成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="result-list-item">
+                            <div class="job-info">
+                                <a href="#"><span><strong>一种造纸污泥脱水复合生物酶处理剂及处理方法</strong></span></a>
+                                <p class="condition clearfloat">
+                                    <span class="text-warning">面议</span>
+                                    <span class="area">济南市</span>
+                                    <span class="edu">造纸和纸制品业</span>
+                                </p>
+                                <p class="time-info clearfloat">
+                                    <time>发布于：2017年03月04日</time>
+                                    <span class="feelback">其他</span>
+                                </p>
+                            </div>
+                            <div class="company-info">
+                                <a style="cursor: default">齐鲁工业大学</a>
+                                <p class="field-financing">
+                                    <span class="span_tel">0531-89631078</span>
+                                </p>
+                                <p class="temptation clearfloat">
+                                    <span class="span_tel">已成交</span>
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="supply-content-right">
+            <div class="supplyRight">
+                <a href="#"><b class="tab-a"></b><strong>发布技术供给</strong></a>
+                <a href="#"><b class="tab-a"></b><strong>发布技术需求</strong></a>
+            </div>
+            <div class="ad">
+            </div>
+            <!-- 难题需求模块 -->
+            <div class="newest">
+                <div class="newest-title">
+                    <span class="newest-title-content"><strong>最新难题需求</strong></span>
+                    <a href="#"></a>
+                </div>
+                <div class="newest-content">
+                    <ul>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 最新技术供给 -->
+            <div class="newest">
+                <div class="newest-title">
+                    <span class="newest-title-content"><strong>最新技术供给</strong></span>
+                    <a href="#"></a>
+                </div>
+                <div class="newest-content">
+                    <ul>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                        <li>
+                            <i></i>
+                            <a href="#">需求印刷行业先进生产技术的职工培训及技术指导</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

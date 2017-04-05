@@ -1,0 +1,179 @@
+<!-- 功能页 -->
+<meta charset="UTF-8">
+<div class="modal-header">   
+	<h3>当前权限：<span id="permissionNameTitle"></span></h3>  
+</div> 
+<div class="modal-body" id="permissionPanel">
+	<div id="model-content-from">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#find" data-toggle="tab">权限基本信息</a></li>
+			<li><a href="#add" data-toggle="tab">添加子权限</a></li>
+			<li><a href="#edit" data-toggle="tab">修改基本信息</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<!-- find -->
+			<div class="tab-pane fade in active" id="find">
+				<!-- 修改本菜单项的信息 -->
+			  	<div style="margin-left: 24px;margin-bottom: 10px;">
+					<span>当前权限状态：<span id="status"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="btn btn-info" value="" onclick="updatePermissionStatus(this);">切换当前状态</button>
+					<button class="btn btn-danger" value="" onclick="goBack(1);">删除</button>
+				</div>
+				<div style="margin-top: 10px;margin-left:24px;">
+					<span><strong id="childPermissionMsg"></strong></span>
+					<div id="childPermissionContent" style="margin-top: 10px; margin-left: -20px;">
+						
+					</div>
+				</div>
+			</div>
+			<!-- find end-->
+			<!-- add -->
+			<div class="tab-pane fade" id="add">
+			  	<!-- 添加子菜单 -->
+			  	<div style="margin-left:24px;">
+					<span style="display:block;">请填写下面子权限的基本信息</span>
+				</div>
+				<form class="form-horizontal" id="addPermissonForm">
+				   <div class="form-group" style="margin-top: 10px;">
+				       <label for="permissionName" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">权限模块名：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				               <input type="text" class="form-control" id="permissionName" name="permissionName" placeholder="action访问路径，如：menu:read">
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group"  style="margin-top: 20px;">
+				       <label for="description" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">权限模块描述：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				                <input type="text" class="form-control" id="description" name="description" placeholder="该权限的作用描述">
+				           </div>
+				       </div>
+				   </div>
+				    <div class="form-group"  style="margin-top: 20px;">
+				       <label for="permissionMark" class="col-sm-2 control-label">
+				           <span class="labelSpan">权限标记：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				                <select data-placeholder="选择权限标记" class="dept_select span3" id="permissionMark">
+									<option value="-1"></option>
+									<option value="1">菜单权限</option>
+									<option value="2">普通权限</option>
+	       						</select>
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group"  style="margin-top: 20px;">
+				       <label for="status" class="col-sm-2 control-label">
+				           <span class="labelSpan">权限状态：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				           		<input type="radio" name="status"  value="1" checked="checked"/><span style="margin:6px;">可用</span>
+				           		<input type="radio" name="status"  value="-1"/><span style="margin:6px;">禁用</span>
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group" style="margin-top: 20px;float: right;margin-right: 24px;">
+					   <div class="col-sm-offset-2 col-sm-10">
+					        <button type="button" class="btn btn-info" onclick="addPermissionModule(2);">添加</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				       </div>
+			       </div>
+				</form>
+			</div>
+			<!-- add end -->
+			<!-- edit  -->
+			<div class="tab-pane fade" id="edit">
+				<!-- 修改本菜单项的信息 -->
+				<form class="form-horizontal" id="editPermissonForm">
+				   <div class="form-group" style="margin-top: 10px;">
+				       <label for="permissionName" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">权限模块名：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				               <input type="text" class="form-control" id="permissionName" name="permissionName" placeholder="action访问路径，如：menu:read">
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group"  style="margin-top: 20px;">
+				       <label for="description" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">权限模块描述：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				                <input type="text" class="form-control" id="description" name="description" placeholder="该权限的作用描述">
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group"  style="margin-top: 20px;" id= "fatherPermission">
+				       <label for="description" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">父权限：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <select data-placeholder="选择父权限" class="dept_select span3" id="faherPermissionOption">
+			
+	       					</select>
+				       </div>
+				   </div>
+				    <div class="form-group"  style="margin-top: 20px;">
+				       <label for="permissionMark" class="col-sm-2 control-label">
+				       	   <b class="fx">*</b>
+				           <span class="labelSpan">权限标记：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				                <select data-placeholder="选择权限标记" class="dept_select span3" id="editPermissionMark">
+	       							<option value="-1"></option>
+									<option value="1">菜单权限</option>
+									<option value="2">普通权限</option>
+	       						</select>
+				           </div>
+				       </div>
+				   </div>
+				   <!-- <div class="form-group"  style="margin-top: 20px;">
+				       <label for="status" class="col-sm-2 control-label">
+				           <span class="labelSpan">权限标记：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				           		<input type="radio" name="status" id="status" value="1" /><span style="margin:6px;">可用</span>
+				           		<input type="radio" name="status" id="status" value="-1"/><span style="margin:6px;">禁用</span>
+				           </div>
+				       </div>
+				   </div> -->
+				   <div class="form-group" style="margin-top: 20px;float: right;margin-right: 24px;">
+					   <div class="col-sm-offset-2 col-sm-10">
+					        <button type="button" class="btn btn-info" onclick="editPermissionNode();">保存修改</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				       </div>
+			       </div>
+				</form>
+			</div>
+			<!-- edit end -->
+		</div>
+	</div>
+	<div id="modal-remove" style="display: none;">
+		<div class="modal-body">   
+			<p id="removeTitle"></p>  
+		</div> 
+		<div style="float: right;margin-right:24px;">
+			<button type="button" class="btn btn-danger" onclick="removePermissionNode(this);">确定删除</button>
+			<button type="button" class="btn btn-default" onclick="goBack(2);">取消</button>
+		</div>
+	</div>
+</div>
+

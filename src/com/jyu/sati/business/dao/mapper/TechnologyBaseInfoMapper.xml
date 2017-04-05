@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.TechnologyBaseInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.TechnologyBaseInfo">
+		<id column="TBI_ID" jdbcType="INTEGER" property="tbiId" />
+		<result column="INFO_TITLE" jdbcType="VARCHAR" property="infoTitle" />
+		<result column="INFO_KEY" jdbcType="VARCHAR" property="infoKey" />
+		<result column="INDUSTRY_ID" jdbcType="INTEGER" property="industryId" />
+		<result column="HTF_ID" jdbcType="INTEGER" property="htfId" />
+		<result column="LOCATION_ID" jdbcType="INTEGER" property="locationId" />
+		<result column="SCI_ID" jdbcType="INTEGER" property="sciId" />
+		<result column="SE_INDUSTRY_ID" jdbcType="INTEGER" property="seIndustryId" />
+		<result column="TECHNOLOGY_MATURITY_ID" jdbcType="INTEGER"
+			property="technologyMaturityId" />
+		<result column="SOURCE_TYPE_ID" jdbcType="INTEGER" property="sourceTypeId" />
+		<result column="COOPERATION_MODE_ID" jdbcType="INTEGER"
+			property="cooperationModeId" />
+		<result column="IMAGE_ID" jdbcType="INTEGER" property="imageId" />
+		<result column="VIDEO_ID" jdbcType="INTEGER" property="videoId" />
+		<result column="TEXT_ID" jdbcType="INTEGER" property="textId" />
+		<result column="CONTACT_INFO_ID" jdbcType="INTEGER" property="contactInfoId" />
+		<result column="STATUS" jdbcType="INTEGER" property="status" />
+		<result column="AUDIT_INFO_ID" jdbcType="INTEGER" property="auditInfoId" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="PUBLISHER_ID" jdbcType="VARCHAR" property="publisherId" />
+		<result column="LIMIT_STATUS" jdbcType="INTEGER" property="limitStatus" />
+	</resultMap>
+
+	<!-- 分页查询条件 -->
+	<parameterMap type="TechnologyPageVo" id="PageCondition">
+		<parameter property="key" jdbcType="VARCHAR" javaType="java.lang.String" />
+		<parameter property="createTime" jdbcType="TIMESTAMP"
+			javaType="java.util.Date" />
+		<parameter property="totalNo" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<parameter property="pageSize" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<parameter property="pageNo" jdbcType="INTEGER" javaType="java.lang.Integer" />
+		<parameter property="pageIndex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	</parameterMap>
+
+	<sql id="Base_Column_List">
+		TBI_ID, INFO_TITLE, INFO_KEY, INDUSTRY_ID, HTF_ID,
+		LOCATION_ID, SCI_ID,
+		SE_INDUSTRY_ID,
+		TECHNOLOGY_MATURITY_ID, SOURCE_TYPE_ID, COOPERATION_MODE_ID,
+		IMAGE_ID,
+		VIDEO_ID, TEXT_ID, CONTACT_INFO_ID, STATUS,
+		AUDIT_INFO_ID,CREATE_TIME,PUBLISHER_ID,LIMIT_STATUS
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from technology_base_infos
+		where TBI_ID = #{tbiId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		technology_base_infos
+		where TBI_ID = #{tbiId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="tbiId"
+		parameterType="com.jyu.sati.entity.TechnologyBaseInfo">
+		insert into
+		technology_base_infos (TBI_ID, INFO_TITLE,
+		INFO_KEY,
+		INDUSTRY_ID,
+		HTF_ID, LOCATION_ID,
+		SCI_ID, SE_INDUSTRY_ID,
+		TECHNOLOGY_MATURITY_ID, SOURCE_TYPE_ID,
+		COOPERATION_MODE_ID,
+		IMAGE_ID,
+		VIDEO_ID, TEXT_ID,
+		CONTACT_INFO_ID,
+		STATUS, AUDIT_INFO_ID,CREATE_TIME,PUBLISHER_ID,LIMIT_STATUS
+		)
+		values
+		(#{tbiId,jdbcType=INTEGER},
+		#{infoTitle,jdbcType=VARCHAR},
+		#{infoKey,jdbcType=VARCHAR},
+		#{industryId,jdbcType=INTEGER},
+		#{htfId,jdbcType=INTEGER},
+		#{locationId,jdbcType=INTEGER},
+		#{sciId,jdbcType=INTEGER},
+		#{seIndustryId,jdbcType=INTEGER},
+		#{technologyMaturityId,jdbcType=INTEGER},
+		#{sourceTypeId,jdbcType=INTEGER},
+		#{cooperationModeId,jdbcType=INTEGER},
+		#{imageId,jdbcType=INTEGER},
+		#{videoId,jdbcType=INTEGER}, #{textId,jdbcType=INTEGER},
+		#{contactInfoId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+		#{auditInfoId,jdbcType=INTEGER},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{publisherId,jdbcType=VARCHAR},
+		#{limitStatus,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="tbiId" parameterType="com.jyu.sati.entity.TechnologyBaseInfo">
+		insert into technology_base_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tbiId != null">
+				TBI_ID,
+			</if>
+			<if test="infoTitle != null">
+				INFO_TITLE,
+			</if>
+			<if test="infoKey != null">
+				INFO_KEY,
+			</if>
+			<if test="industryId != null">
+				INDUSTRY_ID,
+			</if>
+			<if test="htfId != null">
+				HTF_ID,
+			</if>
+			<if test="locationId != null">
+				LOCATION_ID,
+			</if>
+			<if test="sciId != null">
+				SCI_ID,
+			</if>
+			<if test="seIndustryId != null">
+				SE_INDUSTRY_ID,
+			</if>
+			<if test="technologyMaturityId != null">
+				TECHNOLOGY_MATURITY_ID,
+			</if>
+			<if test="sourceTypeId != null">
+				SOURCE_TYPE_ID,
+			</if>
+			<if test="cooperationModeId != null">
+				COOPERATION_MODE_ID,
+			</if>
+			<if test="imageId != null">
+				IMAGE_ID,
+			</if>
+			<if test="videoId != null">
+				VIDEO_ID,
+			</if>
+			<if test="textId != null">
+				TEXT_ID,
+			</if>
+			<if test="contactInfoId != null">
+				CONTACT_INFO_ID,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="auditInfoId != null">
+				AUDIT_INFO_ID,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="publisherId != null">
+				PUBLISHER_ID,
+			</if>
+			<if test="limitStatus != null">
+				LIMIT_STATUS,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tbiId != null">
+				#{tbiId,jdbcType=INTEGER},
+			</if>
+			<if test="infoTitle != null">
+				#{infoTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="infoKey != null">
+				#{infoKey,jdbcType=VARCHAR},
+			</if>
+			<if test="industryId != null">
+				#{industryId,jdbcType=INTEGER},
+			</if>
+			<if test="htfId != null">
+				#{htfId,jdbcType=INTEGER},
+			</if>
+			<if test="locationId != null">
+				#{locationId,jdbcType=INTEGER},
+			</if>
+			<if test="sciId != null">
+				#{sciId,jdbcType=INTEGER},
+			</if>
+			<if test="seIndustryId != null">
+				#{seIndustryId,jdbcType=INTEGER},
+			</if>
+			<if test="technologyMaturityId != null">
+				#{technologyMaturityId,jdbcType=INTEGER},
+			</if>
+			<if test="sourceTypeId != null">
+				#{sourceTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="cooperationModeId != null">
+				#{cooperationModeId,jdbcType=INTEGER},
+			</if>
+			<if test="imageId != null">
+				#{imageId,jdbcType=INTEGER},
+			</if>
+			<if test="videoId != null">
+				#{videoId,jdbcType=INTEGER},
+			</if>
+			<if test="textId != null">
+				#{textId,jdbcType=INTEGER},
+			</if>
+			<if test="contactInfoId != null">
+				#{contactInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="auditInfoId != null">
+				#{auditInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="publisherId != null">
+				#{publisherId,jdbcType=VARCHAR},
+			</if>
+			<if test="limitStatus != null">
+				#{limitStatus,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.TechnologyBaseInfo">
+		update technology_base_infos
+		<set>
+			<if test="infoTitle != null">
+				INFO_TITLE = #{infoTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="infoKey != null">
+				INFO_KEY = #{infoKey,jdbcType=VARCHAR},
+			</if>
+			<if test="industryId != null">
+				INDUSTRY_ID = #{industryId,jdbcType=INTEGER},
+			</if>
+			<if test="htfId != null">
+				HTF_ID = #{htfId,jdbcType=INTEGER},
+			</if>
+			<if test="locationId != null">
+				LOCATION_ID = #{locationId,jdbcType=INTEGER},
+			</if>
+			<if test="sciId != null">
+				SCI_ID = #{sciId,jdbcType=INTEGER},
+			</if>
+			<if test="seIndustryId != null">
+				SE_INDUSTRY_ID = #{seIndustryId,jdbcType=INTEGER},
+			</if>
+			<if test="technologyMaturityId != null">
+				TECHNOLOGY_MATURITY_ID =
+				#{technologyMaturityId,jdbcType=INTEGER},
+			</if>
+			<if test="sourceTypeId != null">
+				SOURCE_TYPE_ID = #{sourceTypeId,jdbcType=INTEGER},
+			</if>
+			<if test="cooperationModeId != null">
+				COOPERATION_MODE_ID =
+				#{cooperationModeId,jdbcType=INTEGER},
+			</if>
+			<if test="imageId != null">
+				IMAGE_ID = #{imageId,jdbcType=INTEGER},
+			</if>
+			<if test="videoId != null">
+				VIDEO_ID = #{videoId,jdbcType=INTEGER},
+			</if>
+			<if test="textId != null">
+				TEXT_ID = #{textId,jdbcType=INTEGER},
+			</if>
+			<if test="contactInfoId != null">
+				CONTACT_INFO_ID = #{contactInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="auditInfoId != null">
+				AUDIT_INFO_ID = #{auditInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="publisherId != null">
+				PUBLISHER_ID = #{publisherId,jdbcType=VARCHAR},
+			</if>
+			<if test="limitStatus != null">
+				LIMIT_STATUS = #{limitStatus,jdbcType=INTEGER},
+			</if>
+		</set>
+		where TBI_ID = #{tbiId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.TechnologyBaseInfo">
+		update
+		technology_base_infos
+		set INFO_TITLE = #{infoTitle,jdbcType=VARCHAR},
+		INFO_KEY = #{infoKey,jdbcType=VARCHAR},
+		INDUSTRY_ID =
+		#{industryId,jdbcType=INTEGER},
+		HTF_ID = #{htfId,jdbcType=INTEGER},
+		LOCATION_ID = #{locationId,jdbcType=INTEGER},
+		SCI_ID =
+		#{sciId,jdbcType=INTEGER},
+		SE_INDUSTRY_ID =
+		#{seIndustryId,jdbcType=INTEGER},
+		TECHNOLOGY_MATURITY_ID =
+		#{technologyMaturityId,jdbcType=INTEGER},
+		SOURCE_TYPE_ID =
+		#{sourceTypeId,jdbcType=INTEGER},
+		COOPERATION_MODE_ID =
+		#{cooperationModeId,jdbcType=INTEGER},
+		IMAGE_ID =
+		#{imageId,jdbcType=INTEGER},
+		VIDEO_ID = #{videoId,jdbcType=INTEGER},
+		TEXT_ID = #{textId,jdbcType=INTEGER},
+		CONTACT_INFO_ID =
+		#{contactInfoId,jdbcType=INTEGER},
+		STATUS = #{status,jdbcType=INTEGER},
+		AUDIT_INFO_ID = #{auditInfoId,jdbcType=INTEGER}
+		CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP},
+		PUBLISHER_ID =
+		#{publisherId,jdbcType=VARCHAR},
+		LIMIT_STATUS = #{limitStatus,jdbcType=INTEGER},
+		where TBI_ID =
+		#{tbiId,jdbcType=INTEGER}
+	</update>
+
+
+	<select id="getTechInfo" parameterMap="PageCondition" resultMap="BaseResultMap">
+		select
+		r.*
+		from
+		(select
+		<include refid="Base_Column_List" />
+		from technology_base_infos t
+		<where>
+			<if test="key != null and key!=''">
+				t.INFO_KEY
+				like
+				'%'||#{key,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="createTime != null and createTime !='' ">
+				<![CDATA[   and DATE_FORMAT(#{createTime,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(t.CREATE_TIME, '%Y-%m-%d') ]]>
+			</if>
+		</where>
+		order by t.CREATE_TIME desc
+		) r
+		limit #{pageIndex ,jdbcType=INTEGER},
+		#{pageSize,jdbcType=INTEGER};
+
+	</select>
+
+	<select id="getTotalNo" parameterMap="PageCondition" resultType="java.lang.Integer">
+		select
+		count(*)
+		from technology_base_infos t
+		<where>
+			<if test="key != null and key!=''">
+				t.INFO_KEY
+				like
+				'%'||#{key,jdbcType=VARCHAR}||'%'
+			</if>
+			<if test="createTime != null and createTime !='' ">
+				<![CDATA[   and DATE_FORMAT(#{createTime,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(t.CREATE_TIME, '%Y-%m-%d') ]]>
+			</if>
+		</where>
+	</select>
+
+</mapper>

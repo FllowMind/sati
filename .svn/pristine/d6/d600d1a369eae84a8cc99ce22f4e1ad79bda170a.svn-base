@@ -1,0 +1,64 @@
+<!-- 角色绑定权限 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">
+        	<span class="navTitle"></span>
+        </div>
+    </div>
+    <div class="block-content collapse in">
+    	<div class="block-content collapse in" style="min-height: 240px;">
+		<div style="font-size:16px;padding: 10px 24px;">
+		  	<span>选择角色获取对应权限：</span>
+	   		<select data-placeholder="选择角色" class="dept_select span3" id="roleOption">
+			
+	       </select>
+		</div>
+        <div class="row-fluid">
+            	<div class="span6">
+                <!-- block -->
+                <div class="block">
+                    <div class="navbar navbar-inner block-header">
+                        <div class="muted pull-left">未绑定菜单</div>
+                    </div>
+                    <div class="block-content collapse in">
+        				<div id="UnBindPermissionTree" class="treeview">
+        	
+        				</div>
+                    </div>
+                </div>
+                <!-- /block -->
+            </div>
+            <div class="span6">
+                <!-- block -->
+                <div class="block">
+                    <div class="navbar navbar-inner block-header">
+                        <div class="muted pull-left">已绑定菜单</div>
+                    </div>
+                    <div class="block-content collapse in">
+                        <div id="BindPermissionTree" class="treeview">
+        	
+        				</div>
+                    </div>
+                </div>
+                <!-- /block -->
+            </div>
+        </div>
+        <div style="display: none;font-size:16px;padding: 10px 24px;" id="treeMsg">
+        	<span>暂未绑定任何权限</span>
+        </div>
+    </div>
+   	</div>
+ </div>

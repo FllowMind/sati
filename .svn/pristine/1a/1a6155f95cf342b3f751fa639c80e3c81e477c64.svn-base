@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.UserDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.User">
+		<id column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+		<result column="USER_TYPE" jdbcType="INTEGER" property="userType" />
+		<result column="PERSON_ID" jdbcType="INTEGER" property="personId" />
+		<result column="COMPANY_ID" jdbcType="INTEGER" property="companyId" />
+		<result column="UNIVERSITY_ID" jdbcType="INTEGER" property="universityId" />
+		<result column="SRU_ID" jdbcType="INTEGER" property="sruId" />
+		<result column="AGENCY_ID" jdbcType="INTEGER" property="agencyId" />
+		<result column="ADMINISTRATOR_ID" jdbcType="INTEGER" property="administratorId" />
+		<result column="SUPER_ADMINISTRATOR_ID" jdbcType="INTEGER"
+			property="superAdministratorId" />
+		<result column="REGISTER_TIME" jdbcType="TIMESTAMP" property="registerTime" />
+		<result column="PRElOGIN_TIME" jdbcType="TIMESTAMP" property="preloginTime" />
+		<result column="CURRENTlOGIN_TIME" jdbcType="TIMESTAMP"
+			property="currentloginTime" />
+		<result column="PREUPDATE_TIME" jdbcType="TIMESTAMP" property="preupdateTime" />
+		<result column="AUDIT_ID" jdbcType="INTEGER" property="auditId" />
+		<result column="STATUS" jdbcType="INTEGER" property="status" />
+		<result column="CONTACT_INFO_ID" jdbcType="INTEGER" property="contactInfoId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		USER_ID, USER_NAME, PASSWORD, USER_TYPE, PERSON_ID,
+		COMPANY_ID, UNIVERSITY_ID,
+		SRU_ID,
+		AGENCY_ID, ADMINISTRATOR_ID,
+		SUPER_ADMINISTRATOR_ID, REGISTER_TIME,
+		PRElOGIN_TIME,
+		PREUPDATE_TIME,
+		AUDIT_ID, STATUS,CURRENTlOGIN_TIME,
+		CONTACT_INFO_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from users
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="userId"
+		parameterType="com.jyu.sati.entity.User">
+		insert into users (USER_ID,
+		USER_NAME, PASSWORD,
+		USER_TYPE, PERSON_ID, COMPANY_ID,
+		UNIVERSITY_ID,
+		SRU_ID, AGENCY_ID,
+		ADMINISTRATOR_ID, SUPER_ADMINISTRATOR_ID,
+		REGISTER_TIME, PRElOGIN_TIME,
+		PREUPDATE_TIME,
+		AUDIT_ID, STATUS,CONTACT_INFO_ID)
+		values
+		(#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{userType,jdbcType=INTEGER},
+		#{personId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER},
+		#{universityId,jdbcType=INTEGER}, #{sruId,jdbcType=INTEGER},
+		#{agencyId,jdbcType=INTEGER},
+		#{administratorId,jdbcType=INTEGER},
+		#{superAdministratorId,jdbcType=INTEGER},
+		#{registerTime,jdbcType=TIMESTAMP},
+		#{preloginTime,jdbcType=TIMESTAMP},
+		#{currentloginTime,jdbcType=TIMESTAMP},
+		#{preupdateTime,jdbcType=TIMESTAMP},
+		#{auditId,jdbcType=INTEGER},
+		#{status,jdbcType=INTEGER}),
+		#{contactInfoId,jdbcType=INTEGER}
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="userId" parameterType="com.jyu.sati.entity.User">
+		insert into users
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="userName != null">
+				USER_NAME,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+			<if test="userType != null">
+				USER_TYPE,
+			</if>
+			<if test="personId != null">
+				PERSON_ID,
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID,
+			</if>
+			<if test="universityId != null">
+				UNIVERSITY_ID,
+			</if>
+			<if test="sruId != null">
+				SRU_ID,
+			</if>
+			<if test="agencyId != null">
+				AGENCY_ID,
+			</if>
+			<if test="administratorId != null">
+				ADMINISTRATOR_ID,
+			</if>
+			<if test="superAdministratorId != null">
+				SUPER_ADMINISTRATOR_ID,
+			</if>
+			<if test="registerTime != null">
+				REGISTER_TIME,
+			</if>
+			<if test="preloginTime != null">
+				PRElOGIN_TIME,
+			</if>
+			<if test="preupdateTime != null">
+				PREUPDATE_TIME,
+			</if>
+			<if test="currentloginTime != null">
+				CURRENTLOGIN_TIME ,
+			</if>
+			<if test="auditId != null">
+				AUDIT_ID,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="contactInfoId != null">
+				CONTACT_INFO_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="userType != null">
+				#{userType,jdbcType=INTEGER},
+			</if>
+			<if test="personId != null">
+				#{personId,jdbcType=INTEGER},
+			</if>
+			<if test="companyId != null">
+				#{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="universityId != null">
+				#{universityId,jdbcType=INTEGER},
+			</if>
+			<if test="sruId != null">
+				#{sruId,jdbcType=INTEGER},
+			</if>
+			<if test="agencyId != null">
+				#{agencyId,jdbcType=INTEGER},
+			</if>
+			<if test="administratorId != null">
+				#{administratorId,jdbcType=INTEGER},
+			</if>
+			<if test="superAdministratorId != null">
+				#{superAdministratorId,jdbcType=INTEGER},
+			</if>
+			<if test="registerTime != null">
+				#{registerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="preloginTime != null">
+				#{preloginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="currentloginTime != null">
+				#{currentloginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="preupdateTime != null">
+				#{preupdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditId != null">
+				#{auditId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="contactInfoId != null">
+				#{contactInfoId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.User">
+		update users
+		<set>
+			<if test="userName != null">
+				USER_NAME = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="userType != null">
+				USER_TYPE = #{userType,jdbcType=INTEGER},
+			</if>
+			<if test="personId != null">
+				PERSON_ID = #{personId,jdbcType=INTEGER},
+			</if>
+			<if test="companyId != null">
+				COMPANY_ID = #{companyId,jdbcType=INTEGER},
+			</if>
+			<if test="universityId != null">
+				UNIVERSITY_ID = #{universityId,jdbcType=INTEGER},
+			</if>
+			<if test="sruId != null">
+				SRU_ID = #{sruId,jdbcType=INTEGER},
+			</if>
+			<if test="agencyId != null">
+				AGENCY_ID = #{agencyId,jdbcType=INTEGER},
+			</if>
+			<if test="administratorId != null">
+				ADMINISTRATOR_ID = #{administratorId,jdbcType=INTEGER},
+			</if>
+			<if test="superAdministratorId != null">
+				SUPER_ADMINISTRATOR_ID =
+				#{superAdministratorId,jdbcType=INTEGER},
+			</if>
+			<if test="registerTime != null">
+				REGISTER_TIME = #{registerTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="preloginTime != null">
+				PRElOGIN_TIME = #{preloginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="preupdateTime != null">
+				PREUPDATE_TIME = #{preupdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="currentloginTime != null">
+				CURRENTLOGIN_TIME =
+				#{currentloginTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditId != null">
+				AUDIT_ID = #{auditId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=INTEGER},
+			</if>
+
+			<if test="contactInfoId != null">
+				CONTACT_INFO_ID = #{contactInfoId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.User">
+		update users
+		set
+		USER_NAME = #{userName,jdbcType=VARCHAR},
+		PASSWORD =
+		#{password,jdbcType=VARCHAR},
+		USER_TYPE = #{userType,jdbcType=INTEGER},
+		PERSON_ID = #{personId,jdbcType=INTEGER},
+		COMPANY_ID =
+		#{companyId,jdbcType=INTEGER},
+		UNIVERSITY_ID =
+		#{universityId,jdbcType=INTEGER},
+		SRU_ID = #{sruId,jdbcType=INTEGER},
+		AGENCY_ID = #{agencyId,jdbcType=INTEGER},
+		ADMINISTRATOR_ID =
+		#{administratorId,jdbcType=INTEGER},
+		SUPER_ADMINISTRATOR_ID =
+		#{superAdministratorId,jdbcType=INTEGER},
+		REGISTER_TIME =
+		#{registerTime,jdbcType=TIMESTAMP},
+		PRElOGIN_TIME =
+		#{preloginTime,jdbcType=TIMESTAMP},
+		PREUPDATE_TIME =
+		#{preupdateTime,jdbcType=TIMESTAMP},
+		CURRENTLOGIN_TIME=#{currentloginTime,jdbcType=TIMESTAMP},
+		AUDIT_ID =
+		#{auditId,jdbcType=INTEGER},
+		STATUS = #{status,jdbcType=INTEGER},
+		CONTACT_INFO_ID =
+		#{contactInfoId,jdbcType=VARCHAR}
+		where
+		USER_ID =
+		#{userId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="getUserByUserNameAndPassword" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		where USER_ID = #{userName,jdbcType=VARCHAR}
+		and PASSWORD =
+		#{password,jdbcType=VARCHAR}
+	</select>
+
+	<select id="getUserByUserName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		where USER_ID = #{userName,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 判断电话号码是否被使用 -->
+	<select id="isPhoneNumberInUsing" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		contact_infos c
+		INNER JOIN users u ON c.CONTACT_ID = u.CONTACT_INFO_ID
+		WHERE
+		c.PHONE_NUMBER
+		#{phoneNumber,jdbcType=VARCHAR}
+	</select>
+
+	<select id="getUserNameByUserId" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		SELECT
+		USER_NAME
+		FROM
+		users
+		WHERE
+		USER_ID = #{userId,jdbcType}
+	</select>
+
+	<select id="getUserTypeByUserId" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		SELECT
+		USER_TYPE
+		FROM
+		users
+		WHERE
+		USER_ID =
+		#{userId,jdbcType=VARCHAR}
+	</select>
+
+</mapper>

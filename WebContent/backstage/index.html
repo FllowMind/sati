@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>梅州市梅县区城东镇科技成果转化服务平台</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
+    <link href="vendors/chosen.min.css" rel="stylesheet" media="screen">
+    <link href="vendors/datepicker.css" rel="stylesheet" media="screen">
+    <link href="assets/styles.css" rel="stylesheet" media="screen">
+    <link href="css/ownStyle.css" rel="stylesheet" media="screen">
+    <link href="assets/font-awesome.css" rel="stylesheet" media="screen">  
+     <link rel="stylesheet" href="../lib/validation/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="vendors/toastr/toastr.min.css" media="screen"/>
+    <link rel="stylesheet" href="vendors/bootstrap-treeview/css/bootstrap-treeview.min.css" media="screen"/>
+    <link rel="stylesheet" href="vendors/bootstrap-treeview/css/treeview.css" media="screen"/>
+    <!-- zTree -->
+    <link rel="stylesheet" href="vendors/zTree/css/zTreeStyle.css" rel="stylesheet" media="screen">
+    <!-- upload -->
+    <link rel="stylesheet" href="vendors/upload/css/jquery.fileupload.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="vendors/upload/css/jquery.fileupload-ui.css" rel="stylesheet" media="screen">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">梅州市梅县区城东镇科技成果转化服务平台</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i><span id="loginUserName"></span>  <i class="caret"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="#">修改密码</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="../index.html">平台首页</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="#" onclick="logout();">退出</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3 sidebar-nav" id="sidebar">
+            <ul class="nav bs-docs-sidenav nav-collapse collapse" id="right-nav">
+                <!-- <li>
+                    <a  href="#" onclick="getDefault();" class="nav-header">
+                        <i class="fa fa-fw fa-list-ul"></i> 会员中心平台</a>
+                </li>
+                <li>
+                    <a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+                        <i class="fa fa-fw fa-list-ul"></i> 技术供给管理<i class="fa fa-collapse"></i></a>
+                </li>
+                <li>
+                    <ul class="dashboard-menu nav nav-list collapse in">
+                        <li><a href="#" onclick="getSupply();"><span class="fa fa-caret-right"></span> 添加技术供给</a></li>
+                        <li ><a href="#" onclick="getManage(1);"><span class="fa fa-caret-right"></span> 技术供给管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="fa fa-fw fa-list-ul"></i>技术需求管理 <i class="fa fa-collapse"></i>
+                    </a>
+                </li>
+                <li>
+                    <ul class="accounts-menu nav nav-list collapse">
+                        <li ><a href="#" onclick="getDemand();"><span class="fa fa-caret-right"></span>添加技术需求</a></li>
+                        <li ><a href="#" onclick="getManage(2);"><span class="fa fa-caret-right"></span>技术需求管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a  href="#" class="nav-header">
+                        <i class="fa fa-fw fa-list-ul"></i> 信息审核</a>
+                </li>
+                <li>
+                    <a href="#" data-target=".ad-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="fa fa-fw fa-list-ul"></i>公告管理 <i class="fa fa-collapse"></i>
+                    </a>
+                </li>
+                <li>
+                    <ul class="ad-menu nav nav-list collapse">
+                        <li ><a href="#" onclick="getDemand();"><span class="fa fa-caret-right"></span>发布公告</a></li>
+                        <li ><a href="#" onclick="getManage(2);"><span class="fa fa-caret-right"></span>公告管理</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="fa fa-fw fa-list-ul"></i> 会员信息管理<i class="fa fa-collapse"></i></a>
+                </li>
+                <li>
+                    <ul class="legal-menu nav nav-list collapse">
+                        <li ><a href="#" onclick="getUserManage();"><span class="fa fa-caret-right"></span> 个人信息维护</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-target=".admin-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="fa fa-fw fa-list-ul"></i> 系统信息管理<i class="fa fa-collapse"></i></a>
+                </li>
+                <li>
+                    <ul class="admin-menu nav nav-list collapse">
+                        <li ><a href="#" onclick="getUserManage();"><span class="fa fa-caret-right"></span> 添加菜单选项</a></li>
+                        <li ><a href="#" onclick="getOptionInfo();"><span class="fa fa-caret-right"></span> 选项字段管理</a></li>
+                    </ul>
+                </li> -->
+            </ul>
+           	<!-- <ul class="nav bs-docs-sidenav nav-collapse collapse">
+           		<li>
+                    <a  href="#" onclick="getDefault();" class="nav-header">
+                       <i class="fa fa-fw fa-list-ul"></i> 一级菜单样式</a>
+                </li>
+                <li>
+                    <a href="#" data-target=".admin-menu" class="nav-header collapsed" data-toggle="collapse">
+                        <i class="fa fa-fw fa-list-ul"></i> 二级菜单样式<i class="fa fa-collapse"></i></a>
+                </li>
+                <li>
+                    <ul class="admin-menu nav nav-list collapse">
+                        <li ><a href="#" onclick="getUserManage();"><span class="fa fa-caret-right"></span>二级样式1</a></li>
+                        <li ><a href="#" onclick="getOptionInfo();"><span class="fa fa-caret-right"></span>二级样式2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse">
+				<i class="fa fa-fw fa-dashboard"></i> 三级菜单样式<i class="fa fa-collapse"></i></a></li>
+			    <li>
+					<ul class="dashboard-menu nav nav-list collapse">
+						<li><a href="#"><span class="fa fa-caret-right"></span> 三级菜单第二级</a></li>
+						user.html
+						<li><a href="#" data-target=".test-menu" data-toggle="collapse">
+							<span class="fa fa-caret-right"></span> 三级菜单度二级带第三级</a>
+						</li>
+						<li>
+							<ul class="test-menu nav nav-list collapse">
+								<li class="chlid"><a href="#" style="padding-left:28px;"><span class="fa fa-caret-right"></span> 三级菜单1</a></li>
+								<li class="chlid"><a href="#" style="padding-left:30px;"><span class="fa fa-caret-right"></span> 三级菜单2</a></li>
+								<li class="chlid"><a href="#" style="padding-left:30px;"><span class="fa fa-caret-right"></span> 三级菜单3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+           	</ul> -->
+           	<!-- <ul class="nav bs-docs-sidenav nav-collapse collapse" id="testMenu">
+           		
+           	</ul> -->
+        </div>
+        <!--/span-->
+        <div class="span9" id="content">
+
+        </div>
+         
+    </div>
+</div>
+<!-- 模态框模板 -->
+<div class="modal fade" id="modalModule"> 
+	<div class="modal-dialog">      
+	  <div class="modal-content" id="modalContent">   
+         </div>
+       </div>
+</div>
+<div class="footer">
+    <p>&copy; 嘉应学院计算机学院制</p>
+</div>
+<!--/.fluid-container-->
+<script src="vendors/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+<script src="vendors/chosen.jquery.min.js"></script>
+<script src="vendors/bootstrap-datepicker.js" charset="utf-8"></script>
+<script src="../lib/validation/js/bootstrapValidator.js"></script>
+<script src="vendors/toastr/toastr.min.js"></script>
+<script src="vendors/bootstrap-treeview/js/bootstrap-treeview.js"></script>
+<!-- ztree -->
+<script src="vendors/zTree/js/jquery.ztree.core.min.js"></script>
+<!-- upload -->
+<script src="vendors/upload/js/jquery.ui.widget.js"></script>
+<script src="vendors/upload/js/jquery.fileupload.js"></script>
+<script src="vendors/upload/js/jquery.iframe-transport.js"></script>
+<script src="assets/scripts.js"></script>
+<script type="text/javascript" src="js/fsrPMD.js"></script>
+<script src="js/home.js"></script>
+<script src="js/AuditFun.js"></script>
+<script src="js/produceFun.js"></script>
+<script src="js/MenuAndPermissionFun.js"></script>
+<script src="js/managmentFun.js"></script>
+<script src="js/techFun.js"></script>
+<script src="js/infoFun.js"></script>
+<script>
+    $(function() {
+        // Easy pie charts
+        $('.chart').easyPieChart({animate: 1000});
+        var uls = $('.sidebar-nav > ul > *').clone();
+        uls.addClass('visible-xs');
+        $('#main-menu').append(uls.clone());
+    });
+</script>
+</body>
+
+</html>

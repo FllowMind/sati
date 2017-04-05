@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.AuditInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.AuditInfo">
+		<id column="AUDIT_INFO_ID" jdbcType="INTEGER" property="auditInfoId" />
+		<result column="SUBMIT_TIME" jdbcType="TIMESTAMP" property="submitTime" />
+		<result column="AUDIT_TIME" jdbcType="TIMESTAMP" property="auditTime" />
+		<result column="AUDIT_STATUS" jdbcType="INTEGER" property="auditStatus" />
+		<result column="AUDIT_RESULT" jdbcType="VARCHAR" property="auditResult" />
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="AUDITOR_ID" jdbcType="VARCHAR" property="auditorId" />
+		<result column="AUDIT_TYPE" jdbcType="INTEGER" property="auditType" />
+	</resultMap>
+	<resultMap id="AuditOutlineMap" type="com.jyu.sati.entity.AuditInfo">
+		<result column="SUBMIT_TIME" jdbcType="TIMESTAMP" property="submitTime" />
+		<result column="AUDIT_STATUS" jdbcType="INTEGER" property="auditStatus" />
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="USER_TYPE" jdbcType="INTEGER" property="userType" />
+		<result column="AUDIT_TYPE" jdbcType="INTEGER" property="audit_type" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		AUDIT_INFO_ID, SUBMIT_TIME, AUDIT_TIME, AUDIT_STATUS,
+		AUDIT_RESULT, USER_ID,AUDITOR_ID,AUDIT_TYPE
+	</sql>
+	<sql id="Audit_Outline_List">
+		SUBMIT_TIME, AUDIT_STATUS,
+		USER_ID,USER_NAME,USER_TYPE,AUDIT_TYPE
+	</sql>
+
+
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from audit_infos
+		where AUDIT_INFO_ID = #{auditInfoId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		audit_infos
+		where AUDIT_INFO_ID = #{auditInfoId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="auditInfoId"
+		parameterType="com.jyu.sati.entity.AuditInfo">
+		insert into audit_infos (AUDIT_INFO_ID, SUBMIT_TIME,
+		AUDIT_TIME,AUDIT_STATUS, AUDIT_RESULT,
+		USER_ID,AUDITOR_ID,AUDIT_TYPE
+		)
+		values
+		(#{auditInfoId,jdbcType=INTEGER},
+		#{submitTime,jdbcType=TIMESTAMP},
+		#{auditTime,jdbcType=TIMESTAMP},
+		#{auditStatus,jdbcType=INTEGER},
+		#{auditResult,jdbcType=VARCHAR},
+		#{userId,jdbcType=VARCHAR},
+		#{auditorId,jdbcType=VARCHAR},
+		#{auditType,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="auditInfoId" parameterType="com.jyu.sati.entity.AuditInfo">
+		insert into audit_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="submitTime != null">
+				SUBMIT_TIME,
+			</if>
+			<if test="auditTime != null">
+				AUDIT_TIME,
+			</if>
+			<if test="auditStatus != null">
+				AUDIT_STATUS,
+			</if>
+			<if test="auditResult != null">
+				AUDIT_RESULT,
+			</if>
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="auditorId != null">
+				AUDITOR_ID,
+			</if>
+			<if test="auditType != null">
+				AUDIT_TYPE
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="submitTime != null">
+				#{submitTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditTime != null">
+				#{auditTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditStatus != null">
+				#{auditStatus,jdbcType=INTEGER},
+			</if>
+			<if test="auditResult != null">
+				#{auditResult,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="auditorId != null">
+				#{auditorId,jdbcType=VARCHAR},
+			</if>
+			<if test="auditType != null">
+				#{auditType,jdbcType=INTEGER}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.AuditInfo">
+		update audit_infos
+		<set>
+			<if test="submitTime != null">
+				SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditTime != null">
+				AUDIT_TIME = #{auditTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="auditStatus != null">
+				AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER},
+			</if>
+			<if test="auditResult != null">
+				AUDIT_RESULT = #{auditResult,jdbcType=VARCHAR},
+			</if>
+			<if test="userId != null">
+				USER_ID = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="auditorId != null">
+				AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+			</if>
+			<if test="auditType != null">
+				AUDIT_TYPE = #{auditType,jdbcType=INTEGER}
+			</if>
+		</set>
+		where AUDIT_INFO_ID = #{auditInfoId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.AuditInfo">
+		update audit_infos
+		set SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP},
+		AUDIT_TIME =
+		#{auditTime,jdbcType=TIMESTAMP},
+		AUDIT_STATUS =
+		#{auditStatus,jdbcType=INTEGER},
+		AUDIT_RESULT =
+		#{auditResult,jdbcType=VARCHAR},
+		USER_ID = #{userId,jdbcType=VARCHAR},
+		AUDITOR_ID = #{auditorId,jdbcType=VARCHAR},
+		AUDIT_TYPE=
+		#{auditType,jdbcType=INTEGER}
+		where AUDIT_INFO_ID =
+		#{auditInfoId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getAuditInfoByUserId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT
+		a.*
+		FROM
+		audit_infos a
+		INNER JOIN users u ON
+		a.AUDIT_INFO_ID = u.AUDIT_ID
+		WHERE
+		u.USER_ID =
+		#{userId,jdbcType=VARCHAR}
+	</select>
+
+	<update id="updateUserInfoAuditStatus">
+		UPDATE audit_infos
+		SET AUDIT_STATUS =
+		#{status,jdbcType=INTEGER} ,
+		AUDITOR_ID =
+		#{auditorId,jdbcType=VARCHAR}
+		WHERE
+		AUDIT_INFO_ID = (
+		SELECT
+		u.AUDIT_ID
+		FROM
+		users u
+		WHERE
+		USER_ID =
+		#{userId,jdbcType=VARCHAR}
+		)
+	</update>
+
+	<select id="getAuditOutlineByCondition" parameterType="AuditInfoVo"
+		resultMap="AuditOutlineMap">
+		SELECT
+		a.SUBMIT_TIME,a.AUDIT_STATUS,u.USER_NAME,u.USER_TYPE,u.USER_ID
+		FROM
+		audit_infos a
+		INNER JOIN
+		users u
+		ON
+		u.AUDIT_ID = a.AUDIT_INFO_ID
+		<where>
+			<if test="userType != null and userType != ''">
+				and u.USER_TYPE = #{userType,jdbcType=INTEGER}
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				and a.AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+			</if>
+			<if test="auditType != null and auditType != ''">
+				and a.AUDIT_TYPE = #{auditType,jdbcType=INTEGER}
+			</if>
+			<if test="auditorId != null and auditorId != ''">
+				and a.AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(a.SUBMIT_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(a.SUBMIT_TIME, '%Y-%m-%d') ]]>
+			</if>
+		</where>
+		limit #{pageIndex ,jdbcType=INTEGER},
+		#{pageSize,jdbcType=INTEGER};
+	</select>
+
+	<select id="getTotalNo" parameterType="AuditInfoVo" resultType="java.lang.Integer">
+		SELECT
+		count(*)
+		FROM
+		audit_infos a
+		INNER JOIN
+		users u
+		ON
+		u.AUDIT_ID =
+		a.AUDIT_INFO_ID
+		<where>
+			<if test="userType != null and userType != ''">
+				and u.USER_TYPE = #{userType,jdbcType=INTEGER}
+			</if>
+			<if test="auditStatus != null and auditStatus != ''">
+				and a.AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+			</if>
+			<if test="auditType != null and auditType != ''">
+				and a.AUDIT_TYPE = #{auditType,jdbcType=INTEGER}
+			</if>
+			<if test="auditorId != null and auditorId != ''">
+				and a.AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+			</if>
+			<if test="startDate != null and startDate != ''">
+		<![CDATA[   AND DATE_FORMAT(#{startDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') <= DATE_FORMAT(a.SUBMIT_TIME, '%Y-%m-%d') ]]>
+			</if>
+			<if test="endDate != null and endDate != '' ">
+		<![CDATA[   AND DATE_FORMAT(#{endDate,jdbcType=TIMESTAMP}, '%Y-%m-%d') >= DATE_FORMAT(a.SUBMIT_TIMEE, '%Y-%m-%d') ]]>
+			</if>
+		</where>
+
+	</select>
+
+	<!-- 根据用户id获取用户信息的审核状态 -->
+	<select id="getUserInfoAuditStatusByUserId" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		SELECT
+		a.AUDIT_STATUS
+		FROM
+		audit_infos a
+		INNER JOIN
+		users u
+		ON
+		a.AUDIT_INFO_ID
+		=
+		u.AUDIT_ID
+		where
+		u.USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
+
+	<select id="getUnAuditUserInfosCountByUserType" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		audit_infos a
+		INNER JOIN
+		users u
+		ON
+		u.AUDIT_ID =
+		a.AUDIT_INFO_ID
+		WHERE
+		a.AUDIT_STATUS =
+		#{auditStatus,jdbcType=INTEGER}
+		and
+		a.AUDIT_TYPE =
+		#{auditType,jdbcType=INTEGER}
+		AND
+		u.USER_TYPE =
+		#{userType,jdbcType=INTEGER}
+	</select>
+
+	<select id="getAuditInfoByProduceId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		a.*
+		FROM
+		audit_infos a
+		INNER JOIN
+		produces p
+		ON
+		a.AUDITOR_ID=
+		p.AUDIT_INFO_ID
+		WHERE
+		p.PRODUCE_ID = #{produceId,jdbcType}
+	</select>
+
+	<!-- 更新产品的审核状态 -->
+	<update id="updateProduceAuditStatus">
+		UPDATE audit_infos
+		SET AUDIT_STATUS =
+		#{auditStatus,jdbcType=INTEGER}
+		<if test="auditorId !=null">
+			,AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+		</if>
+		WHERE
+		AUDIT_INFO_ID = (
+		SELECT
+		p.AUDIT_INFO_ID
+		FROM
+		produces p
+		WHERE
+		PRODUCE_ID
+		=
+		#{produceId,jdbcType=INTEGER}
+		)
+	</update>
+
+	<!--更新技术供给的审核状态 -->
+	<update id="updateTechSupAuditStatus">
+		UPDATE audit_infos
+		SET AUDIT_STATUS = #{auditStatus,jdbcType=INTEGER}
+		<if test="auditorId !=null">
+			,AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+		</if>
+		WHERE
+		AUDIT_INFO_ID = (
+		SELECT
+		AUDIT_INFO_ID
+		FROM
+		technology_base_infos b
+		INNER JOIN
+		technology_supply_infos s ON
+		b.TBI_ID = s.TBI_ID
+		WHERE
+		s.TSI_ID = #{techId,jdbcType=INTEGER})
+
+	</update>
+
+	<!-- 更新技术需求的审核状态 -->
+	<update id="updateTechReqAuditStatus">
+		UPDATE audit_infos
+		SET AUDIT_STATUS =
+		#{auditStatus,jdbcType=INTEGER}
+		<if test="auditorId !=null">
+			,AUDITOR_ID = #{auditorId,jdbcType=VARCHAR}
+		</if>
+		WHERE
+		AUDIT_INFO_ID = (
+		SELECT
+		AUDIT_INFO_ID
+		FROM
+		technology_base_infos b
+		INNER JOIN technology_requirement_infos r
+		ON b.TBI_ID = r.TBI_ID
+		WHERE
+		r.TRI_ID =
+		#{techId,jdbcType=INTEGER}
+		)
+	</update>
+
+</mapper>

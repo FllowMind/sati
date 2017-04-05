@@ -1,0 +1,126 @@
+<!-- 发布产品 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div>
+	<button name="管理我的产品成果" class="btn btn-success" onclick="getProduceManagment(this);">管理我的产品成果</button>
+	<!-- <button class="btn btn-info" onclick="createProduce();">创建产品成果</button> -->
+</div>
+<div class="alert alert-info" style="margin-top: 10px;">
+    <strong>提示信息：</strong><span style="color : red;" id="auditMsg"></span>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>发布我的产品成果</span></div>
+    </div>
+   <div class="block-content collapse in" >
+    	<form id="produceForm" name="produceForm">
+    		<table class="table table-bordered">
+    			<tbody>
+    				<tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>产品名称：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+	                        	<input type="text" id="produceName"  name="produceName" class="form-input span6 form-text"/>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>产品类别：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+	                        	<input type="text" id="produceTypeId" name="produceTypeId" class="form-input span6 form-json"/>
+	                        	<button type="button" name="产品类别" id="produceType" class="btn btn-default"  onclick="showTreeModal(this);">请选择</button>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>是否推荐到首页展示：</span>
+	                    </td>
+	                    <td class="span6 from-radio">
+	                     	<div class="form-group">
+	                        	<input type="radio" name="isRecommend" value="1"><span>推荐</span>
+	                        	<input type="radio" name="isRecommend" value="-1"><span>暂不推荐</span>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>期望被搜索到的关键字：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+	                        	<input type="text" id="produceKey" name="produceKey" class="form-input span6 form-text"/>
+	                    	</div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>产品描述：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+		                        <textarea rows="4" class="span6" id="produceDesc"  name="produceDesc">
+		
+		                        </textarea>
+	                        </div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>在首页中展示的图片：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+		                       	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="homePageImageId" name="homePageImageId">
+				
+	       						</select>
+	                        </div>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td class="span2 from-title">
+	                        <b class="fx">*</b>
+	                        <span>产品成果图：</span>
+	                    </td>
+	                    <td class="span6">
+	                     	<div class="form-group">
+		                        <button type="button" class="btn btn-default" onclick="showproduceImg();">添加图片</button>
+	                        </div>
+	                        <div class="product-list" id="product-list">
+	                        	<ul class="marquee-list" id="produceImgList">
+	                        	</ul>
+	                        </div>
+	                    </td>
+	                </tr>
+    			</tbody>
+    		</table>
+    	</form>
+    	<!-- 完成信息后的操作 -->
+		<div style="text-align: center;">
+			<button type="button" class="btn btn-success" onclick="saveProduce();">保存为草稿</button>
+		    <button type="button" class="btn btn-info" onclick="submitNewProduce();">提交审核</button>
+		</div>
+    </div>
+</div>

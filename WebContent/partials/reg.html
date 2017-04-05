@@ -1,0 +1,137 @@
+<meta charset="UTF-8">
+<div class="index-header-title">
+    <div class="public-container">
+        <span>欢迎来到梅州市梅县区城东镇科技成果转化服务平台</span>
+    </div>
+    <div class="header-title-text">
+        → <a  class="title-href" href="" onclick="getHome();">返回主页</a> ←&nbsp;&nbsp;
+       欢迎使用
+    </div>
+</div>
+<div class="index-header-content clearfloat">
+    <div class="public-container">
+        <div class="index-header-logo  col-lg-4">
+            <a href="index.html">
+                <img src="images/header-logo.png"/>
+            </a>
+        </div>
+        <span class="cut-off">&nbsp;</span>
+        <h2><strong>会员注册</strong></h2>
+    </div>
+</div>
+<div class="reg-content clearfloat">
+    <div class="public-container">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" id="userType">
+            <li class="active" value="1"><a href="#" data-toggle="tab">个人用户</a></li>
+            <li value="2"><a href="#" data-toggle="tab">企业用户</a></li>
+            <li value="3"><a href="#" data-toggle="tab">中介机构</a></li>
+            <li value="4"><a href="#" data-toggle="tab">高校</a></li>
+            <li value="5"><a href="#" data-toggle="tab">科研单位</a></li>
+            <span class="tab-msg">
+                我已经注册，现在就
+                <a class="tab-login" href="#" onclick="getLogin();">登录</a>
+            </span>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="reg-from">
+                <form class="form-horizontal" role="form" id="regForm">
+                    <div class="form-group">
+                        <label for="regUsername" class="col-sm-2 control-label">
+                            <b class="fx">*</b>
+                            <span class="labelSpan">用户名：</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="userId" name="userId">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group"  style="margin-top: 40px;">
+                        <label for="regPassword" class="col-sm-2 control-label">
+                            <b class="fx">*</b>
+                            <span class="labelSpan">请设置密码：</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                 <input type="password" class="form-control" id="regPassword" name="regPassword">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px;">
+                        <label for="regPassword2" class="col-sm-2 control-label">
+                            <b class="fx">*</b>
+                            <span class="labelSpan">请确认密码：</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="regPassword2" name="regPassword2">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px;">
+                        <label for="regEmail" class="col-sm-2 control-label">
+                            <b class="fx">*</b>
+                            <span class="labelSpan">请输入邮箱：</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="regEmail" name="regEmail">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px;">
+                        <label for="regCtrl" class="col-sm-2 control-label">
+                            <b class="fx">*</b>
+                            <span class="labelSpan">所在城市：</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="regCtrl">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px;">
+                        <label for="regPhone" class="col-sm-2 control-label">
+                            <b class="fx">*</b>
+                            <span class="labelSpan">手机验证：</span>
+                        </label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="regPhone" name="regPhone">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-phone"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px;">
+                        <span class="labelHref">我已阅读并同意：
+                         <a class="labelHref">《科技成果转化服务平台协议》</a></span>
+                    </div>
+                    <div class="form-group" style="margin-top: 40px; margin-bottom: 40px;">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-style" style="width: 50%;" onclick="toReg();">立即注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

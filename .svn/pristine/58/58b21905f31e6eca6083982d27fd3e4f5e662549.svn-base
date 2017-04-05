@@ -1,0 +1,499 @@
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="alert alert-info">
+    <strong>提示信息：</strong><span style="color : red;" id="auditMsg"></span>
+</div>
+<form name="agencyManagment" id="agencyManagment" class="Managment">
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>中介机构基本信息</span>
+        </div>
+    </div>
+    <div class="block-content collapse in">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>机构名称：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group">
+                    		<input type="text" id="unitName" name="unitName" class="form-input span6 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>机构简称：</span>
+                    </td>
+                    <td class="span6">
+                       <div class="form-group">
+                    		<input type="text" id="unitAbbreviation" name="unitAbbreviation" class="form-input span6 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>成立日期：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group">
+                    		<input type="text" id="establishmentDate" name="establishmentDate" class="datepicker span6" placeholder="选择成立日期">
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>单位性质：</span>
+                    </td>
+                    <td class="span6 from-radio">
+                        <input type="radio"  name="unitNature" value="1"/><span>企业法人</span>
+                        <input type="radio"  name="unitNature" value="2"/><span>事业法人</span>
+                        <input type="radio"  name="unitNature" value="3"/><span>社团法人</span>
+                        <input type="radio"  name="unitNature" value="4"/><span>法人内设机构 </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>法人代表：</span>
+                    </td>
+                    <td class="span6">
+						<div class="form-group">
+                    		<input type="text" id="legalRepresentative" name="legalRepresentative" class="form-input span6 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>注册资本(万元)：</span>
+                    </td>
+                    <td class="span6 from-radio" >
+                        <div class="form-group">
+                    		<input type="text" id="" name="" class="form-input span6 form-text"/>
+                    	</div>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>单位地址：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group">
+                    		<input type="text" id="unitAddress" name="unitAddress" class="form-input span6 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>单位类型：</span>
+                    </td>
+                    <td class="span6 from-radio">	
+                    	 <input type="checkbox" value="123"/><span>技术转移服务机构</span>
+                        <input type="checkbox" value="123"/><span>金融机构</span>
+                        <input type="checkbox" value="123"/><span>科技信息服务</span>
+                        <input type="checkbox" value="123"/><span>知识产权服务</span>
+                        <input type="checkbox" value="123"/><span>法律服务</span>
+                        <br>
+                        <input type="checkbox" value="123"/><span>科技企业孵化器</span>
+                        <input type="checkbox" value="123"/><span>生产力中心</span>
+                        <input type="checkbox" value="123"/><span>其他</span>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>所在地：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group">
+	                        <input type="text" id="locationId" class="form-input span6 form-select"/>
+	                         <button type="button" id="location" name="所在地" class="btn btn-default" onclick="showTreeModal(this)">请选择</button>
+                    	</div>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="span2 from-title">
+                        <span>所属高新区：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>所属孵化器：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr> -->
+                <!-- <tr>
+                    <td class="span2 from-title">
+                        <span>是否国家创新驿站</span>
+                    </td>
+                    <td class="span6 from-radio">
+                        <input type="radio" name="sex" value="1"><span>是</span>
+                        <input type="radio" name="sex" value="-1" checked="checked"><span>否</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>是否国家技术转移示范机构</span>
+                    </td>
+                    <td class="span6 from-radio">
+                        <input type="radio" name="sex" value="1"><span>是</span>
+                        <input type="radio" name="sex" value="-1" checked="checked"><span>否</span>
+                    </td>
+                </tr> -->
+                <!-- <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>业务类型：</span>
+                    </td>
+                    <td class="span6 from-radio">	
+                    	 <input type="checkbox" value="123"/><span>技术继承与经营</span>
+                        <input type="checkbox" value="123"/><span>技术经纪</span>
+                        <input type="checkbox" value="123"/><span>技术投融资</span>
+                        <input type="checkbox" value="123"/><span>技术合同认定登记</span>
+                        <input type="checkbox" value="123"/><span>技术产权交易</span>
+                        <br>
+                        <input type="checkbox" value="123"/><span>信息服务</span>
+                        <input type="checkbox" value="123"/><span>技术咨询</span>
+                        <input type="checkbox" value="123"/><span>技术评估</span>
+                        <input type="checkbox" value="123"/><span>培训</span>
+                        <input type="checkbox" value="123"/><span>企业孵化</span>
+                        <input type="checkbox" value="123"/><span>其他</span>
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>组织机构代码或统一社会信用代码(提交审核时不可为空)：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group" style="margin-top: 20px;">
+                        	<select data-placeholder="请选择" class="dept_select chzn-form-select hm-chosen"  id="unitCodeType" name="unitCodeType">
+								<option value="-1"></option>
+								<option value="1">组织机构代码</option>
+								<option value="2">统一社会信用代码</option>
+	       					</select>
+	       					<input type="text"  class="form-input span6 form-text" id="unitCode" name="unitCode"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>组织机构代码证图书或统一社会信用代码图片(提交审核时不可为空)：</span>
+                    </td>
+                    <td class="span6">
+                       <div class="form-group">
+                        	<span style="display: block;float: left;">请上传组织机构代码证图片</span><br>
+                        	<img data-src="" id="unitCodeImageUrl" src="" class="thumbnail" alt="暂无上传组织机构代码" style="width: 224px; height: 180px;float: left;"/>
+	                    	<div class="form-group uploadImgButton">
+		                    	<span class="btn btn-info fileinput-button">
+							        <span>选择文件</span>
+							        <!-- The file input field used as target for the file upload widget -->
+							        <input id="unitCodeImage" type="file" name="file">
+							    </span>
+						    </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                    	<b class="fx">*</b>
+                        <span>关键字：</span>
+                    </td>
+                    <td class="span6">
+                     	<div class="form-group">
+                    		<input type="text" id="key" name="key" class="form-input span6 form-text"/>
+                    	</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>机构简介：</span>
+                    </td>
+                    <td class="span6">
+                         <div class="form-group">
+	                        <textarea rows="4" id="unitProfile" name="unitProfile" class="span12">
+	
+	                        </textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>经典案例：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group">
+	                        <textarea rows="4" id="classicCase" name="classicCase" class="span12">
+	
+	                        </textarea>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>备注：</span>
+                    </td>
+                    <td class="span6">
+                        <div class="form-group">
+	                        <textarea rows="4" id="remark" name="remark" class="span12">
+	
+	                        </textarea>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted pull-left"><span>单位从业人员情况</span></div>
+    </div>
+    <div class="block-content collapse in">
+        <table class="table table-bordered">
+            <tbody>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>单位从业人员数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="totalNumber" name="totalNumber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>研发人员数：</span>
+	                </td>
+	                <td class="span4">
+	                    <div class="form-group">
+                        	<input type="text" id="developerNumber" name="developerNumber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>初级人员数：</span>
+	                </td>
+	                <td class="span4">
+	                    <div class="form-group">
+                        	<input type="text" id="juniorNumber" name="juniorNumber" class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>中级职称人数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="intermediateNunber" name="intermediateNunber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>高级职称人数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="seniorNumber" name="seniorNumber" class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	                <td class="span2 from-title">
+	                </td>
+	                <td class="span4">
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>大专学历人数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="juniorCollegeNumber" name="juniorCollegeNumber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>本科学历人数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="undergraduateNumber" name="undergraduateNumber" class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>硕士学历人数：</span>
+	                </td>
+	                <td class="span4">
+	                    <div class="form-group">
+                        	<input type="text" id="masterNumber" name="masterNumber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>博士学历人数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="doctorNumber" name="doctorNumber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td class="span2 from-title">
+	                    <span>海外归国人数：</span>
+	                </td>
+	                <td class="span4">
+	                   <div class="form-group">
+                        	<input type="text" id="overseasNumber" name="overseasNumber" class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	                <td class="span2 from-title">
+	                    <span>院士人数：</span>
+	                </td>
+	                <td class="span4">
+	                    <div class="form-group">
+                        	<input type="text" id="academicianNunber" name="academicianNunber"  class="form-input span12 form-text"/>
+                        </div>
+	                </td>
+	            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted pull-left"><span>基本信息</span></div>
+    </div>
+    <div class="block-content collapse in">
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td class="span2 from-title">
+                    <b class="fx">*</b>
+                    <span>联系人：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                        	<input type="text" id="contactName" name="contactName"  class="form-input span12 form-text"/>
+                        </div>
+                </td>
+                <td class="span2 from-title">
+                    <span>联系人职务：</span>
+                </td>
+                <td class="span4">
+                   <div class="form-group">
+                      	<input type="text" id="contactBusiness" name="contactBusiness" class="form-input span12 form-text"/>
+                     </div>
+              </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                    <span>联系电话：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="contactNumber" name="contactNumber" class="form-input span12 form-text"/>
+                    </div>
+                </td>
+                <td class="span2 from-title">
+                    <b class="fx">*</b>
+                    <span>手机号码：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="phoneNumber" name="phoneNumber" class="form-input span12 form-text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                	<b class="fx">*</b>
+                    <span>通讯地址：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="contactAddress" name="contactAddress"  class="form-input span12 form-text"/>
+                    </div>
+                </td>
+                <td class="span2 from-title">
+                	<b class="fx">*</b>
+                    <span>邮编：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="postcode" name="postcode"  class="form-input span12 form-text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                	<b class="fx">*</b>
+                    <span>Email：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                        	<input type="email" id="email" name="email"  class="form-input span12 form-text"/>
+                    </div>
+                </td>
+                <td class="span2 from-title">
+                    <span>网址：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="contactUrl" name="contactUrl"  class="form-input span12 form-text"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                    <span>传真：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="faxNumber" name="faxNumber" class="form-input span12 form-text"/>
+                    </div>
+                </td>
+                <td class="span2 from-title">
+                    <span>QQ/MSN：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<input type="text" id="qqormsnNumer" name="qqormsnNumer"  class="form-input span12 form-text"/>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</form>
+<!-- 完成信息后的操作 -->
+<div class="form-actions">
+    <button type="button" class="btn btn-success" onclick="saveCheckByAgency();">提交审核</button>
+    <button type="button" class="btn">取消</button>
+</div>

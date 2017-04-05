@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.EmployeeSituationDao">
+  <resultMap id="BaseResultMap" type="com.jyu.sati.entity.EmployeeSituation">
+    <id column="SOE_ID" jdbcType="INTEGER" property="soeId" />
+    <result column="TOTAL_NUMBER" jdbcType="INTEGER" property="totalNumber" />
+    <result column="DEVELOPER_NUMBER" jdbcType="INTEGER" property="developerNumber" />
+    <result column="JUNIOR_NUMBER" jdbcType="INTEGER" property="juniorNumber" />
+    <result column="INTERMEDIATE_NUNBER" jdbcType="INTEGER" property="intermediateNunber" />
+    <result column="SENIOR_NUMBER" jdbcType="INTEGER" property="seniorNumber" />
+    <result column="JUNIOR_COLLEGE_NUMBER" jdbcType="INTEGER" property="juniorCollegeNumber" />
+    <result column="UNDERGRADUATE_NUMBER" jdbcType="INTEGER" property="undergraduateNumber" />
+    <result column="MASTER_NUMBER" jdbcType="INTEGER" property="masterNumber" />
+    <result column="DOCTOR_NUMBER" jdbcType="INTEGER" property="doctorNumber" />
+    <result column="OVERSEAS_NUMBER" jdbcType="INTEGER" property="overseasNumber" />
+    <result column="ACADEMICIAN_NUNBER" jdbcType="INTEGER" property="academicianNunber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SOE_ID, TOTAL_NUMBER, DEVELOPER_NUMBER, JUNIOR_NUMBER, INTERMEDIATE_NUNBER, SENIOR_NUMBER, 
+    JUNIOR_COLLEGE_NUMBER, UNDERGRADUATE_NUMBER, MASTER_NUMBER, DOCTOR_NUMBER, OVERSEAS_NUMBER, 
+    ACADEMICIAN_NUNBER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from soes
+    where SOE_ID = #{soeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from soes
+    where SOE_ID = #{soeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="soeId" parameterType="com.jyu.sati.entity.EmployeeSituation">
+    insert into soes (SOE_ID, TOTAL_NUMBER, DEVELOPER_NUMBER, 
+      JUNIOR_NUMBER, INTERMEDIATE_NUNBER, SENIOR_NUMBER, 
+      JUNIOR_COLLEGE_NUMBER, UNDERGRADUATE_NUMBER, 
+      MASTER_NUMBER, DOCTOR_NUMBER, OVERSEAS_NUMBER, 
+      ACADEMICIAN_NUNBER)
+    values (#{soeId,jdbcType=INTEGER}, #{totalNumber,jdbcType=INTEGER}, #{developerNumber,jdbcType=INTEGER}, 
+      #{juniorNumber,jdbcType=INTEGER}, #{intermediateNunber,jdbcType=INTEGER}, #{seniorNumber,jdbcType=INTEGER}, 
+      #{juniorCollegeNumber,jdbcType=INTEGER}, #{undergraduateNumber,jdbcType=INTEGER}, 
+      #{masterNumber,jdbcType=INTEGER}, #{doctorNumber,jdbcType=INTEGER}, #{overseasNumber,jdbcType=INTEGER}, 
+      #{academicianNunber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="soeId" parameterType="com.jyu.sati.entity.EmployeeSituation">
+    insert into soes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="soeId != null">
+        SOE_ID,
+      </if>
+      <if test="totalNumber != null">
+        TOTAL_NUMBER,
+      </if>
+      <if test="developerNumber != null">
+        DEVELOPER_NUMBER,
+      </if>
+      <if test="juniorNumber != null">
+        JUNIOR_NUMBER,
+      </if>
+      <if test="intermediateNunber != null">
+        INTERMEDIATE_NUNBER,
+      </if>
+      <if test="seniorNumber != null">
+        SENIOR_NUMBER,
+      </if>
+      <if test="juniorCollegeNumber != null">
+        JUNIOR_COLLEGE_NUMBER,
+      </if>
+      <if test="undergraduateNumber != null">
+        UNDERGRADUATE_NUMBER,
+      </if>
+      <if test="masterNumber != null">
+        MASTER_NUMBER,
+      </if>
+      <if test="doctorNumber != null">
+        DOCTOR_NUMBER,
+      </if>
+      <if test="overseasNumber != null">
+        OVERSEAS_NUMBER,
+      </if>
+      <if test="academicianNunber != null">
+        ACADEMICIAN_NUNBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="soeId != null">
+        #{soeId,jdbcType=INTEGER},
+      </if>
+      <if test="totalNumber != null">
+        #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="developerNumber != null">
+        #{developerNumber,jdbcType=INTEGER},
+      </if>
+      <if test="juniorNumber != null">
+        #{juniorNumber,jdbcType=INTEGER},
+      </if>
+      <if test="intermediateNunber != null">
+        #{intermediateNunber,jdbcType=INTEGER},
+      </if>
+      <if test="seniorNumber != null">
+        #{seniorNumber,jdbcType=INTEGER},
+      </if>
+      <if test="juniorCollegeNumber != null">
+        #{juniorCollegeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="undergraduateNumber != null">
+        #{undergraduateNumber,jdbcType=INTEGER},
+      </if>
+      <if test="masterNumber != null">
+        #{masterNumber,jdbcType=INTEGER},
+      </if>
+      <if test="doctorNumber != null">
+        #{doctorNumber,jdbcType=INTEGER},
+      </if>
+      <if test="overseasNumber != null">
+        #{overseasNumber,jdbcType=INTEGER},
+      </if>
+      <if test="academicianNunber != null">
+        #{academicianNunber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.EmployeeSituation">
+    update soes
+    <set>
+      <if test="totalNumber != null">
+        TOTAL_NUMBER = #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="developerNumber != null">
+        DEVELOPER_NUMBER = #{developerNumber,jdbcType=INTEGER},
+      </if>
+      <if test="juniorNumber != null">
+        JUNIOR_NUMBER = #{juniorNumber,jdbcType=INTEGER},
+      </if>
+      <if test="intermediateNunber != null">
+        INTERMEDIATE_NUNBER = #{intermediateNunber,jdbcType=INTEGER},
+      </if>
+      <if test="seniorNumber != null">
+        SENIOR_NUMBER = #{seniorNumber,jdbcType=INTEGER},
+      </if>
+      <if test="juniorCollegeNumber != null">
+        JUNIOR_COLLEGE_NUMBER = #{juniorCollegeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="undergraduateNumber != null">
+        UNDERGRADUATE_NUMBER = #{undergraduateNumber,jdbcType=INTEGER},
+      </if>
+      <if test="masterNumber != null">
+        MASTER_NUMBER = #{masterNumber,jdbcType=INTEGER},
+      </if>
+      <if test="doctorNumber != null">
+        DOCTOR_NUMBER = #{doctorNumber,jdbcType=INTEGER},
+      </if>
+      <if test="overseasNumber != null">
+        OVERSEAS_NUMBER = #{overseasNumber,jdbcType=INTEGER},
+      </if>
+      <if test="academicianNunber != null">
+        ACADEMICIAN_NUNBER = #{academicianNunber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SOE_ID = #{soeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.EmployeeSituation">
+    update soes
+    set TOTAL_NUMBER = #{totalNumber,jdbcType=INTEGER},
+      DEVELOPER_NUMBER = #{developerNumber,jdbcType=INTEGER},
+      JUNIOR_NUMBER = #{juniorNumber,jdbcType=INTEGER},
+      INTERMEDIATE_NUNBER = #{intermediateNunber,jdbcType=INTEGER},
+      SENIOR_NUMBER = #{seniorNumber,jdbcType=INTEGER},
+      JUNIOR_COLLEGE_NUMBER = #{juniorCollegeNumber,jdbcType=INTEGER},
+      UNDERGRADUATE_NUMBER = #{undergraduateNumber,jdbcType=INTEGER},
+      MASTER_NUMBER = #{masterNumber,jdbcType=INTEGER},
+      DOCTOR_NUMBER = #{doctorNumber,jdbcType=INTEGER},
+      OVERSEAS_NUMBER = #{overseasNumber,jdbcType=INTEGER},
+      ACADEMICIAN_NUNBER = #{academicianNunber,jdbcType=INTEGER}
+    where SOE_ID = #{soeId,jdbcType=INTEGER}
+  </update>
+</mapper>

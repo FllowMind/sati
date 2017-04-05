@@ -1,0 +1,93 @@
+<meta charset="UTF-8">
+<div class="public-container" style="margin-top: -10px">
+    <div class="details-title" style="background: #0a67b5;color: #ffffff;font-size: 13px;">
+        <strong><span> 当前位置 >> 技术需求详细信息</span></strong>
+    </div>
+    <form name="requireDetailsForm" id="requireDetailsForm">
+    <div class="details-content">
+        <div class="padding-title">
+            <span class="title-tip">技术需求名称：</span>
+            <strong><span class="details-text" id="infoTitle" name="infoTitle"></span></strong>
+        </div>
+        <div class="public-container">
+            <table class="table table-bordered table-style table-striped">
+                <tbody>
+                    <tr>
+                        <td class="title">需求名称：</td>
+                        <td class="content"><span class="details-text" id="infoTitle" name="infoTitle"></span></td>
+                        <td class="title">关键字：</td>
+                        <td class="content"><span class="details-text" id="infoKey" name="infoKey"></span></td>
+                    </tr>
+                     <tr>
+                        <td class="title">所属行业：</td>
+                        <td class="content"><span class="details-json" id="industryId" name="industryId"></span></td>
+                        <td class="title">高新技术领域：</td>
+                        <td class="content"><span class="details-json" id="htfId" name="htfId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">所在地：</td>
+                        <td class="content"><span class="details-json" id="locationId" name="locationId"></span></td>
+                        <td class="title">合作方式：</td>
+                        <td class="content"><span class="details-select" id="cooperationModeId" name="cooperationModeId"></span></td>
+                    </tr>
+                     <tr>
+                        <td class="title">学科分类：</td>
+                        <td class="content"><span class="details-json" id="sciId" name="sciId"></span></td>
+                        <td class="title">战略新兴产业：</td>
+                        <td class="content"><span class="details-select" id="seIndustryId" name="seIndustryId"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">欲投资金额（万）：</td>
+                        <td class="content"><span class="details-text"  id="investmentFunds" name="investmentFunds"></span></td>
+                        <td class="title">解决时限要求：</td>
+                        <td class="content"><span class="details-select" id="timeLimit" name="timeLimit"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="public-container">
+            <div class="padding-content-title">
+                <span>难题描述</span>
+            </div>
+            <div class="padding-content">
+            	 <span class="details-text" id="problemDescription" name="problemDescription"></span>
+            </div>
+        </div>
+        <div class="public-container" style="margin-bottom: 20px;">
+            <div class="padding-content-title">
+                <span>联系方式</span>
+            </div>
+            <div class="padding-content" style="padding: 0; border: none;" >
+                <table class="table table-bordered" style="margin-bottom: 0 !important; border-color: #c7dfe8!important;">
+                    <tbody>
+                        <tr>
+                            <td class="title" style="color: #000;">联系人：</td>
+                            <td class="content"><span  class="details-text" id="contactName" name="contactName"></span></td>
+                            <td class="title" style="color: #000;">联系人职务：</td>
+                            <td class="content"><span class="details-text" id="contactBusiness" name="contactBusiness"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="title" style="color: #000;">联系电话：</td>
+                            <td class="content"><span class="details-text" id="contactNumber" name="contactNumber"></span></td>
+                            <td class="title" style="color: #000;">QQ/MSN：</td>
+                            <td class="content"><span class="details-text" id="qqormsnNumer" name="qqormsnNumer"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="title" style="color: #000;">Email：</td>
+                            <td class="content"><span class="details-text" id="email" name="email"></span></td>
+                            <td class="title" style="color: #000;">网址：</td>
+                            <td class="content"><span class="details-text" id="contactUrl" name="contactUrl"></span></td>
+                        </tr>
+                        <tr>
+                            <td class="title" style="color: #000;">邮编：</td>
+                            <td class="content"><span class="details-text" id="postcode" name="postcode"></span></td>
+                            <td class="title" style="color: #000;">通讯地址：</td>
+                            <td class="content"><span class="details-text" id="contactAddress" name="contactAddress"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

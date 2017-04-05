@@ -1,0 +1,270 @@
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                发布技术需求<span class="nav-attach">
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                友情提示：您可以填写技术需求信息，提交技术需求，经审核后予以发布&nbsp;！</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">技术需求基本信息</div>
+    </div>
+    <div class="block-content collapse in">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>需求名称：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>关键字：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span2"/>
+                        <input type="text"  class="form-input span2"/>
+                        <input type="text"  class="form-input span2"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>所属行业：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>高新技术领域：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>来源类型：</span>
+                    </td>
+                    <td class="span6 from-radio">
+                        <input type="radio" checked="checked" name="test" value="1"><span>一般项目</span>
+                        <input type="radio" name="test" value="2"><span>外交官项目</span>
+                        <input type="radio" name="test" value="3"><span>鲁台项目</span>
+                        <input type="radio" name="test" value="4"><span>中科院项目</span>
+                        <input type="radio" name="test" value="5"><span>鲁内蒙项目</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>合作方式：</span>
+                    </td>
+                    <td class="span6 from-radio">
+                        <input type="checkbox" value="123"/><span>技术转让</span>
+                        <input type="checkbox" value="123"/><span>专利许可</span>
+                        <input type="checkbox" value="123"/><span>委托开发</span>
+                        <input type="checkbox" value="123"/><span>合作开发</span>
+                        <input type="checkbox" value="123"/><span>技术咨询</span>
+                        <br>
+                        <input type="checkbox" value="123"/><span>技术服务</span>
+                        <input type="checkbox" value="123"/><span>技术入股</span>
+                        <input type="checkbox" value="123"/><span>创业融资</span>
+                        <input type="checkbox" value="123"/><span>股权融资</span>
+                        <input type="checkbox" value="123"/><span>其他</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>所在地：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>学科分类：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>战略新兴产业：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>欲投资金额（万）：</span>
+                    </td>
+                    <td class="span6">
+                        <input type="text"  class="form-input span6"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>解决时限要求：</span>
+                    </td>
+                    <td class="span6 from-radio">
+                        <input type="radio" checked="checked" name="time" value="3"><span>3个月</span>
+                        <input type="radio" name="time" value="6"><span>6个月</span>
+                        <input type="radio" name="time" value="long"><span>长期</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>难题描述：</span>
+                    </td>
+                    <td class="span6">
+                        <textarea rows="4" class="span12">
+
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>上传附件：</span>
+                        <p>jpg,jpeg,png格式，不超过1Mb</p>
+                    </td>
+                    <td class="span6">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>上传视频：</span>
+                        <p>仅支持flv格式，不超过20Mb</p>
+                    </td>
+                    <td class="span6">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>上传文本附件：</span>
+                        <p>仅支持doc,xls,pdf,txt,docx格式，不超过10Mb</p>
+                    </td>
+                    <td class="span6">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="block">
+    <div class="navbar navbar-inner block-header">
+        <div class="muted pull-left">联系信息</div>
+    </div>
+    <div class="block-content collapse in">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>联系人：</span>
+                    </td>
+                   <td class="span4">
+                       <input type="text"  class="form-input"/>
+                   </td>
+                    <td class="span2 from-title">
+                        <span>联系人职务：</span>
+                    </td>
+                   <td class="span4">
+                       <input type="text"  class="form-input"/>
+                   </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>联系电话：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                    <td class="span2 from-title">
+                        <b class="fx">*</b>
+                        <span>手机号码：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>通讯地址：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                    <td class="span2 from-title">
+                        <span>邮编：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>Email：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="email"  class="form-input"/>
+                    </td>
+                    <td class="span2 from-title">
+                        <span>网址：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="span2 from-title">
+                        <span>传真：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                    <td class="span2 from-title">
+                        <span>QQ/MSN：</span>
+                    </td>
+                    <td class="span4">
+                        <input type="text"  class="form-input"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- 完成信息后的操作 -->
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary">保存</button>
+    <button type="submit" class="btn btn-success">提交审核</button>
+    <button type="button" class="btn">取消</button>
+</div>

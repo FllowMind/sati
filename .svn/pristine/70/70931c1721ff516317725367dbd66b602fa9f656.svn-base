@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.UnitBaseInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.UnitBaseInfo">
+		<id column="UNIT_BASEINFO_ID" jdbcType="INTEGER" property="unitBaseinfoId" />
+		<result column="UNIT_NAME" jdbcType="VARCHAR" property="unitName" />
+		<result column="UNIT_ABBREVIATION" jdbcType="VARCHAR" property="unitAbbreviation" />
+		<result column="ESTABLISHMENT_DATE" jdbcType="TIMESTAMP"
+			property="establishmentDate" />
+		<result column="LEGAL_REPRESENTATIVE" jdbcType="VARCHAR"
+			property="legalRepresentative" />
+		<result column="UNIT_ADDRESS" jdbcType="VARCHAR" property="unitAddress" />
+		<result column="lOCATION_ID" jdbcType="INTEGER" property="locationId" />
+		<result column="INFO_KEY" jdbcType="VARCHAR" property="key" />
+		<result column="UNIT_CODE_TYPE" jdbcType="INTEGER" property="unitCodeType" />
+		<result column="UNIT_CODE" jdbcType="VARCHAR" property="unitCode" />
+		<result column="UNIT_CODE_IMAGE_URL" jdbcType="VARCHAR"
+			property="unitCodeImageUrl" />
+		<result column="UNIT_PROFILE" jdbcType="VARCHAR" property="unitProfile" />
+		<result column="BUSINESS_FIELD" jdbcType="VARCHAR" property="businessField" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CONTACT_ID" jdbcType="INTEGER" property="contactId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		UNIT_BASEINFO_ID, UNIT_NAME, UNIT_ABBREVIATION,
+		ESTABLISHMENT_DATE,
+		LEGAL_REPRESENTATIVE,
+		UNIT_ADDRESS, lOCATION_ID,
+		INFO_KEY, UNIT_CODE_TYPE, UNIT_CODE,
+		UNIT_CODE_IMAGE_URL, UNIT_PROFILE,
+		BUSINESS_FIELD, REMARK, CONTACT_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from unit_base_infos
+		where UNIT_BASEINFO_ID =
+		#{unitBaseinfoId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		unit_base_infos
+		where UNIT_BASEINFO_ID =
+		#{unitBaseinfoId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="unitBaseinfoId"
+		parameterType="com.jyu.sati.entity.UnitBaseInfo">
+		insert into unit_base_infos (UNIT_BASEINFO_ID,
+		UNIT_NAME, UNIT_ABBREVIATION,
+		ESTABLISHMENT_DATE, LEGAL_REPRESENTATIVE,
+		UNIT_ADDRESS, lOCATION_ID, INFO_KEY,
+		UNIT_CODE_TYPE, UNIT_CODE,
+		UNIT_CODE_IMAGE_URL,
+		UNIT_PROFILE, BUSINESS_FIELD, REMARK,
+		CONTACT_ID)
+		values (#{unitBaseinfoId,jdbcType=INTEGER},
+		#{unitName,jdbcType=VARCHAR},
+		#{unitAbbreviation,jdbcType=VARCHAR},
+		#{establishmentDate,jdbcType=TIMESTAMP},
+		#{legalRepresentative,jdbcType=VARCHAR},
+		#{unitAddress,jdbcType=VARCHAR}, #{locationId,jdbcType=INTEGER},
+		#{key,jdbcType=VARCHAR},
+		#{unitCodeType,jdbcType=INTEGER},
+		#{unitCode,jdbcType=VARCHAR}, #{unitCodeImageUrl,jdbcType=VARCHAR},
+		#{unitProfile,jdbcType=VARCHAR}, #{businessField,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR},
+		#{contactId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="unitBaseinfoId" parameterType="com.jyu.sati.entity.UnitBaseInfo">
+		insert into unit_base_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="unitBaseinfoId != null">
+				UNIT_BASEINFO_ID,
+			</if>
+			<if test="unitName != null">
+				UNIT_NAME,
+			</if>
+			<if test="unitAbbreviation != null">
+				UNIT_ABBREVIATION,
+			</if>
+			<if test="establishmentDate != null">
+				ESTABLISHMENT_DATE,
+			</if>
+			<if test="legalRepresentative != null">
+				LEGAL_REPRESENTATIVE,
+			</if>
+			<if test="unitAddress != null">
+				UNIT_ADDRESS,
+			</if>
+			<if test="locationId != null">
+				lOCATION_ID,
+			</if>
+			<if test="key != null">
+				INFO_KEY,
+			</if>
+			<if test="unitCodeType != null">
+				UNIT_CODE_TYPE,
+			</if>
+			<if test="unitCode != null">
+				UNIT_CODE,
+			</if>
+			<if test="unitCodeImageUrl != null">
+				UNIT_CODE_IMAGE_URL,
+			</if>
+			<if test="unitProfile != null">
+				UNIT_PROFILE,
+			</if>
+			<if test="businessField != null">
+				BUSINESS_FIELD,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="contactId != null">
+				CONTACT_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="unitBaseinfoId != null">
+				#{unitBaseinfoId,jdbcType=INTEGER},
+			</if>
+			<if test="unitName != null">
+				#{unitName,jdbcType=VARCHAR},
+			</if>
+			<if test="unitAbbreviation != null">
+				#{unitAbbreviation,jdbcType=VARCHAR},
+			</if>
+			<if test="establishmentDate != null">
+				#{establishmentDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="legalRepresentative != null">
+				#{legalRepresentative,jdbcType=VARCHAR},
+			</if>
+			<if test="unitAddress != null">
+				#{unitAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="locationId != null">
+				#{locationId,jdbcType=INTEGER},
+			</if>
+			<if test="key != null">
+				#{key,jdbcType=VARCHAR},
+			</if>
+			<if test="unitCodeType != null">
+				#{unitCodeType,jdbcType=INTEGER},
+			</if>
+			<if test="unitCode != null">
+				#{unitCode,jdbcType=VARCHAR},
+			</if>
+			<if test="unitCodeImageUrl != null">
+				#{unitCodeImageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="unitProfile != null">
+				#{unitProfile,jdbcType=VARCHAR},
+			</if>
+			<if test="businessField != null">
+				#{businessField,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="contactId != null">
+				#{contactId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.UnitBaseInfo">
+		update unit_base_infos
+		<set>
+			<if test="unitName != null">
+				UNIT_NAME = #{unitName,jdbcType=VARCHAR},
+			</if>
+			<if test="unitAbbreviation != null">
+				UNIT_ABBREVIATION = #{unitAbbreviation,jdbcType=VARCHAR},
+			</if>
+			<if test="establishmentDate != null">
+				ESTABLISHMENT_DATE =
+				#{establishmentDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="legalRepresentative != null">
+				LEGAL_REPRESENTATIVE =
+				#{legalRepresentative,jdbcType=VARCHAR},
+			</if>
+			<if test="unitAddress != null">
+				UNIT_ADDRESS = #{unitAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="locationId != null">
+				lOCATION_ID = #{locationId,jdbcType=INTEGER},
+			</if>
+			<if test="key != null">
+				INFO_KEY = #{key,jdbcType=VARCHAR},
+			</if>
+			<if test="unitCodeType != null">
+				UNIT_CODE_TYPE = #{unitCodeType,jdbcType=INTEGER},
+			</if>
+			<if test="unitCode != null">
+				UNIT_CODE = #{unitCode,jdbcType=VARCHAR},
+			</if>
+			<if test="unitCodeImageUrl != null">
+				UNIT_CODE_IMAGE_URL =
+				#{unitCodeImageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="unitProfile != null">
+				UNIT_PROFILE = #{unitProfile,jdbcType=VARCHAR},
+			</if>
+			<if test="businessField != null">
+				BUSINESS_FIELD = #{businessField,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="contactId != null">
+				CONTACT_ID = #{contactId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where UNIT_BASEINFO_ID = #{unitBaseinfoId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.UnitBaseInfo">
+		update
+		unit_base_infos
+		set UNIT_NAME = #{unitName,jdbcType=VARCHAR},
+		UNIT_ABBREVIATION = #{unitAbbreviation,jdbcType=VARCHAR},
+		ESTABLISHMENT_DATE = #{establishmentDate,jdbcType=TIMESTAMP},
+		LEGAL_REPRESENTATIVE = #{legalRepresentative,jdbcType=VARCHAR},
+		UNIT_ADDRESS = #{unitAddress,jdbcType=VARCHAR},
+		lOCATION_ID =
+		#{locationId,jdbcType=INTEGER},
+		INFO_KEY = #{key,jdbcType=VARCHAR},
+		UNIT_CODE_TYPE = #{unitCodeType,jdbcType=INTEGER},
+		UNIT_CODE =
+		#{unitCode,jdbcType=VARCHAR},
+		UNIT_CODE_IMAGE_URL =
+		#{unitCodeImageUrl,jdbcType=VARCHAR},
+		UNIT_PROFILE =
+		#{unitProfile,jdbcType=VARCHAR},
+		BUSINESS_FIELD =
+		#{businessField,jdbcType=VARCHAR},
+		REMARK = #{remark,jdbcType=VARCHAR},
+		CONTACT_ID = #{contactId,jdbcType=INTEGER}
+		where UNIT_BASEINFO_ID =
+		#{unitBaseinfoId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 更新企业用户的单位机构代码图片存放路径 -->
+	<update id="updateCompanyUnitCodeImage">
+		UPDATE unit_base_infos
+		SET UNIT_CODE_IMAGE_URL =
+		#{imageUrl,jdbcType=VARCHAR}
+		WHERE
+		UNIT_BASEINFO_ID = (
+		SELECT
+		a.UNIT_BASEINFO_ID
+		FROM
+		(
+		SELECT
+		ub.UNIT_BASEINFO_ID
+		FROM
+		unit_base_infos ub
+		INNER JOIN companies c ON
+		c.BASE_INFO_ID = ub.UNIT_BASEINFO_ID
+		INNER
+		JOIN users u ON u.COMPANY_ID
+		= c.COMPANY_ID
+		WHERE
+		u.USER_ID =
+		#{userId,jdbcType=VARCHAR}
+		) a
+		)
+	</update>
+	<!-- 更新高校用户的单位机构代码图片存放路径 -->
+	<update id="updateCollegeUnitCodeImage">
+		UPDATE unit_base_infos
+		SET UNIT_CODE_IMAGE_URL =
+		#{imageUrl,jdbcType=VARCHAR}
+		WHERE
+		UNIT_BASEINFO_ID = (
+		SELECT
+		a.UNIT_BASEINFO_ID
+		FROM
+		(
+		SELECT
+		ub.UNIT_BASEINFO_ID
+		FROM
+		unit_base_infos ub
+		INNER JOIN unit_infos ui ON ub.UNIT_BASEINFO_ID = ui.BASE_INFO_ID
+		INNER JOIN users u ON u.UNIVERSITY_ID = ui.UNIT_INFO_ID
+		WHERE
+		u.USER_ID
+		=
+		#{userId,jdbcType=VARCHAR}
+		) a
+		)
+	</update>
+	<!-- 更新科研单位用户的单位机构代码图片存放路径 -->
+	<update id="updateScientifyUnitCodeImage">
+		UPDATE unit_base_infos
+		SET UNIT_CODE_IMAGE_URL =
+		#{imageUrl,jdbcType=VARCHAR}
+		WHERE
+		UNIT_BASEINFO_ID = (
+		SELECT
+		a.UNIT_BASEINFO_ID
+		FROM
+		(
+		SELECT
+		ub.UNIT_BASEINFO_ID
+		FROM
+		unit_base_infos ub
+		INNER JOIN unit_infos ui ON ub.UNIT_BASEINFO_ID = ui.BASE_INFO_ID
+		INNER JOIN users u ON u.SRU_ID = ui.UNIT_INFO_ID
+		WHERE
+		u.USER_ID
+		=
+		#{userId,jdbcType=VARCHAR}
+		) a
+		)
+	</update>
+	<!-- 更新中介机构用户的单位机构代码图片存放路径 -->
+	<update id="updateAgencyUnitCodeImage">
+		UPDATE unit_base_infos
+		SET UNIT_CODE_IMAGE_URL =
+		#{imageUrl,jdbcType=VARCHAR}
+		WHERE
+		UNIT_BASEINFO_ID = (
+		SELECT
+		a.UNIT_BASEINFO_ID
+		FROM
+		(
+		SELECT
+		ub.UNIT_BASEINFO_ID
+		FROM
+		unit_base_infos ub
+		INNER JOIN agencies ag ON ag.BASE_INFO_ID = ub.UNIT_BASEINFO_ID
+        INNER JOIN users u ON u.AGENCY_ID = ag.AGENCY_ID
+		WHERE
+		u.USER_ID
+		=
+		#{userId,jdbcType=VARCHAR}
+		) a
+		)
+	</update>
+
+</mapper>

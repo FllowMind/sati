@@ -1,0 +1,63 @@
+<!-- 添加菜单模块 -->
+<meta charset="UTF-8">
+<div class="modal-header">   
+	<h3>添加权限模块 </h3>  
+</div>
+<div class="modal-body">
+	<form class="form-horizontal" id="addPermissonForm">
+	   <div class="form-group">
+	       <label for="permissionName" class="col-sm-2 control-label">
+	           <b class="fx">*</b>
+	           <span class="labelSpan">权限模块名：</span>
+	       </label>
+	       <div class="col-sm-6">
+	           <div class="input-group">
+	               <input type="text" class="form-control" id="permissionName" name="permissionName" placeholder="action访问路径，如：menu:read">
+	           </div>
+	       </div>
+	   </div>
+	   <div class="form-group"  style="margin-top: 20px;">
+	       <label for="permissionMark" class="col-sm-2 control-label">
+	           <span class="labelSpan">权限标记：</span>
+	       </label>
+	       <div class="col-sm-6">
+	           <div class="input-group">
+	                <select data-placeholder="选择权限标记" class="dept_select span3" id="permissionMark">
+						<option value="-1"></option>
+						<option value="1">菜单权限</option>
+						<option value="2">普通权限</option>
+					</select>
+	           </div>
+	       </div>
+	   </div>
+	   <div class="form-group"  style="margin-top: 20px;">
+	       <label for="description" class="col-sm-2 control-label">
+	           <b class="fx">*</b>
+	           <span class="labelSpan">权限模块描述：</span>
+	       </label>
+	       <div class="col-sm-6">
+	           <div class="input-group">
+	                <input type="text" class="form-control" id="description" name="description" placeholder="该权限的作用描述">
+	           </div>
+	       </div>
+	   </div>
+	    
+	   <!-- <div class="form-group"  style="margin-top: 20px;">
+	       <label for="status" class="col-sm-2 control-label">
+	           <span class="labelSpan">权限状态：</span>
+	       </label>
+	       <div class="col-sm-6">
+	           <div class="input-group">
+	           		<input type="radio" name="status" id="status" value="1" checked="checked"/><span style="margin:6px;">可用</span>
+	           		<input type="radio" name="status" id="status" value="-1"/><span style="margin:6px;">禁用</span>
+	           </div>
+	       </div>
+	   </div> -->
+	</form>
+</div> 
+<div class="modal-footer">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-info" onclick="addPermissionModule(1);">立即添加</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+     </div>
+</div>

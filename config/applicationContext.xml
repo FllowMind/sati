@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
+
+
+	<!-- 配置需要扫描的包 -->
+	<context:component-scan base-package="com.jyu.sati">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<!-- 配置数据源 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+	</bean>
+	<!-- 配置国际化资源文件 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n"></property>
+	</bean>
+
+	<!-- 配置 SessionLocalResolver -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<mvc:interceptors>
+		<!-- 配置 LocaleChanceInterceptor -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+	</mvc:interceptors>
+
+
+
+	<!-- 配置kaptcha验证码 <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha"> 
+		<property name="config"> <bean class="com.google.code.kaptcha.util.Config"> 
+		<constructor-arg type="java.util.Properties"> <props> <prop key="kaptcha.image.width">100</prop> 
+		<prop key="kaptcha.image.height">50</prop> <prop key="kaptcha.noise.impl">com.google.code.kaptcha.impl.NoNoise</prop> 
+		<prop key="kaptcha.textproducer.char.string">0123456789abcdefghijklmnopqrstuvwxyz</prop> 
+		<prop key="kaptcha.textproducer.char.length">4</prop> </props> </constructor-arg> 
+		</bean> </property> </bean> -->
+	<mvc:view-controller path="/*" view-name="/*" />
+</beans>

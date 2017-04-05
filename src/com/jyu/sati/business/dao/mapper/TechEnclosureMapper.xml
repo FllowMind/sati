@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.TechEnclosureDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.TechEnclosure">
+		<id column="ENCLOSURE_ID" jdbcType="INTEGER" property="enclosureId" />
+		<result column="ENCLOSURE_URL" jdbcType="VARCHAR" property="enclosureUrl" />
+		<result column="ENCLOSURE_DESC" jdbcType="VARCHAR" property="enclosureDesc" />
+		<result column="ENCLOSURE_TYPE" jdbcType="INTEGER" property="enclosureType" />
+		<result column="BIND_ID" jdbcType="INTEGER" property="bindId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ENCLOSURE_ID, ENCLOSURE_URL, ENCLOSURE_DESC,
+		ENCLOSURE_TYPE, BIND_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from tech_enclosures
+		where ENCLOSURE_ID =
+		#{enclosureId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		tech_enclosures
+		where ENCLOSURE_ID = #{enclosureId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="enclosureId"
+		parameterType="com.jyu.sati.entity.TechEnclosure">
+		insert into tech_enclosures
+		(ENCLOSURE_ID, ENCLOSURE_URL,
+		ENCLOSURE_DESC,
+		ENCLOSURE_TYPE, BIND_ID)
+		values
+		(#{enclosureId,jdbcType=INTEGER},
+		#{enclosureUrl,jdbcType=VARCHAR},
+		#{enclosureDesc,jdbcType=VARCHAR},
+		#{enclosureType,jdbcType=INTEGER},
+		#{bindId,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="enclosureId" parameterType="com.jyu.sati.entity.TechEnclosure">
+		insert into tech_enclosures
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="enclosureId != null">
+				ENCLOSURE_ID,
+			</if>
+			<if test="enclosureUrl != null">
+				ENCLOSURE_URL,
+			</if>
+			<if test="enclosureDesc != null">
+				ENCLOSURE_DESC,
+			</if>
+			<if test="enclosureType != null">
+				ENCLOSURE_TYPE,
+			</if>
+			<if test="bindId != null">
+				BIND_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="enclosureId != null">
+				#{enclosureId,jdbcType=INTEGER},
+			</if>
+			<if test="enclosureUrl != null">
+				#{enclosureUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="enclosureDesc != null">
+				#{enclosureDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="enclosureType != null">
+				#{enclosureType,jdbcType=INTEGER},
+			</if>
+			<if test="bindId != null">
+				#{bindId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.TechEnclosure">
+		update tech_enclosures
+		<set>
+			<if test="enclosureUrl != null">
+				ENCLOSURE_URL = #{enclosureUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="enclosureDesc != null">
+				ENCLOSURE_DESC = #{enclosureDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="enclosureType != null">
+				ENCLOSURE_TYPE = #{enclosureType,jdbcType=INTEGER},
+			</if>
+			<if test="bindId != null">
+				BIND_ID = #{bindId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where ENCLOSURE_ID = #{enclosureId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.TechEnclosure">
+		update
+		tech_enclosures
+		set ENCLOSURE_URL = #{enclosureUrl,jdbcType=VARCHAR},
+		ENCLOSURE_DESC = #{enclosureDesc,jdbcType=VARCHAR},
+		ENCLOSURE_TYPE =
+		#{enclosureType,jdbcType=INTEGER},
+		BIND_ID = #{bindId,jdbcType=INTEGER}
+		where ENCLOSURE_ID = #{enclosureId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 获取技术供给图片附件id -->
+	<select id="getImageEnclosureByTsiId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		e.*
+		FROM
+		tech_enclosures e
+		INNER JOIN
+		technology_base_infos b
+		ON
+		e.ENCLOSURE_ID =
+		b.IMAGE_ID
+		INNER JOIN
+		technology_supply_infos s
+		ON
+		b.TBI_ID = s.TBI_ID
+		WHERE
+		s.TSI_ID =
+		#{tsiId,jdbcType=INTEGER}
+	</select>
+	<!-- 获取技术供给文本附件 -->
+	<select id="getTextEnclosureByTsiId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		e.*
+		FROM
+		tech_enclosures e
+		INNER JOIN
+		technology_base_infos b
+		ON
+		e.ENCLOSURE_ID =
+		b.TEXT_ID
+		INNER JOIN
+		technology_supply_infos s
+		ON
+		b.TBI_ID = s.TBI_ID
+		WHERE
+		s.TSI_ID =
+		#{tsiId,jdbcType=INTEGER}
+	</select>
+	<!-- 获取技术供给视频附件 -->
+	<select id="getVideoEnclosureByTsiId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		e.*
+		FROM
+		tech_enclosures e
+		INNER JOIN
+		technology_base_infos b
+		ON
+		e.ENCLOSURE_ID =
+		b.VIDEO_ID
+		INNER JOIN
+		technology_supply_infos s
+		ON
+		b.TBI_ID = s.TBI_ID
+		WHERE
+		s.TSI_ID =
+		#{tsiId,jdbcType=INTEGER}
+	</select>
+</mapper>

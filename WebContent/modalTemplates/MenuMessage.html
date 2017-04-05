@@ -1,0 +1,174 @@
+<!-- 功能页 -->
+<meta charset="UTF-8">
+<div class="modal-header">   
+	<h3>当前菜单项：<span id="menuNameTitle"></span></h3>  
+</div> 
+<div class="modal-body" id="menuPanel">
+	<div id="model-content-from">
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#find" data-toggle="tab">菜单项基本信息</a></li>
+			<li><a href="#add" data-toggle="tab">添加子菜单</a></li>
+			<li><a href="#edit" data-toggle="tab">修改基本信息</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<!-- find -->
+			<div class="tab-pane fade in active" id="find">
+				<!-- 修改本菜单项的信息 -->
+			  	<div style="margin-left: 24px;margin-bottom: 10px;">
+					<span>当前菜单状态：<span id="status"></span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button class="btn btn-info" value="" onclick="updateMenuStatus(this);">切换当前状态</button>
+					<button class="btn btn-danger" value="" onclick="goBack(1);">删除</button>
+				</div>
+				<div style="margin-top: 10px;margin-left:24px;">
+					<span><strong id="childMenuMsg"></strong></span>
+					<div id="childMenuContent" style="margin-top: 10px; margin-left: -20px;">
+					</div>
+				</div>
+			</div>
+			<!-- find end-->
+			<!-- add -->
+			<div class="tab-pane fade" id="add">
+			  	<!-- 添加子菜单 -->
+			  	<div style="margin-left:24px;">
+					<span style="display:block;">请填写下面子菜单的基本信息</span>
+				</div>
+				<form class="form-horizontal" id="addMenuForm">
+				   <div class="form-group" style="margin-top: 20px;">
+				       <label for="menuName" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">菜单模块名：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				               <input type="text" class="form-control" id="menuName" name="menuName" placeholder="菜单模块名">
+				           </div>
+				       </div>
+				   </div>
+					<div class="form-group"  style="margin-top: 20px;">
+				        <label class="col-sm-2 control-label">
+				        	<b class="fx">*</b>
+				           <span class="labelSpan">绑定权限：</span>
+				        </label>
+				        <div class="col-sm-6">
+							<div class="input-group">
+			                	<select data-placeholder="选择需要绑定的权限" class="dept_select" id="permissionOption" name="permissionOption">
+			                	
+								</select>
+							</div>
+				        </div>
+				    </div>
+				   <div class="form-group"  style="margin-top: 20px;">
+				       <label for="linkUrl" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">菜单模块访问方式：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				                <input type="text" class="form-control" id="linkUrl" name="linkUrl" placeholder="请填写方法：如：getMenu">
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group" style="margin-top: 20px;">
+				       <label for="menuOrder" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">模块排序号：</span>
+				       </label>
+				       <div class="col-sm-6">
+				           <div class="input-group">
+				               <input type="number" class="form-control" id="menuOrder" name="menuOrder" placeholder="该序号方便排序">
+				           </div>
+				       </div>
+				   </div>
+				   <div class="form-group" style="margin-top: 20px;float: right;margin-right: 24px;">
+					   <div class="col-sm-offset-2 col-sm-10">
+					        <button type="button" class="btn btn-info" onclick="addMenuNode();">添加</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				       </div>
+			       </div>
+				</form>
+			</div>
+			<!-- add end -->
+			<!-- edit  -->
+			<div class="tab-pane fade" id="edit">
+				<!-- 修改本菜单项的信息 -->
+				<form class="form-horizontal" id="editMenuForm">
+					<div class="form-group" style="margin-top: 20px;">
+				        <label for="editMenuName" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">菜单模块名：</span>
+				        </label>
+				        <div class="col-sm-6">
+				            <div class="input-group">
+				               <input type="text" class="form-control" id="editMenuName" name="editMenuName" placeholder="菜单模块名">
+				            </div>
+				        </div>
+					</div>
+					<div class="form-group"  style="margin-top: 20px; display: none;" id="fatherMenuContent">
+				        <label class="col-sm-2 control-label">
+				           <span class="labelSpan">父级菜单：</span>
+				        </label>
+				        <div class="col-sm-6">
+			                <select data-placeholder="选择父级菜单" class="dept_select" id="fatherMenuOption">
+			                	
+	 						</select>
+				        </div>
+				    </div>
+				    <div class="form-group"  style="margin-top: 20px;">
+				        <label class="col-sm-2 control-label">
+				        	<b class="fx">*</b>
+				           <span class="labelSpan">绑定权限：</span>
+				        </label>
+				        <div class="col-sm-6">
+							<div class="input-group">
+			                	<select data-placeholder="选择需要绑定的权限" class="dept_select" id="editPermissionOption" name="editPermissionOption">
+			                	
+								</select>
+							</div>
+				        </div>
+				    </div>
+					<div class="form-group"  style="margin-top: 20px;">
+				        <label for="editLinkUrl" class="col-sm-2 control-label">
+				           <b class="fx">*</b>
+				           <span class="labelSpan">菜单模块访问方式：</span>
+				        </label>
+				        <div class="col-sm-6">
+				            <div class="input-group">
+				                <input type="text" class="form-control" id="editLinkUrl" name="editLinkUrl" placeholder="请填写方法：如：getMenu">
+				            </div>
+				        </div>
+				    </div>
+					<div class="form-group" style="margin-top: 20px;">
+				        <label for="editMenuOrder" class="col-sm-2 control-label">
+				            <b class="fx">*</b>
+				            <span class="labelSpan">模块排序号：</span>
+				        </label>
+				        <div class="col-sm-6">
+				            <div class="input-group">
+				                <input type="number" class="form-control" id="editMenuOrder" name="editMenuOrder" placeholder="该序号方便排序">
+				            </div>
+				        </div>
+				    </div>
+					<div class="form-group" style="margin-top: 20px;float: right;margin-right: 24px;">
+					    <div class="col-sm-offset-2 col-sm-10">
+					        <button type="button" class="btn btn-info" onclick="editMenuNode();">保存修改</button>
+					        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				        </div>
+			        </div>
+				</form>
+			</div>
+			<!-- edit end -->
+		</div>
+	</div>
+	<div id="modal-remove" style="display: none;">
+		<div class="modal-body">   
+			<p id="removeTitle"></p>  
+		</div> 
+		<div style="float: right;margin-right:24px;">
+			<button type="button" class="btn btn-danger" onclick="removeMenuNode(this);">确定删除</button>
+			<button type="button" class="btn btn-default" onclick="goBack(2);">取消</button>
+		</div>
+	</div>
+</div>
+

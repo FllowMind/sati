@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.PermissionDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.Permission">
+		<id column="PERMISSION_ID" jdbcType="INTEGER" property="permissionId" />
+		<result column="FATHER_PERMISSION_ID" jdbcType="INTEGER"
+			property="fatherPermissionId" />
+		<result column="PERMISSION_MARK" jdbcType="INTEGER" property="permissionMark" />
+		<result column="PERMISSION_LEVEL" jdbcType="INTEGER" property="permissionLevel" />
+		<result column="PERMISSION_NAME" jdbcType="VARCHAR" property="permissionName" />
+		<result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+		<result column="STATUS" jdbcType="INTEGER" property="status" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="OPERATE_TIME" jdbcType="TIMESTAMP" property="operateTime" />
+	</resultMap>
+
+	<parameterMap type="com.jyu.sati.entity.Permission" id="PermissionMap">
+		<parameter property="permissionId" jdbcType="INTEGER"
+			javaType="java.lang.Integer" />
+		<parameter property="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	</parameterMap>
+	<sql id="Base_Column_List">
+		PERMISSION_ID, FATHER_PERMISSION_ID, PERMISSION_MARK,
+		PERMISSION_LEVEL,
+		PERMISSION_NAME,
+		DESCRIPTION, STATUS, CREATE_TIME,
+		OPERATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from permissions
+		where PERMISSION_ID = #{permissionId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		permissions
+		where PERMISSION_ID = #{permissionId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="permissionId"
+		parameterType="com.jyu.sati.entity.Permission">
+		insert into permissions
+		(PERMISSION_ID,
+		FATHER_PERMISSION_ID,
+		PERMISSION_MARK,
+		PERMISSION_LEVEL,
+		PERMISSION_NAME,
+		DESCRIPTION, STATUS, CREATE_TIME,
+		OPERATE_TIME)
+		values
+		(#{permissionId,jdbcType=INTEGER},
+		#{fatherPermissionId,jdbcType=INTEGER},
+		#{permissionMark,jdbcType=INTEGER},
+		#{permissionLevel,jdbcType=INTEGER},
+		#{permissionName,jdbcType=VARCHAR},
+		#{description,jdbcType=VARCHAR},
+		#{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+		#{operateTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="permissionId" parameterType="com.jyu.sati.entity.Permission">
+		insert into permissions
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="permissionId != null">
+				PERMISSION_ID,
+			</if>
+			<if test="fatherPermissionId != null">
+				FATHER_PERMISSION_ID,
+			</if>
+			<if test="permissionMark != null">
+				PERMISSION_MARK,
+			</if>
+			<if test="permissionLevel != null">
+				PERMISSION_LEVEL,
+			</if>
+			<if test="permissionName != null">
+				PERMISSION_NAME,
+			</if>
+			<if test="description != null">
+				DESCRIPTION,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="operateTime != null">
+				OPERATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="permissionId != null">
+				#{permissionId,jdbcType=INTEGER},
+			</if>
+			<if test="fatherPermissionId != null">
+				#{fatherPermissionId,jdbcType=INTEGER},
+			</if>
+			<if test="permissionMark != null">
+				#{permissionMark,jdbcType=INTEGER},
+			</if>
+			<if test="permissionLevel != null">
+				#{permissionLevel,jdbcType=INTEGER},
+			</if>
+			<if test="permissionName != null">
+				#{permissionName,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operateTime != null">
+				#{operateTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.Permission">
+		update permissions
+		<set>
+			<if test="fatherPermissionId != null">
+				FATHER_PERMISSION_ID =
+				#{fatherPermissionId,jdbcType=INTEGER},
+			</if>
+			<if test="permissionMark != null">
+				PERMISSION_MARK = #{permissionMark,jdbcType=INTEGER},
+			</if>
+			<if test="permissionLevel != null">
+				PERMISSION_LEVEL = #{permissionLevel,jdbcType=INTEGER},
+			</if>
+			<if test="permissionName != null">
+				PERMISSION_NAME = #{permissionName,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null">
+				DESCRIPTION = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operateTime != null">
+				OPERATE_TIME = #{operateTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where PERMISSION_ID = #{permissionId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.Permission">
+		update permissions
+		set FATHER_PERMISSION_ID = #{fatherPermissionId,jdbcType=INTEGER},
+		PERMISSION_MARK = #{permissionMark,jdbcType=INTEGER},
+		PERMISSION_LEVEL
+		= #{permissionLevel,jdbcType=INTEGER},
+		PERMISSION_NAME =
+		#{permissionName,jdbcType=VARCHAR},
+		DESCRIPTION =
+		#{description,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=INTEGER},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+		OPERATE_TIME =
+		#{operateTime,jdbcType=TIMESTAMP}
+		where PERMISSION_ID =
+		#{permissionId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getPermissionByRoleId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM permissions p
+		INNER JOIN
+		role_permissions r
+		ON
+		r.PERMISSION_ID = p.PERMISSION_ID
+		WHERE
+		r.ROLE_ID =
+		#{roleId,jdbcType=INTEGER}
+		AND p.STATUS>'-1'
+	</select>
+
+
+	<update id="updatePermissionStatus" parameterType="java.lang.Integer">
+		UPDATE
+		permissions
+		SET
+		`STATUS`=-`STATUS`,
+		OPERATE_TIME = NOW()
+		WHERE
+		PERMISSION_ID = #{permissionId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getAllPermissions" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select *
+		from
+		permissions
+		<where>
+			<if test="level !=null ">
+				PERMISSION_LEVEL = #{level,jdbcType=INTEGER}
+			</if>
+		</where>
+	</select>
+
+	<select id="getAllChildPermissions" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		permissions
+		WHERE
+		FATHER_PERMISSION_ID = #{fatherId,jdbcType=INTEGER}
+	</select>
+
+	<select id="getPermissionStatus" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		SELECT
+		`STATUS`
+		FROM
+		permissions
+		WHERE
+		PERMISSION_ID =
+		#{permId,jdbcType=INTEGER}
+	</select>
+
+	<update id="updateChildStatus">
+		UPDATE permissions
+		SET
+		`STATUS`=#{permStatus,jdbcType=INTEGER}
+		WHERE
+		FATHER_PERMISSION_ID=#{fatherId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 获取角色已绑定的权限 -->
+	<select id="getAllPermissionsByRoleId" resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		permissions p
+		INNER JOIN
+		role_permissions r
+		ON
+		r.PERMISSION_ID=p.PERMISSION_ID
+		WHERE
+		r.ROLE_ID=#{roleId,jdbcType=INTEGER}
+	</select>
+	<!-- 获取角色未绑定的权限 -->
+	<select id="getAllUnBindPermissionsByRoleId" resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		permissions p
+		WHERE
+		p.PERMISSION_ID NOT IN (
+		SELECT
+		PERMISSION_ID
+		FROM
+		role_permissions
+		WHERE
+		ROLE_ID = #{roleId,jdbcType=INTEGER}
+		)
+	</select>
+	<!-- 获取未绑定指定角色的子权限 -->
+	<select id="getAllUnBindRoleChildsByFatherId" resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		permissions p
+		WHERE
+		p.FATHER_PERMISSION_ID =
+		#{permissionId,jdbcType=INTEGER}
+		AND p.PERMISSION_ID NOT IN (
+		SELECT
+		PERMISSION_ID
+		FROM
+		role_permissions
+		WHERE
+		ROLE_ID =
+		#{roleId,jdbcType=INTEGER}
+		)
+	</select>
+
+	<!-- 获取所有没有绑定菜单的权限 -->
+	<select id="getUnBindPermissions" resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		permissions p
+		WHERE
+		p.PERMISSION_ID
+		NOT IN
+		(SELECT PERMISSION_ID FROM
+		permission_menus)
+	</select>
+
+	<!-- 获取所有没有绑定菜单和綁定了指定菜单的权限 -->
+	<select id="getUnBindPermissionsByMenuIdAndMark" resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		permissions p
+		WHERE
+		p.PERMISSION_MARK =
+		#{permMark,jdbcType=INTEGER}
+		AND p.PERMISSION_ID NOT IN (
+		SELECT
+		PERMISSION_ID
+		FROM
+		permission_menus
+		<if test="menuId != null">
+			WHERE
+			MENU_ID !=
+			#{menuId,jdbcType=INTEGER}
+		</if>
+		)
+		
+	</select>
+
+	<!-- 获取角色绑定的权限 -->
+	<select id="getAllBindPermissionsByRoleId" resultMap="BaseResultMap">
+		SELECT
+		p.*
+		FROM
+		permissions p
+		INNER JOIN role_permissions r ON r.PERMISSION_ID =
+		p.PERMISSION_ID
+		WHERE
+		p.PERMISSION_ID IN (
+		SELECT
+		PERMISSION_ID
+		FROM
+		role_permissions
+		WHERE
+		ROLE_ID = #{roleId,jdbcType=INTEGER}
+		)
+	</select>
+
+
+
+</mapper>

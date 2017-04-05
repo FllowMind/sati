@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.CategoryInfoDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.CategoryInfo">
+		<id column="CATEGORY_INFO_ID" jdbcType="INTEGER" property="categoryInfoId" />
+		<result column="CATEGORY_INFO_NAME" jdbcType="VARCHAR"
+			property="categoryInfoName" />
+		<result column="FATHER_ID" jdbcType="INTEGER" property="fatherId" />
+		<result column="CATEGORY_INFO_LEVER" jdbcType="INTEGER"
+			property="categoryInfoLever" />
+		<result column="CATEGORY_INFO_TYPE" jdbcType="INTEGER"
+			property="categoryInfoType" />
+		<result column="CATEGORY_INFO_LEVEL" jdbcType="INTEGER"
+			property="categoryInfoLevel" />
+		<result column="FATHER_CATEGORY_INFO_ID" jdbcType="BIGINT"
+			property="fatherCategoryInfoId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		CATEGORY_INFO_ID, CATEGORY_INFO_NAME, FATHER_ID, CATEGORY_INFO_LEVER,
+		CATEGORY_INFO_TYPE,
+		CATEGORY_INFO_LEVEL, FATHER_CATEGORY_INFO_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from category_infos
+		where CATEGORY_INFO_ID = #{categoryInfoId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from category_infos
+		where CATEGORY_INFO_ID = #{categoryInfoId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="categoryInfoId"
+		parameterType="com.jyu.sati.entity.CategoryInfo">
+		insert into category_infos (CATEGORY_INFO_ID, CATEGORY_INFO_NAME,
+		FATHER_ID, CATEGORY_INFO_LEVER, CATEGORY_INFO_TYPE,
+		CATEGORY_INFO_LEVEL, FATHER_CATEGORY_INFO_ID)
+		values (#{categoryInfoId,jdbcType=INTEGER},
+		#{categoryInfoName,jdbcType=VARCHAR},
+		#{fatherId,jdbcType=INTEGER}, #{categoryInfoLever,jdbcType=INTEGER},
+		#{categoryInfoType,jdbcType=INTEGER},
+		#{categoryInfoLevel,jdbcType=INTEGER},
+		#{fatherCategoryInfoId,jdbcType=BIGINT})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="categoryInfoId" parameterType="com.jyu.sati.entity.CategoryInfo">
+		insert into category_infos
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="categoryInfoId != null">
+				CATEGORY_INFO_ID,
+			</if>
+			<if test="categoryInfoName != null">
+				CATEGORY_INFO_NAME,
+			</if>
+			<if test="fatherId != null">
+				FATHER_ID,
+			</if>
+			<if test="categoryInfoLever != null">
+				CATEGORY_INFO_LEVER,
+			</if>
+			<if test="categoryInfoType != null">
+				CATEGORY_INFO_TYPE,
+			</if>
+			<if test="categoryInfoLevel != null">
+				CATEGORY_INFO_LEVEL,
+			</if>
+			<if test="fatherCategoryInfoId != null">
+				FATHER_CATEGORY_INFO_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="categoryInfoId != null">
+				#{categoryInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoName != null">
+				#{categoryInfoName,jdbcType=VARCHAR},
+			</if>
+			<if test="fatherId != null">
+				#{fatherId,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoLever != null">
+				#{categoryInfoLever,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoType != null">
+				#{categoryInfoType,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoLevel != null">
+				#{categoryInfoLevel,jdbcType=INTEGER},
+			</if>
+			<if test="fatherCategoryInfoId != null">
+				#{fatherCategoryInfoId,jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.CategoryInfo">
+		update category_infos
+		<set>
+			<if test="categoryInfoName != null">
+				CATEGORY_INFO_NAME = #{categoryInfoName,jdbcType=VARCHAR},
+			</if>
+			<if test="fatherId != null">
+				FATHER_ID = #{fatherId,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoLever != null">
+				CATEGORY_INFO_LEVER = #{categoryInfoLever,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoType != null">
+				CATEGORY_INFO_TYPE = #{categoryInfoType,jdbcType=INTEGER},
+			</if>
+			<if test="categoryInfoLevel != null">
+				CATEGORY_INFO_LEVEL = #{categoryInfoLevel,jdbcType=INTEGER},
+			</if>
+			<if test="fatherCategoryInfoId != null">
+				FATHER_CATEGORY_INFO_ID = #{fatherCategoryInfoId,jdbcType=BIGINT},
+			</if>
+		</set>
+		where CATEGORY_INFO_ID = #{categoryInfoId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.CategoryInfo">
+		update category_infos
+		set CATEGORY_INFO_NAME = #{categoryInfoName,jdbcType=VARCHAR},
+		FATHER_ID = #{fatherId,jdbcType=INTEGER},
+		CATEGORY_INFO_LEVER = #{categoryInfoLever,jdbcType=INTEGER},
+		CATEGORY_INFO_TYPE = #{categoryInfoType,jdbcType=INTEGER},
+		CATEGORY_INFO_LEVEL = #{categoryInfoLevel,jdbcType=INTEGER},
+		FATHER_CATEGORY_INFO_ID = #{fatherCategoryInfoId,jdbcType=BIGINT}
+		where CATEGORY_INFO_ID = #{categoryInfoId,jdbcType=INTEGER}
+	</update>
+</mapper>

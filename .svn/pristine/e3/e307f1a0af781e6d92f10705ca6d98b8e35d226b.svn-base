@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.ProduceImageDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.ProduceImage">
+		<id column="PRODUCE_IMAGE_ID" jdbcType="INTEGER" property="produceImageId" />
+		<result column="PRODUCE_IMAGE_DESC" jdbcType="VARCHAR"
+			property="produceImageDesc" />
+		<result column="PRODUCE_IMAGE_URL" jdbcType="VARCHAR" property="produceImageUrl" />
+		<result column="PRODUCE_IMAGE_TYPE" jdbcType="INTEGER"
+			property="produceImageType" />
+		<result column="PRODUCE_ID" jdbcType="INTEGER" property="produceId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PRODUCE_IMAGE_ID, PRODUCE_IMAGE_DESC, PRODUCE_IMAGE_URL,
+		PRODUCE_IMAGE_TYPE, PRODUCE_ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from produce_images
+		where PRODUCE_IMAGE_ID =
+		#{produceImageId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		produce_images
+		where PRODUCE_IMAGE_ID =
+		#{produceImageId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="produceImageId"
+		parameterType="com.jyu.sati.entity.ProduceImage">
+		insert into produce_images (PRODUCE_IMAGE_DESC,
+		PRODUCE_IMAGE_URL, PRODUCE_IMAGE_TYPE, PRODUCE_ID
+		)
+		values (
+		#{produceImageDesc,jdbcType=VARCHAR},
+		#{produceImageUrl,jdbcType=VARCHAR},
+		#{produceImageType,jdbcType=INTEGER}, #{produceId,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="produceImageId" parameterType="com.jyu.sati.entity.ProduceImage">
+		insert into produce_images
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="produceImageDesc != null">
+				PRODUCE_IMAGE_DESC,
+			</if>
+			<if test="produceImageUrl != null">
+				PRODUCE_IMAGE_URL,
+			</if>
+			<if test="produceImageType != null">
+				PRODUCE_IMAGE_TYPE,
+			</if>
+			<if test="produceId != null">
+				PRODUCE_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="produceImageDesc != null">
+				#{produceImageDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="produceImageUrl != null">
+				#{produceImageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="produceImageType != null">
+				#{produceImageType,jdbcType=INTEGER},
+			</if>
+			<if test="produceId != null">
+				#{produceId,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.ProduceImage">
+		update produce_images
+		<set>
+			<if test="produceImageDesc != null">
+				PRODUCE_IMAGE_DESC =
+				#{produceImageDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="produceImageUrl != null">
+				PRODUCE_IMAGE_URL = #{produceImageUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="produceImageType != null">
+				PRODUCE_IMAGE_TYPE =
+				#{produceImageType,jdbcType=INTEGER},
+			</if>
+			<if test="produceId != null">
+				PRODUCE_ID = #{produceId,jdbcType=INTEGER},
+			</if>
+		</set>
+		where PRODUCE_IMAGE_ID = #{produceImageId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.ProduceImage">
+		update
+		produce_images
+		set PRODUCE_IMAGE_DESC =
+		#{produceImageDesc,jdbcType=VARCHAR},
+		PRODUCE_IMAGE_URL =
+		#{produceImageUrl,jdbcType=VARCHAR},
+		PRODUCE_IMAGE_TYPE =
+		#{produceImageType,jdbcType=INTEGER},
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+		where PRODUCE_IMAGE_ID =
+		#{produceImageId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getProduceImagesByProduceId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		produce_images
+		WHERE
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</select>
+	<!-- 获取指定produceid和图片类型的图片 -->
+	<select id="getProduceImagesByProduceIdAndImageType"
+		parameterType="com.jyu.sati.entity.ProduceImage" resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		produce_images
+		WHERE
+		PRODUCE_IMAGE_TYPE =
+		#{imageType,jdbcType=INTEGER}
+		AND PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</select>
+	<!-- 获取指定produceid和图片类型的图片 -->
+	<select id="getProduceImagesByImageType" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		produce_images
+		WHERE
+		PRODUCE_IMAGE_TYPE =
+		#{imageType,jdbcType=INTEGER}
+	</select>
+
+	<update id="updateImageTypeByImageIdAndType" parameterType="com.jyu.sati.entity.ProduceImage">
+		UPDATE produce_images
+		SET
+		PRODUCE_IMAGE_TYPE =
+		#{produceImageType,jdbcType=INTEGER}
+		WHERE
+		PRODUCE_IMAGE_ID =
+		#{produceImageId,jdbcType=INTEGER}
+	</update>
+
+	<delete id="deleteAllProduceImagesByProduceId" parameterType="java.lang.Integer">
+		DELETE
+		FROM
+		produce_images
+		WHERE
+		PRODUCE_ID =
+		#{produceId,jdbcType=INTEGER}
+	</delete>
+</mapper>

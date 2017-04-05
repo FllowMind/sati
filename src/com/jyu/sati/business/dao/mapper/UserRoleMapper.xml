@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.UserRoleDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.UserRole">
+		<id column="USER_ROLE_ID" jdbcType="INTEGER" property="userRoleId" />
+		<result column="ROLE_ID" jdbcType="INTEGER" property="roleId" />
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		USER_ROLE_ID, ROLE_ID, USER_ID, CREATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user_roles
+		where USER_ROLE_ID = #{userRoleId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from user_roles
+		where USER_ROLE_ID = #{userRoleId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="userRoleId"
+		parameterType="com.jyu.sati.entity.UserRole">
+		insert into user_roles (USER_ROLE_ID, ROLE_ID, USER_ID,
+		CREATE_TIME)
+		values (#{userRoleId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER},
+		#{userId,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="userRoleId" parameterType="com.jyu.sati.entity.UserRole">
+		insert into user_roles
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userRoleId != null">
+				USER_ROLE_ID,
+			</if>
+			<if test="roleId != null">
+				ROLE_ID,
+			</if>
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userRoleId != null">
+				#{userRoleId,jdbcType=INTEGER},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.UserRole">
+		update user_roles
+		<set>
+			<if test="roleId != null">
+				ROLE_ID = #{roleId,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				USER_ID = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where USER_ROLE_ID = #{userRoleId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.UserRole">
+		update user_roles
+		set ROLE_ID = #{roleId,jdbcType=INTEGER},
+		USER_ID = #{userId,jdbcType=VARCHAR},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		where USER_ROLE_ID = #{userRoleId,jdbcType=INTEGER}
+	</update>
+
+	<delete id="deleteByUserId" parameterType="java.lang.String">
+		delete from user_roles
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</delete>
+</mapper>

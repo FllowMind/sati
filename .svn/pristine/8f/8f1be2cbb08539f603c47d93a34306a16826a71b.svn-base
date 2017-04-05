@@ -1,0 +1,74 @@
+<!-- 产品成果管理 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted"><span>查询我的产品成果</span></div>
+    </div>
+   <div class="block-content collapse in">
+   		<table style="text-align: right;margin-left: 50px;" id="findConditionTable">
+            <tbody>
+                <tr>
+                    <td><span>关键字：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="produceKey" placeholder="输入关键字" name="produceKey" class="form-input  form-text"/>
+                    </td>
+                    <td>
+                    	<span style="margin-left: 40px;">产品类别：</span>
+                   	</td>
+                    <td style="padding-top:8px;">
+                   		<input type="text" placeholder="选择产品类别" id="produceTypeId" name="produceTypeId" class="form-input form-text"/>
+                   		<button type="button" style="width: 80px; margin-right: 84px;margin-top: -10px;" name="产品类别" id="produceType" class="btn btn-default"  onclick="showTreeModal(this);">请选择</button> 
+                   	</td> 
+                </tr>
+                <tr>
+                    <td><span>最早发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="startDate" name="startDate" class="datepicker" placeholder="选择最早发布时间">
+                    </td>
+                    <td><span style="margin-left: 40px;">最迟发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="endDate" name="endDate" class="datepicker" placeholder="选择最迟发布时间">
+                    	<button type="button" class="btn btn-primary" style="width: 80px;margin-top: -10px;" onclick="findProduceCondition();">查询</button>
+                        <button  type="button"  class="btn btn-warning" style="width: 80px;margin-top: -10px;" onclick="emptyCondition();">重置</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+   </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>我的产品成果</span></div>
+    </div>
+    <!--  style="display: none;" -->
+   <div class="block-content collapse in">
+   		<table class="table table-bordered details-table">
+   			<thead>
+   				<tr>
+   					<th>名称</th>
+   					<th>类别</th>
+   					<th>状态</th>
+   					<th>是否推荐到首页</th>
+   					<th>关键字</th>
+   					<th>浏览次数</th>
+   					<th>发布时间</th>
+   					<th>操作</th>
+   				</tr>
+   			</thead>
+   			<tbody id="produceTable">
+   			</tbody>
+   		</table>
+   </div>
+</div>

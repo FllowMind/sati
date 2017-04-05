@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.MenuDao">
+	<resultMap id="BaseResultMap" type="com.jyu.sati.entity.Menu">
+		<id column="MENU_ID" jdbcType="INTEGER" property="menuId" />
+		<result column="FATHER_MENU_ID" jdbcType="INTEGER" property="fatherMenuId" />
+		<result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
+		<result column="MENU_LEVEL" jdbcType="INTEGER" property="menuLevel" />
+		<result column="MENU_ORDER" jdbcType="INTEGER" property="menuOrder" />
+		<result column="LINK_URL" jdbcType="VARCHAR" property="linkUrl" />
+		<result column="STATUS" jdbcType="INTEGER" property="status" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		MENU_ID, FATHER_MENU_ID, MENU_NAME, MENU_LEVEL, MENU_ORDER,
+		LINK_URL, STATUS,
+		CREATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from menus
+		where MENU_ID = #{menuId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from menus
+		where MENU_ID = #{menuId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" useGeneratedKeys="true" keyProperty="menuId"
+		parameterType="com.jyu.sati.entity.Menu">
+		insert into menus (MENU_ID, FATHER_MENU_ID, MENU_NAME,
+		MENU_LEVEL, MENU_ORDER, LINK_URL,
+		STATUS, CREATE_TIME)
+		values
+		(#{menuId,jdbcType=INTEGER}, #{fatherMenuId,jdbcType=INTEGER},
+		#{menuName,jdbcType=VARCHAR},
+		#{menuLevel,jdbcType=INTEGER},
+		#{menuOrder,jdbcType=INTEGER}, #{linkUrl,jdbcType=VARCHAR},
+		#{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="menuId" parameterType="com.jyu.sati.entity.Menu">
+		insert into menus
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="menuId != null">
+				MENU_ID,
+			</if>
+			<if test="fatherMenuId != null">
+				FATHER_MENU_ID,
+			</if>
+			<if test="menuName != null">
+				MENU_NAME,
+			</if>
+			<if test="menuLevel != null">
+				MENU_LEVEL,
+			</if>
+			<if test="menuOrder != null">
+				MENU_ORDER,
+			</if>
+			<if test="linkUrl != null">
+				LINK_URL,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="menuId != null">
+				#{menuId,jdbcType=INTEGER},
+			</if>
+			<if test="fatherMenuId != null">
+				#{fatherMenuId,jdbcType=INTEGER},
+			</if>
+			<if test="menuName != null">
+				#{menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="menuLevel != null">
+				#{menuLevel,jdbcType=INTEGER},
+			</if>
+			<if test="menuOrder != null">
+				#{menuOrder,jdbcType=INTEGER},
+			</if>
+			<if test="linkUrl != null">
+				#{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.Menu">
+		update menus
+		<set>
+			<if test="fatherMenuId != null">
+				FATHER_MENU_ID = #{fatherMenuId,jdbcType=INTEGER},
+			</if>
+			<if test="menuName != null">
+				MENU_NAME = #{menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="menuLevel != null">
+				MENU_LEVEL = #{menuLevel,jdbcType=INTEGER},
+			</if>
+			<if test="menuOrder != null">
+				MENU_ORDER = #{menuOrder,jdbcType=INTEGER},
+			</if>
+			<if test="linkUrl != null">
+				LINK_URL = #{linkUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where MENU_ID = #{menuId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.Menu">
+		update menus
+		set
+		FATHER_MENU_ID = #{fatherMenuId,jdbcType=INTEGER},
+		MENU_NAME =
+		#{menuName,jdbcType=VARCHAR},
+		MENU_LEVEL =
+		#{menuLevel,jdbcType=INTEGER},
+		MENU_ORDER =
+		#{menuOrder,jdbcType=INTEGER},
+		LINK_URL = #{linkUrl,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=INTEGER},
+		CREATE_TIME =
+		#{createTime,jdbcType=TIMESTAMP}
+		where MENU_ID =
+		#{menuId,jdbcType=INTEGER}
+	</update>
+
+	<select id="getMenuByPermissionId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		m.*
+		from menus m
+		inner join
+		permission_menus p
+		on
+		m.MENU_ID = p.MENU_ID
+		where
+		p.PERMISSION_ID =
+		#{permissionId,jdbcType=INTEGER}
+
+	</select>
+
+	<!-- 获取所有菜单 -->
+	<select id="getAllMenuByLevel" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from menus
+		<where>
+			<if test="level !=null">
+				MENU_LEVEL = #{level,jdbcType=INTEGER}
+			</if>
+		</where>
+
+	</select>
+
+	<update id="updateMenuStatus" parameterType="java.lang.Integer">
+		UPDATE
+		menus
+		SET
+		`STATUS`=-`STATUS`
+		WHERE
+		MENU_ID = #{menuId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 获取所有菜单 -->
+	<select id="getAllChildMenus" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		SELECT
+		*
+		FROM
+		menus
+		WHERE
+		FATHER_MENU_ID =
+		#{fatherId,jdbcType=INTEGER}
+		ORDER BY
+		MENU_ORDER
+	</select>
+
+	<!-- 获取菜单状态 -->
+	<select id="getMenuStatus" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		SELECT
+		`STATUS`
+		FROM
+		menus
+		WHERE
+		MENU_ID =
+		#{menuId,jdbcType=INTEGER}
+	</select>
+
+	<!-- 更新所有子菜单状态为父菜单的状态 -->
+	<update id="updateChildStatus" parameterType="java.lang.Integer">
+		UPDATE menus
+		SET
+		`STATUS` = #{menuStatus,jdbcType=INTEGER}
+		WHERE
+		FATHER_MENU_ID =
+		#{fatherId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 解除绑定父菜单 -->
+	<update id="unBindWithFatherMenu" parameterType="java.lang.Integer">
+		UPDATE
+		menus
+		SET
+		FATHER_MENU_ID = NULL
+		WHERE
+		FATHER_MENU_ID =
+		#{fatherId,jdbcType=INTEGER}
+	</update>
+
+	<!-- 删除所有子菜单 -->
+	<delete id="deleteAllChildMenus" parameterType="java.lang.Integer">
+		DELETE
+		FROM
+		menus
+		WHERE
+		FATHER_MENU_ID = #{fatherId,jdbcType=INTEGER}
+	</delete>
+
+</mapper>

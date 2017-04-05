@@ -1,0 +1,73 @@
+<!-- 公告管理 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted"><span>查询政策法规</span></div>
+    </div>
+   <div class="block-content collapse in">
+   		<table style="margin-left: 50px;" id="findConditionTable">
+            <tbody>
+                <tr>
+                    <td><span>关键词：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="Key" placeholder="输入关键字" name="produceKey" class="form-input  form-text"/>
+                    </td>
+                    <td>
+                    	<span style="margin-left: 40px;">公告状态：</span>
+                   	</td>
+                    <td style="padding-top:8px;">
+                    	<select data-placeholder="请选择" style ="text-align: left;float: left;" class="dept_select chzn-form-select "  id="infoStatus">
+							<option value="999"></option>
+							<option value="-1">未发布</option>
+							<option value="1">已发布</option>
+       					</select>
+                   	</td> 
+                </tr>
+                <tr>
+                    <td><span>最早发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="startDate" name="startDate" class="datepicker" placeholder="选择最早发布时间">
+                    </td>
+                    <td><span style="margin-left: 40px;">最迟发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="endDate" name="endDate" class="datepicker" placeholder="选择最迟发布时间">
+                    	<button type="button" class="btn btn-primary" style="width: 80px;margin-top: -10px;" name="policyTable" onclick="findInfoCondition(this);">查询</button>
+                        <button  type="button"  class="btn btn-warning" style="width: 80px;margin-top: -10px;" onclick="emptyCondition();">重置</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+   </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>政策法规</span></div>
+    </div>
+   <div class="block-content collapse in">
+   		<table class="table table-bordered details-table">
+   			<thead>
+   				<tr>
+   					<th>政策法规标题</th>
+   					<th>关键词</th>
+   					<th>状态</th>
+   					<th>发布时间</th>
+   					<th>操作</th>
+   				</tr>
+   			</thead>
+   			<tbody id="policyTable">
+   			</tbody>
+   		</table>
+   </div>
+</div>

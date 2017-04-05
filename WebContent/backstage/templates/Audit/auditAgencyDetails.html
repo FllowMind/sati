@@ -1,0 +1,186 @@
+<!-- 中介详情页 -->
+<meta charset="UTF-8">
+<form name="auditAgencyDetailsForm" id="auditAgencyDetailsForm">
+<table class="table table-bordered details-table">
+	<tbody>
+		<tr>
+			<td rowspan="3" style="width:25%; ">
+				<img src="" id="unitCodeImageUrl" name="unitCodeImageUrl" alt="用户未上传组织机构代码证图书或统一社会信用代码图片" style="width:130px; height: 130px;">
+			</td>
+			<td><span class="details-title">单位地址：</span></td>
+			<td><span class="details-text" id="unitAddress" name="unitAddress"></span></td>
+			<td><span class="details-title">所在地：</span></td>
+			<td><span class="details-json" id="locationId" name="locationId"></span></td>
+		</tr>
+		<tr>
+			<td><span class="details-title">成立日期 ：</span></td>
+			<td><span class="details-date"  id="establishmentDate" name="establishmentDate"></span></td>
+			<td><span class="details-title">单位性质：</span></td>
+			<td><span class="details-select" id="unitNature" name="unitNature"></span></td>
+		</tr>
+		<tr>
+			<td><span class="details-title">关键字 ：</span></td>
+			<td><span class="details-text" id="key" name="key"></span></td>
+			<td><span class="details-title">单位从业人员数：</span></td>
+			<td><span class="details-text" id="totalNumber" name="totalNumber"></span></td>
+		</tr>
+		<tr>
+			<td><span class="details-title">机构名称：</span>
+				<span class="details-text" id="unitName" name="unitName"></span>
+			</td>
+			<td><span class="details-title">研发人员数 ：</span></td>
+			<td><span class="details-text" id="developerNumber" name="developerNumber"></span></td>
+			<td><span class="details-title">初级人员数 ：</span></td>
+			<td><span class="details-text" id="juniorNumber" name="juniorNumber"></span></td>
+		</tr>
+		<tr>
+			<td><span class="details-title">机构简称 ：</span>
+				<span class="details-text" id="unitAbbreviation" name="unitAbbreviation"></span>
+			</td>
+			<td><span class="details-title">中级职称数 ：</span></td>
+			<td><span class="details-text" id="intermediateNumber" name="intermediateNumber"></span></td>
+			<td><span class="details-title">高级职称数 ：</span></td>
+			<td><span class="details-text" id="seniorNumber" name="seniorNumber"></span></td>
+		</tr>
+		<tr>
+			<td><span class="details-title">法人代表 ：</span>
+				<span class="details-text" id="legalRepresentative" name="legalRepresentative"></span>
+			</td>
+			<td><span class="details-title">大专学历人数</span></td>
+			<td><span class="details-text" id="juniorCollegeNumber" name="juniorCollegeNumber"></span></td>
+			<td><span class="details-title">本科学历人数 ：</span></td>
+			<td><span class="details-text" id="undergraduateNumber" name="undergraduateNumber"></span></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span class="details-title">硕士学历人数：</span></td>
+			<td><span class="details-text" id="masterNumber" name="masterNumber"></span></td>
+			<td><span class="details-title">博士学历人数 ：</span></td>
+			<td><span class="details-text" id="doctorNumber" name="doctorNumber"></span></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span class="details-title">海外归国人数：</span></td>
+			<td><span class="details-text" id="overseasNumber" name="overseasNumber"></span></td>
+			<td><span class="details-title">院士人数 ：</span></td>
+			<td><span  class="details-text" id="academicianNunber" name="academicianNunber"></span></td>
+		</tr>
+		<tr>
+			<td colspan="2"><span class="details-title">代码类型：</span></td>
+			<td><span class="details-select" id="unitCodeType" name="unitCodeType"></span></td>
+			<td><span class="details-title">代码号：</span></td>
+			<td><span class="details-text" id="unitCode" name="unitCode"></span></td>
+		</tr>
+	</tbody>
+</table>
+<div>
+	<div class="padding-content-title">
+	   <span>机构简介</span>
+	</div>
+	<div class="padding-content">
+	    <span class="details-text"  id="unitProfile" name="unitProfile"></span>
+	</div>
+</div>
+<div>
+	<div class="padding-content-title">
+	   <span>经典案例</span>
+	</div>
+	<div class="padding-content">
+	    <span class="details-text"  id="classicCase" name="classicCase"></span>
+	</div>
+</div>
+<div>
+	<div class="padding-content-title">
+	   <span>联系方式 </span>
+	</div>
+	<div class="padding-content">
+	   <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <td class="span2 from-title">
+                    <span class="details-title">联系人：</span>
+                </td>
+                <td class="span4">
+                    <div class="form-group">
+                       	<span  class="details-text" id="contactName" name="contactName"></span>
+                     </div>
+                </td>
+                <td class="span2 from-title">
+                    <span class="details-title">联系人职务：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="contactBusiness" name="contactBusiness"></span>
+              	</td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                    <span class="details-title">联系电话：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="contactNumber" name="contactNumber"></span>
+                </td>
+                <td class="span2 from-title">
+                    <span class="details-title">手机号码：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="phoneNumber" name="phoneNumber"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                    <span class="details-title">通讯地址：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="contactAddress" name="contactAddress"></span>
+                </td>
+                <td class="span2 from-title">
+                    <span class="details-title">邮编：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="postcode" name="postcode"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                    <span class="details-title">Email：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="email" name="email"></span>
+                </td>
+                <td class="span2 from-title">
+                    <span class="details-title">网址：</span>
+                </td>
+                <td class="span4">
+               		<span class="details-text" id="contactUrl" name="contactUrl"></span>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2 from-title">
+                    <span class="details-title">传真：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="faxNumber" name="faxNumber"></span>
+                </td>
+                <td class="span2 from-title">
+                    <span class="details-title">QQ/MSN：</span>
+                </td>
+                <td class="span4">
+                	<span class="details-text" id="qqormsnNumer" name="qqormsnNumer"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+	</div>
+</div>
+<div>
+	<div class="padding-content-title">
+	   <span>备注 </span>
+	</div>
+	<div class="padding-content">
+	   <span class="details-text"  id="remark" name="remark"></span>
+	</div>
+</div>
+
+
+<div style="text-align:center;margin-top: 20px;">
+		<button class="btn btn-info" onclick="saveAuditInfos(4);">审核通过</button>
+	<button class="btn btn-warning" onclick="fillFalseModal();">审核不通过</button>
+</div>

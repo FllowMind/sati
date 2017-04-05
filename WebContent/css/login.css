@@ -1,0 +1,138 @@
+
+.cut-off{
+    height: 45px;
+    float: left;
+    display: inline-block;
+    margin: 25px 10px 20px 0;
+    border-right: solid 1px #e0e0e0;
+}
+
+.index-header-content h2{
+    padding-top: 30px;
+}
+
+
+.login-content{
+    position: relative;
+    height: 425px;
+    background-color: #F8F8F8;
+}
+
+.login-wrap{
+    height: 425px;
+     background: url("../images/sign-bg.png") no-repeat;
+ }
+.login-wrap .login-from{
+    position: relative;
+    float: right;
+    top: 20px;
+    left: 0;
+    background: #fff;
+    height: 305px;
+    width: 306px;
+    z-index: 4;
+    overflow: visible;
+    padding: 20px;
+
+}
+
+.login-from-title h3{
+    position: relative;
+    height: 22px;
+    line-height: 22px;
+    float: left;
+    margin: 0;
+    color: #666;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    font-size: 20px;
+}
+.mt{
+    display: inline-block;
+}
+.login-from-reg{
+    float: left;
+    margin-left: 102px;
+}
+.login-from-reg a{
+    color: red;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.login-from-reg b{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    background: url("../images/pwd-icons-new.png") -104px -75px no-repeat;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.msg-warn{
+    position: relative;
+    background: #fff6d2;
+    color: #666;
+    border: 1px solid #ffe57d;
+    padding: 3px 10px 3px 10px;
+    line-height: 18px;
+    height: 28px;
+    text-align: left;
+}
+.msg-warn b{
+    position: absolute;
+    top: 50%;
+    display: block;
+    margin-top: -9px;
+    width: 16px;
+    height: 20px;
+    overflow: hidden;
+    background: url("../images/pwd-icons-new.png") -104px -22px no-repeat;
+}
+
+.msg-warn span{
+    float: left;
+    padding-left: 20px;
+}
+
+.from .item{
+    margin-top: 12px;
+}
+
+.from .item .forget-pw-safe{
+    float: right;
+    margin-bottom: 4px;
+}
+.forget-pw-safe a{
+    color: #000000;
+    text-decoration: none;
+}
+.btn-style{
+    border: 1px solid #e85356;
+    display: block;
+    width: 99%;
+    background: #e4393c;
+    height: 34px;
+    color: #fff;
+    font-size: 18px;
+    font-family: '\5fae\8f6f\96c5\9ed1';
+    outline: rgb(109, 109, 109) none 0px;
+    text-align: center;
+}
+
+/*错误信息*/
+.msg-err{
+	color: red;
+	padding-top: 6px;
+	display: none;
+}
+.msg-err i {
+	margin-right: 4px;
+}
+
+/*正确信息*/
+.msg-success{
+	color : #00b02d;
+	padding-top: 6px;
+	display: none;
+}

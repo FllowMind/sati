@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jyu.sati.business.dao.SystemLogDao">
+  <resultMap id="BaseResultMap" type="com.jyu.sati.entity.SystemLog">
+    <id column="SYSTEM_LOG_ID" jdbcType="INTEGER" property="systemLogId" />
+    <result column="SYSTEM_LOG_TITLE" jdbcType="VARCHAR" property="systemLogTitle" />
+    <result column="SYSTEM_LOG_CONTENT" jdbcType="VARCHAR" property="systemLogContent" />
+    <result column="SUBMIT_TIME" jdbcType="TIMESTAMP" property="submitTime" />
+    <result column="LOG_TYPE" jdbcType="INTEGER" property="logType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SYSTEM_LOG_ID, SYSTEM_LOG_TITLE, SYSTEM_LOG_CONTENT, SUBMIT_TIME, LOG_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system_logs
+    where SYSTEM_LOG_ID = #{systemLogId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from system_logs
+    where SYSTEM_LOG_ID = #{systemLogId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jyu.sati.entity.SystemLog">
+    insert into system_logs ( SYSTEM_LOG_TITLE, SYSTEM_LOG_CONTENT, 
+      SUBMIT_TIME, LOG_TYPE)
+    values (#{systemLogTitle,jdbcType=VARCHAR}, #{systemLogContent,jdbcType=VARCHAR}, 
+      #{submitTime,jdbcType=TIMESTAMP}, #{logType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jyu.sati.entity.SystemLog">
+    insert into system_logs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="systemLogTitle != null">
+        SYSTEM_LOG_TITLE,
+      </if>
+      <if test="systemLogContent != null">
+        SYSTEM_LOG_CONTENT,
+      </if>
+      <if test="submitTime != null">
+        SUBMIT_TIME,
+      </if>
+      <if test="logType != null">
+        LOG_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="systemLogTitle != null">
+        #{systemLogTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="systemLogContent != null">
+        #{systemLogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="submitTime != null">
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jyu.sati.entity.SystemLog">
+    update system_logs
+    <set>
+      <if test="systemLogTitle != null">
+        SYSTEM_LOG_TITLE = #{systemLogTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="systemLogContent != null">
+        SYSTEM_LOG_CONTENT = #{systemLogContent,jdbcType=VARCHAR},
+      </if>
+      <if test="submitTime != null">
+        SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logType != null">
+        LOG_TYPE = #{logType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SYSTEM_LOG_ID = #{systemLogId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jyu.sati.entity.SystemLog">
+    update system_logs
+    set SYSTEM_LOG_TITLE = #{systemLogTitle,jdbcType=VARCHAR},
+      SYSTEM_LOG_CONTENT = #{systemLogContent,jdbcType=VARCHAR},
+      SUBMIT_TIME = #{submitTime,jdbcType=TIMESTAMP},
+      LOG_TYPE = #{logType,jdbcType=INTEGER}
+    where SYSTEM_LOG_ID = #{systemLogId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,11 @@
+<meta charset="UTF-8">
+<div class="modal-header">   
+	<h3>删除信息 </h3>  
+</div>
+<div class="modal-body">   
+	<p>确定删除该信息？</p>  
+</div> 
+<div class="modal-footer">   
+	<button type="button" class="btn btn-primary" onclick="removeInfo();">确定</button>
+	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+</div>  

@@ -1,0 +1,221 @@
+<!-- 审核技术供给 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>查询技术需求</span></div>
+    </div>
+   <div class="block-content collapse in">
+   		<table style="text-align: right;margin-left: 50px;" id="findConditionTable">
+            <tbody>
+                <tr>
+                    <td><span>关键字：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="key" placeholder="输入关键字" name="key" class="form-input  form-text"/>
+                    </td>
+                    <td><span>应用行业：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" placeholder="选择应用行业" id="industryId"  class="form-input form-text"/>
+                   		<button type="button" style="width: 80px; margin-top: -10px;margin-right: 84px;" name="应用行业" id="industry" class="btn btn-default"  onclick="showTreeModal(this);">请选择</button> 
+                    </td>
+                </tr>
+                <tr>
+                    <td><span>最早发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="startDate" name="startDate" class="datepicker" placeholder="选择最早发布时间">
+                    </td>
+                    <td><span style="margin-left: 40px;">最迟发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="endDate" name="endDate" class="datepicker" placeholder="选择最迟发布时间">
+                    	<button type="button" class="btn btn-primary" style="width: 80px;margin-top: -10px;" onclick="findTechAuditCondition(2);">查询</button>
+                        <button  type="button"  class="btn btn-warning" style="width: 80px;margin-top: -10px;" onclick="emptyCondition();">重置</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+   </div>
+</div>
+<div class="row-fluid">
+	<div class="span4">
+		<div class="block">
+			<div class="navbar navbar-inner block-header" >
+		        <div class="muted" style="text-align: center;"><span>等待审核和正在审核的名单</span>
+		        	<span class="badge badge-info resultLength" style="float: right;"></span>
+		        </div>
+		   </div>
+		   <div class="block-content collapse in" style="min-height: 240px;">
+		   		<div style="margin-bottom: 10px;">
+			   		<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="auditStatusContent" >
+					
+					</select>
+		   		</div>
+		   		<table class="table table-bordered">
+                     <thead>
+                         <tr>
+                             <th>技术供给名称</th>
+                             <th>申请时间</th>
+                             <th>操作</th>
+                         </tr>
+                     </thead>
+                     <tbody id="supplyAuditTable">
+                   	</tbody>
+                 </table>
+		   </div>
+		</div>
+	</div>
+	<div class="span8">
+		<div class="block">
+			<div class="navbar navbar-inner block-header" >
+		        <div class="muted" style="text-align: center;"><span>详情</span></div>
+		    </div>
+		   <div class="block-content collapse in" style="display: none;" id="techDetails">
+		   		<form name="auditRequireDetailsForm" id="auditRequireDetailsForm">
+				<table class="table table-bordered details-table">
+					<tbody>
+						<tr>
+							<td><span class="details-title">需求名称 ：</span></td>
+							<td><span class="details-text" id="infoTitle" name="infoTitle"></span></td>
+							<td><span class="details-title">关键字：</span></td>
+							<td><span class="details-text" id="infoKey" name="infoKey"></span></td>
+						</tr>
+						<tr>
+							<td><span class="details-title">所属行业 ：</span></td>
+							<td><span class="details-json" id="industryId" name="industryId"></span></td>
+							<td><span class="details-title">高新技术领域 ：</span></td>
+							<td><span class="details-json" id="htfId" name="htfId"></span></td>
+						</tr>
+						<tr>
+							<td><span class="details-title">所在地 ：</span></td>
+							<td><span class="details-json" id="locationId" name="locationId"></span></td>
+							<td><span class="details-title">学科分类 ：</span></td>
+							<td><span class="details-json" id="sciId" name="sciId"></span></td>
+						</tr>
+						<tr>
+							<td><span class="details-title">战略新兴产业 ：</span></td>
+							<td><span class="details-select" id="seIndustryId" name="seIndustryId"></span></td>
+							<td><span class="details-title">来源类型：</span></td>
+							<td><span class="details-select" id="sourceTypeId" name="sourceTypeId"></span></td>
+						</tr>
+						<tr>
+							<td><span class="details-title">解决时限要求：</span></td>
+							<td><span class="details-select" id="timeLimit" name="timeLimit"></span></td>
+							<td><span class="details-title">合作方式 ：</span></td>
+							<td><span class="details-select" id="cooperationModeId" name="cooperationModeId"></span></td>
+						</tr>
+						<tr> 
+							<td colspan="2"><span class="details-title">欲投资资金（万）：</span></td>
+							<td colspan="2"><span class="details-text"  id="investmentFunds" name="investmentFunds"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<div class="padding-content-title">
+					   <span class="details-content" >难题描述</span>
+					</div>
+					<div class="padding-content">
+					    <span class="details-text" id="problemDescription" name="problemDescription"></span>
+					</div>
+				</div>
+				<div>
+					<div class="padding-content-title">
+					   <span>联系方式 </span>
+					</div>
+					<div class="padding-content">
+				    	<table class="table table-bordered">
+				            <tbody>
+				            <tr>
+				                <td class="span2 from-title">
+				                    <span class="details-title">联系人：</span>
+				                </td>
+				                <td class="span4">
+				                    <div class="form-group">
+				                       	<span  class="details-text" id="contactName" name="contactName"></span>
+				                     </div>
+				                </td>
+				                <td class="span2 from-title">
+				                    <span class="details-title">联系人职务：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="contactBusiness" name="contactBusiness"></span>
+				              	</td>
+				            </tr>
+				            <tr>
+				                <td class="span2 from-title">
+				                    <span class="details-title">联系电话：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="contactNumber" name="contactNumber"></span>
+				                </td>
+				                <td class="span2 from-title">
+				                    <span class="details-title">手机号码：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="phoneNumber" name="phoneNumber"></span>
+				                </td>
+				            </tr>
+				            <tr>
+				                <td class="span2 from-title">
+				                    <span class="details-title">通讯地址：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="contactAddress" name="contactAddress"></span>
+				                </td>
+				                <td class="span2 from-title">
+				                    <span class="details-title">邮编：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="postcode" name="postcode"></span>
+				                </td>
+				            </tr>
+				            <tr>
+				                <td class="span2 from-title">
+				                    <span class="details-title">Email：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="email" name="email"></span>
+				                </td>
+				                <td class="span2 from-title">
+				                    <span class="details-title">网址：</span>
+				                </td>
+				                <td class="span4">
+				               		<span class="details-text" id="contactUrl" name="contactUrl"></span>
+				                </td>
+				            </tr>
+				            <tr>
+				                <td class="span2 from-title">
+				                    <span class="details-title">传真：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="faxNumber" name="faxNumber"></span>
+				                </td>
+				                <td class="span2 from-title">
+				                    <span class="details-title">QQ/MSN：</span>
+				                </td>
+				                <td class="span4">
+				                	<span class="details-text" id="qqormsnNumer" name="qqormsnNumer"></span>
+				                </td>
+				            </tr>
+				            </tbody>
+				        </table>
+					</div>
+				</div>
+				</form>
+				<div style="text-align:center;margin-top: 20px;">
+					<button class="btn btn-info" onclick="saveAuditTechInfos(3,4);">审核通过</button>
+					<button class="btn btn-warning" onclick="fillFalseTechRequireModal();">审核不通过</button>
+				</div>
+		   </div>
+		</div>
+	</div>
+</div>

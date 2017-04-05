@@ -1,0 +1,109 @@
+<!-- 技术供给管理 -->
+<meta charset="UTF-8">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">首页</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <span class="navTitle"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted"><span>查询我的技术供给</span></div>
+    </div>
+   <div class="block-content collapse in" style="min-height: 200px;">
+   		<table style="text-align: center;margin-left: 50px;" id="findConditionTable">
+            <tbody>
+            	<tr>
+                	<td>
+                    	<span>技术供给审核状态：</span>
+                   	</td>
+                    <td style="padding-top:8px;">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="supplyAuditStatus">
+				
+       					</select>
+                   	</td> 
+                   	<td>
+                    	<span>技术供给状态：</span>
+                   	</td>
+                    <td style="padding-top:8px;">
+                    	<select data-placeholder="请选择" class="dept_select chzn-form-select "  id="techStatus">
+							<option value="999"></option>
+							<option value="-1">未成交</option>
+							<option value="1">已成交</option>
+       					</select>
+                   	</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><span>应用行业：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" placeholder="选择应用行业" id="industryId"  class="form-input form-text"/>
+                   		<button type="button" style="width: 80px; margin-top: -10px;" name="应用行业" id="industry" class="btn btn-default"  onclick="showTreeModal(this);">请选择</button> 
+                    </td>
+                    <td><span style="margin-left: 40px;">最早发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="startDate" name="startDate" class="datepicker" placeholder="选择最早发布时间">
+                    </td>
+                   	<td>
+                   		<button type="button" class="btn btn-primary" style="width: 80px;" onclick="SpecifyTechPageByCondition();">查询</button>
+                   	</td>
+                </tr>
+                <tr>
+                	<td>
+                    	<span>高新技术领域：</span>
+                   	</td>
+                    <td style="padding-top:8px;">
+                   		<input type="text" placeholder="选择高新技术领域" id="htfId" class="form-input form-text"/>
+                   		<button type="button"  style="width: 80px; margin-top: -10px;" name="高新技术领域" id="htf" class="btn btn-default"  onclick="showTreeModal(this);">请选择</button> 
+                   	</td> 
+                    <td><span style="margin-left: 40px;">最迟发布时间：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="endDate" name="endDate" class="datepicker" placeholder="选择最迟发布时间">
+                    </td>
+                    
+                    <td>
+                        <button  type="button"  class="btn btn-warning" style="width: 80px;" onclick="emptyCondition();">重置</button>
+                    </td>
+                </tr>
+                <tr>
+                	<td><span>关键字：</span></td>
+                    <td style="padding-top:8px;">
+                    	<input type="text" id="key" name="key" placeholder="通过关键字查询供给">
+                    </td>
+                    <td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+   </div>
+</div>
+<div class="block">
+    <div class="navbar navbar-inner block-header" >
+        <div class="muted" style="text-align: center;"><span>我的技术供给</span></div>
+    </div>
+    <!--  style="display: none;" -->
+   <div class="block-content collapse in">
+   		<table class="table table-bordered details-table">
+   			<thead>
+   				<tr>
+   					<th>名称</th>
+   					<th>所在地</th>
+   					<th>应用行业</th>
+   					<th>高新技术领域</th>
+   					<th>交易价格</th>
+   					<th>联系人</th>
+   					<th>创建时间</th>
+   					<th>状态</th>
+   					<th>操作</th>
+   				</tr>
+   			</thead>
+   			<tbody id="supplyTable">
+   			</tbody>
+   		</table>
+   </div>
+</div>
